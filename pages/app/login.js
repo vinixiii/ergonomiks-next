@@ -1,6 +1,6 @@
 import { websitePageHOC } from '../../src/components/wrappers/WebsitePage/hoc';
 
-function Login() {
+function LoginScreen() {
   return (
     <div style={{ display: 'flex', flex: 1, padding: 40 }}>
       <h1>Login</h1>
@@ -8,7 +8,7 @@ function Login() {
   );
 }
 
-export default websitePageHOC(Login, {
+export default websitePageHOC(LoginScreen, {
   pageWrapperProps: {
     headerProps: { display: false },
     sidebarProps: { display: false },

@@ -23,43 +23,43 @@ const links = {
     {
       icon: <MdBusiness />,
       text: 'Companies',
-      url: '/companies',
+      url: '/app/admin/companies',
     },
   ],
   company: [
     {
       icon: <MdSupervisorAccount />,
       text: 'Managers',
-      url: '/managers',
+      url: '/app/company/managers',
     },
     {
       icon: <MdGroups />,
       text: 'Employees',
-      url: '/employees',
+      url: '/app/company/employees',
     },
   ],
   manager: [
     {
       icon: <MdPieChart />,
       text: 'Dashboard',
-      url: '/',
+      url: '/app/manager/dashboard',
     },
     {
       icon: <MdGroups />,
       text: 'Team',
-      url: '/team',
+      url: '/app/manager/team',
     },
     {
       icon: <MdAccountBox />,
       text: 'Profile',
-      url: '/profile',
+      url: '/app/manager/profile',
     },
   ],
   employee: [
     {
       icon: <MdPieChart />,
       text: 'Dashboard',
-      url: '/dashboard',
+      url: '/app/employee/dashboard',
     },
   ],
 };
