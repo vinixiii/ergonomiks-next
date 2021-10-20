@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   html, body, h1, h2, h3, h4 {
     margin: 0;
     padding: 0;
+    line-height: normal;
   }
 
   html, body {
@@ -24,5 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     font-family: ${({ theme }) => theme.fontFamily};
+    background-color: ${({ theme }) =>
+      theme.lightMode.colors.tertiaryBackground}
   }
 `;

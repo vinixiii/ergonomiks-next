@@ -72,4 +72,5 @@ export const theme = {
   breakpoints,
   borderRadius: '4px',
   fontFamily: "'Poppins', sans-serif",
+  transition: '300ms ease-in-out',
 };
