@@ -1,12 +1,11 @@
-import styled from 'styled-components';
-import { Sidebar } from '../src/components/common/Sidebar';
-import { Header } from '../src/components/common/Header';
+import { websitePageHOC } from '../src/components/wrappers/WebsitePage/hoc';
 
-export default function Home() {
+function Home() {
   return (
-    <div style={{ display: 'flex', flex: 1 }}>
-      <Sidebar />
-      <Header />
+    <div style={{ display: 'flex', flex: 1, padding: 40 }}>
+      <h1>Home</h1>
     </div>
   );
 }
+
+export default websitePageHOC(Home);
