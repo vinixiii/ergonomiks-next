@@ -8,4 +8,9 @@ function Home() {
   );
 }
 
-export default websitePageHOC(Home);
+export default websitePageHOC(Home, {
+  pageWrapperProps: {
+    headerProps: { display: false },
+    sidebarProps: { display: false },
+  },
+});

@@ -3,21 +3,28 @@ import React from 'react';
 import { WebsitePageContext } from './context';
 import { Sidebar } from '../../common/Sidebar';
 import { Header } from '../../common/Header';
+import { Box } from '../../foundation/Box';
 
 export default function WebsitePageWrapper({
   children,
+  pageBoxProps,
   headerProps,
   sidebarProps,
 }) {
   return (
-    <WebsitePageContext.Provider>
-      <div style={{ display: 'flex', flex: 1 }}>
+    <WebsitePageContext.Provider value="">
+      <Box display="flex" flex="1">
         {sidebarProps.display && <Sidebar />}
-        <div style={{ width: '100%' }}>
+        <Box
+          width="100%"
+          display="flex"
+          flexDirection="column"
+          {...pageBoxProps}
+        >
           {headerProps.display && <Header />}
           {children}
-        </div>
-      </div>
+        </Box>
+      </Box>
     </WebsitePageContext.Provider>
   );
 }

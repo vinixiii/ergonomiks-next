@@ -16,8 +16,6 @@ import { Logo } from '../../img/Logo';
 import { Text } from '../../foundation/Text';
 import { Link } from '../Link';
 
-const role = 'manager';
-
 const links = {
   admin: [
     {
@@ -67,6 +65,7 @@ const links = {
 export function Sidebar() {
   const router = useRouter();
   const pathname = router.pathname;
+  const role = pathname.split('/')[2];
 
   console.log(pathname);
 
@@ -77,7 +76,7 @@ export function Sidebar() {
       </SidebarWrapper.Top>
 
       <SidebarWrapper.Center>
-        {links[role].map((item, index) => (
+        {links[role]?.map((item, index) => (
           <li key={index}>
             <Link href={item.url}>
               <SidebarItem active={pathname === item.url}>
