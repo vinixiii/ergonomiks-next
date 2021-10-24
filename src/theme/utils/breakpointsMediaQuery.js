@@ -1,7 +1,5 @@
 import { css } from 'styled-components';
-import { theme } from '../index';
-
-const { breakpoints } = theme;
+import { breakpoints } from '../breakpoints';
 
 export function breakpointsMediaQuery(cssBreakpoints) {
   const breakpointsName = Object.keys(cssBreakpoints);

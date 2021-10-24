@@ -6,9 +6,9 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: ${({ theme }) => theme.lightMode.colors.secondaryText};
-  background-color: ${({ theme }) => theme.lightMode.colors.primaryBackground};
-  border-bottom: 1px solid ${({ theme }) => theme.lightMode.colors.border};
+  color: ${({ theme }) => theme.colors.secondaryText};
+  background-color: ${({ theme }) => theme.colors.primaryBackground};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   padding: 0 40px;
 `;
 
@@ -26,7 +26,7 @@ HeaderWrapper.Right = styled.div`
   > div {
     width: 36px;
     height: 36px;
-    border: 1px solid ${({ theme }) => theme.lightMode.colors.border};
+    border: 1px solid ${({ theme }) => theme.colors.border};
     border-radius: ${({ theme }) => theme.borderRadius};
     cursor: pointer;
   }

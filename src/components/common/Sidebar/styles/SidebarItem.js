@@ -10,20 +10,18 @@ export const SidebarItem = styled.div`
 
   svg {
     font-size: 24px;
-    color: ${({ theme }) => theme.lightMode.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
   }
 
   ${({ active }) =>
     active &&
     css`
-      border-left: 6px solid ${({ theme }) => theme.lightMode.colors.primary}}
-      color: ${({ theme }) => theme.lightMode.colors.primary};
-      background-color: ${({ theme }) =>
-        theme.lightMode.colors.tertiaryBackground};      
+      border-left: 6px solid ${({ theme }) => theme.colors.primary}}
+      color: ${({ theme }) => theme.colors.primary};
+      background-color: ${({ theme }) => theme.colors.tertiaryBackground};      
   `}
 
   &:hover {
-    background-color: ${({ theme }) =>
-      theme.lightMode.colors.tertiaryBackground};
+    background-color: ${({ theme }) => theme.colors.tertiaryBackground};
   }
 `;

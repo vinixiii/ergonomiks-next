@@ -1,4 +1,8 @@
-const lightMode = {
+import { typographyVariants } from './typography';
+import { breakpoints } from './breakpoints';
+
+export const lightMode = {
+  title: 'lightMode',
   colors: {
     primary: '#3F77DF',
     secondary: '#84A5E3',
@@ -9,9 +13,16 @@ const lightMode = {
     primaryText: '#2F2E41',
     secondaryText: '#7A7A7A',
   },
+  typographyVariants,
+  breakpoints,
+  borderRadius: '4px',
+  fontFamily: "'Poppins', sans-serif",
+  transition: '300ms ease-in-out',
+  boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.25)',
 };
 
-const darkMode = {
+export const darkMode = {
+  title: 'darkMode',
   colors: {
     primary: '#3F77DF',
     secondary: '#84A5E3',
@@ -20,57 +31,12 @@ const darkMode = {
     tertiaryBackground: '#373842',
     border: '#212228',
     primaryText: '#FFFFFF',
-    secondaryText: '#191919',
+    secondaryText: '#c4c4c4',
   },
-};
-
-const typographyVariants = {
-  title: {
-    fontSize: '40px',
-    fontWeight: '700',
-    lineHeight: 1.25, // 125%
-  },
-  title2: {
-    fontSize: '24px',
-    fontWeight: '700',
-    lineHeight: 1.25, // 125%
-  },
-  subtitle: {
-    fontSize: '18px',
-    fontWeight: '600',
-    lineHeight: 1.25, // 125%
-  },
-  paragraph1: {
-    fontSize: '16px',
-    fontWeight: '500',
-    lineHeight: 1.25, // 125%
-  },
-  paragraph2: {
-    fontSize: '16px',
-    fontWeight: '400',
-    lineHeight: 1.25, // 125%
-  },
-  paragraph3: {
-    fontSize: '14px',
-    fontWeight: '400',
-    lineHeight: 1.25, // 125%
-  },
-};
-
-const breakpoints = {
-  xs: 0, // extra small
-  sm: 480, // small
-  md: 768, // medium
-  lg: 992, // large
-  xl: 1200, // extra large
-};
-
-export const theme = {
-  lightMode,
-  darkMode,
   typographyVariants,
   breakpoints,
   borderRadius: '4px',
   fontFamily: "'Poppins', sans-serif",
   transition: '300ms ease-in-out',
+  boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.25)',
 };

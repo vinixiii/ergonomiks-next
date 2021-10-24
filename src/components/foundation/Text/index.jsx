@@ -1,5 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import get from 'lodash/get';
+import { propToStyle } from '../../../theme/utils/propToStyle';
 
 export const TextStyleVariantsMap = {
   title: css`
@@ -41,7 +43,11 @@ export const TextStyleVariantsMap = {
 };
 
 const TextBase = styled.span`
-  ${({ variant }) => TextStyleVariantsMap[variant]}
+  ${({ variant }) => TextStyleVariantsMap[variant]};
+  color: ${({ theme, color }) => get(theme, `colors.${color}`)};
+
+  ${propToStyle('marginTop')};
+  ${propToStyle('marginBottom')};
 `;
 
 export function Text({ children, tag, variant, ...props }) {

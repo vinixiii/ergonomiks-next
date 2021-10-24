@@ -25,7 +25,6 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     font-family: ${({ theme }) => theme.fontFamily};
-    background-color: ${({ theme }) =>
-      theme.lightMode.colors.tertiaryBackground}
+    background-color: ${({ theme }) => theme.colors.tertiaryBackground}
   }
 `;
