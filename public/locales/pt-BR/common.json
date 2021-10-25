@@ -1,4 +1,17 @@
 {
-  "title": "Início",
-  "button": "Mudar idioma"
+  "btn_sign_in": "Entrar",
+  "btn_contact_us": "Contato",
+
+  "banner_title": "Monitore riscos ergonômicos de forma simples e prática!",
+  "banner_subtitle": "Ganhe produtividade e melhore sua postura trabalhando no escritório ou em casa.",
+
+  "s1_title": "Inteligência artificial",
+  "s1_paragraph": "Nosso sistema é composto por um hardware que possui sensores e câmera e um software que possui uma Inteligência Artificial treinada para identificar riscos ergonômicos que podem afetar o usuário.",
+
+  "s2_title": "Notificações em tempo real",
+  "s2_paragraph": "Integrado com as análises feitas pela I.A. nosso sistema emite notificações em tempo real sobre a postura do usuário que o esta utilizando.",
+  "s2_paragraph2": "Essas notificações trazem informações sobre qual risco ergonômico o usuário esta correndo e como evitá-lo.",
+
+  "s3_title": "Análise de ambiente",
+  "s3_paragraph": "O equipamento que possibilita toda a análise do nosso sistema conta com sensores que medem o nível de luminosidade, ruído, umidade e a temperatura do ambiente."
 }

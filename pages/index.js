@@ -35,7 +35,7 @@ function Home() {
         gap: 24,
       }}
     >
-      <h1>{t('title')}</h1>
+      <h1>{t('banner_title')}</h1>
 
       <select
         onChange={changeLanguage}
@@ -47,7 +47,7 @@ function Home() {
       </select>
 
       <Link href="/app/login" locale={locale} style={{ width: '200px' }}>
-        <button style={{ width: '200px' }}>{t('signin')}</button>
+        <button style={{ width: '200px' }}>{t('btn_sign_in')}</button>
       </Link>
     </div>
   );

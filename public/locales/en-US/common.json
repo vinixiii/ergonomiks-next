@@ -1,4 +1,17 @@
 {
-  "title": "Home",
-  "button": "Change language"
+  "btn_sign_in": "Sign in",
+  "btn_contact_us": "Contact us",
+
+  "banner_title": "Track ergonomic risks in a simple and practical way!",
+  "banner_subtitle": "Earn and improve your posture working from office or home.",
+
+  "s1_title": "Artificial intelligence",
+  "s1_paragraph": "Our system is composed of an hardware that has sensors and a camera, and a software that has an Artificial Intelligence trained to identify ergonomic risks related to the user.",
+
+  "s2_title": "Real-time notifications",
+  "s2_paragraph": "Integrated with the analyzes made by the artificial intelligence our system sends real-time notifications about the posture of the user who is using it.",
+  "s2_paragraph2": "These notifications provide information about what ergonomic risk the user is taking and how to avoid it.",
+
+  "s3_title": "Environment analysis",
+  "s3_paragraph": "The equipment that makes all the analysis of our system has sensors that measure the level of light, noise, moisture and the temperature of the environment."
 }
