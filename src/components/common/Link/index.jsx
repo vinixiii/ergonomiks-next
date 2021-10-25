@@ -8,9 +8,9 @@ const StyledLink = styled.a`
   opacity: 1;
 `;
 
-export function Link({ href, children, ...props }) {
+export function Link({ href, locale, children, ...props }) {
   return (
-    <NextLink href={href} passHref>
+    <NextLink href={href} locale={locale} passHref>
       <StyledLink {...props}>{children}</StyledLink>
     </NextLink>
   );
