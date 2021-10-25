@@ -89,15 +89,21 @@ export function Sidebar() {
       </SidebarWrapper.Center>
 
       <SidebarWrapper.Bottom>
-        <SidebarItem>
-          <RiArrowLeftRightFill style={{ fontSize: 24 }} />
-          <Text>Minimize</Text>
-        </SidebarItem>
+        <li>
+          <SidebarItem>
+            <RiArrowLeftRightFill style={{ fontSize: 24 }} />
+            <Text>Minimize</Text>
+          </SidebarItem>
+        </li>
 
-        <SidebarItem>
-          <MdLogout style={{ fontSize: 24 }} />
-          <Text>Sign out</Text>
-        </SidebarItem>
+        <li>
+          <Link href="/app/login">
+            <SidebarItem>
+              <MdLogout style={{ fontSize: 24 }} />
+              <Text>Sign out</Text>
+            </SidebarItem>
+          </Link>
+        </li>
       </SidebarWrapper.Bottom>
     </SidebarWrapper>
   );

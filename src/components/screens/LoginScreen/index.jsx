@@ -5,6 +5,7 @@ import { Grid } from '../../foundation/Grid';
 import { Box } from '../../foundation/Box';
 import { Logo } from '../../img/Logo';
 import { Text } from '../../foundation/Text';
+import { LoginForm } from '../../forms/LoginForm';
 
 export function LoginScreen() {
   const { colors, borderRadius, boxShadow } = useContext(ThemeContext);
@@ -32,9 +33,9 @@ export function LoginScreen() {
               marginTop="48px"
               marginBottom="24px"
             >
-              Login
+              Sign in
             </Text>
-            {/* <LoginForm /> */}
+            <LoginForm />
           </Box>
         </Grid.Column>
       </Grid.Row>

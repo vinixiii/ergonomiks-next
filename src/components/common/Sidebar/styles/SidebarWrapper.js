@@ -21,14 +21,12 @@ SidebarWrapper.Top = styled.div`
 
 SidebarWrapper.Center = styled.ul`
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
   padding: 12px 0;
 `;
 
-SidebarWrapper.Bottom = styled.div`
+SidebarWrapper.Bottom = styled.ul`
   display: flex;
-  align-items: center;
   flex-direction: column;
   padding: 12px 0;
 `;
