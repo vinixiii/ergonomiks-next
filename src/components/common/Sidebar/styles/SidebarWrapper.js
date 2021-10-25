@@ -14,8 +14,11 @@ export const SidebarWrapper = styled.aside`
 `;
 
 SidebarWrapper.Top = styled.div`
+  height: 60px;
   display: flex;
-  padding: 12px 0 12px 18px;
+  justify-content: center;
+  align-items: center;
+  /* padding: 12px 0 12px 18px; */
   /* border-bottom: 1px solid ${({ theme }) => theme.colors.border}; */
 `;
 

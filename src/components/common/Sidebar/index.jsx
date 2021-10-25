@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
+import { ThemeContext } from 'styled-components';
 import {
   MdBusiness,
   MdPieChart,
@@ -66,13 +67,12 @@ export function Sidebar() {
   const router = useRouter();
   const pathname = router.pathname;
   const role = pathname.split('/')[2];
-
-  console.log(pathname);
+  const { colors } = useContext(ThemeContext);
 
   return (
     <SidebarWrapper>
       <SidebarWrapper.Top>
-        <Logo />
+        <Logo color={colors.primaryText} />
       </SidebarWrapper.Top>
 
       <SidebarWrapper.Center>

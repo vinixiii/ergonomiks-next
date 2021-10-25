@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import { Grid } from '../../foundation/Grid';
 import { Box } from '../../foundation/Box';
@@ -8,6 +10,8 @@ import { Text } from '../../foundation/Text';
 import { LoginForm } from '../../forms/LoginForm';
 
 export function LoginScreen() {
+  const { t } = useTranslation('login');
+
   const { colors, borderRadius, boxShadow } = useContext(ThemeContext);
 
   return (
@@ -33,7 +37,7 @@ export function LoginScreen() {
               marginTop="48px"
               marginBottom="24px"
             >
-              Sign in
+              {t('sign_in')}
             </Text>
             <LoginForm />
           </Box>
