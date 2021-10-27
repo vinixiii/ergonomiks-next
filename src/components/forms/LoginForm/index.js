@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { setCookie } from 'nookies';
-import jwt from 'jsonwebtoken';
+import { useTranslation } from 'next-i18next';
 
 import { TextField } from '../../foundation/TextField';
 import { Button } from '../../common/Button';
@@ -9,6 +8,9 @@ import { Box } from '../../foundation/Box';
 
 export function LoginForm() {
   const router = useRouter();
+  const { locale } = router;
+
+  const { t } = useTranslation('login');
 
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -27,42 +29,44 @@ export function LoginForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    fetch('http://localhost:5000/v1/account/signin', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: userInfo.email,
-        password: userInfo.password,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then(async (res) => {
-      const response = await res.json();
-      console.log(response);
+    router.push('/app/company/managers', '/app/company/managers', { locale });
 
-      if (response.success === true) {
-        const decodedToken = jwt.decode(response.data.token);
-        console.log(decodedToken);
+    // fetch('http://localhost:5000/v1/account/signin', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     email: userInfo.email,
+    //     password: userInfo.password,
+    //   }),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // }).then(async (res) => {
+    //   const response = await res.json();
+    //   console.log(response);
 
-        setCookie(null, 'token', response.data.token, {
-          path: '/',
-          maxAge: 86400 * 7,
-        });
+    //   if (response.success === true) {
+    //     const decodedToken = jwt.decode(response.data.token);
+    //     console.log(decodedToken);
 
-        if (decodedToken.role === 'admin') {
-          router.push('/app/admin/companies');
-        }
-        if (decodedToken.role === 'company') {
-          router.push('/app/company/managers');
-        }
-        if (decodedToken.role === 'manager') {
-          router.push('/app/manager/dashboard');
-        }
-        if (decodedToken.role === 'employee') {
-          router.push('/app/employee/dashboard');
-        }
-      }
-    });
+    //     setCookie(null, 'token', response.data.token, {
+    //       path: '/',
+    //       maxAge: 86400 * 7,
+    //     });
+
+    //     if (decodedToken.role === 'admin') {
+    //       router.push('/app/admin/companies');
+    //     }
+    //     if (decodedToken.role === 'company') {
+    //       router.push('/app/company/managers');
+    //     }
+    //     if (decodedToken.role === 'manager') {
+    //       router.push('/app/manager/dashboard');
+    //     }
+    //     if (decodedToken.role === 'employee') {
+    //       router.push('/app/employee/dashboard');
+    //     }
+    //   }
+    // });
   }
 
   return (
@@ -70,20 +74,20 @@ export function LoginForm() {
       <Box display="flex" flexDirection="column">
         <TextField
           type="text"
-          placeholder="Email"
+          placeholder={t('email')}
           name="email"
           value={userInfo.email}
           onChange={handleChangeFieldValue}
         />
         <TextField
           type="password"
-          placeholder="Password"
+          placeholder={t('password')}
           name="password"
           value={userInfo.password}
           onChange={handleChangeFieldValue}
         />
         <Button alignSelf="flex-end" marginTop="32px">
-          Sign in
+          {t('sign_in')}
         </Button>
       </Box>
     </form>
