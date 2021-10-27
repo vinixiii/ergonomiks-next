@@ -1,11 +1,10 @@
 import { websitePageHOC } from '../../../src/components/wrappers/WebsitePage/hoc';
+import { ManagersScreen } from '../../../src/components/screens/app/company/ManagersScreen';
 
-function CompanyManagersScreen() {
-  return (
-    <div style={{ display: 'flex', flex: 1, padding: 40 }}>
-      <h1>Company Managers</h1>
-    </div>
-  );
-}
-
-export default websitePageHOC(CompanyManagersScreen);
+export default websitePageHOC(ManagersScreen, {
+  pageWrapperProps: {
+    pageBoxProps: {
+      flex: 1,
+    },
+  },
+});

@@ -6,6 +6,7 @@ export const lightMode = {
   colors: {
     primary: '#3F77DF',
     secondary: '#84A5E3',
+    tertiary: '#305BAB',
     primaryBackground: '#FFFFFF',
     secondaryBackground: '#FEFDFF',
     tertiaryBackground: '#F8F9FD',
