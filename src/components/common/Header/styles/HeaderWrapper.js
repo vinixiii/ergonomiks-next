@@ -6,7 +6,7 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.secondaryText};
-  background-color: ${({ theme }) => theme.colors.primaryBackground};
+  background-color: ${({ theme }) => theme.colors.secondaryBackground};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   padding: 0 40px;
 `;

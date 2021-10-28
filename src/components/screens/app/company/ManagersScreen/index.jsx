@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import React from 'react';
 import { MdSearch } from 'react-icons/md';
 
 import { Box } from '../../../../foundation/Box';
@@ -7,9 +6,9 @@ import { TextField } from '../../../../foundation/TextField';
 import { Button } from '../../../../common/Button';
 import { Table } from '../../../../common/Table';
 
-export function ManagersScreen() {
-  const { colors } = useContext(ThemeContext);
+import { managers } from '../../../../../../mock/managers';
 
+export function ManagersScreen() {
   return (
     <>
       <Box
@@ -26,218 +25,11 @@ export function ManagersScreen() {
         <Button>+ Add manager</Button>
       </Box>
 
-      <Table title="Managers">
-        <table style={{ position: 'absolute' }}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-            <tr>
-              <td>Paulo Brandão</td>
-              <td>paulo@ergonomiks.com</td>
-              <td>+55 (11) 99123-4567</td>
-              <td>/ X</td>
-            </tr>
-          </tbody>
-        </table>
-      </Table>
+      <Table
+        title="Managers"
+        columns={['Name', 'Email', 'Phone']}
+        rows={managers}
+      />
     </>
   );
 }

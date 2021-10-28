@@ -11,7 +11,6 @@ export const TableWrapper = styled.div`
 
 TableWrapper.Header = styled.div`
   padding: 24px;
-  color: ${({ theme }) => theme.colors.tertiary};
   background-color: ${({ theme }) => theme.colors.secondaryBackground};
   border-radius: ${({ theme }) => theme.borderRadius};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
@@ -31,6 +30,34 @@ TableWrapper.Body = styled.div`
     tbody tr td {
       padding: 18px 24px;
       border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+    }
+
+    #icons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon {
+      font-size: 28px;
+      padding: 4px;
+      background-color: ${({ theme }) => theme.colors.tertiaryBackground};
+      color: ${({ theme }) => theme.colors.secondaryText};
+      cursor: pointer;
+      transition: all ${({ theme }) => theme.transition};
+    }
+
+    .edit-icon {
+      &:hover {
+        color: ${({ theme }) => theme.colors.primary};
+      }
+    }
+
+    .delete-icon {
+      &:hover {
+        color: ${({ theme }) => theme.colors.red};
+      }
     }
   }
 `;
