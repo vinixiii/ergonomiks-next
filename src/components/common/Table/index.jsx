@@ -9,7 +9,7 @@ export function Table({ children, title }) {
       <TableWrapper.Header>
         <Text variant="subtitle">{title}</Text>
       </TableWrapper.Header>
-      {children}
+      <TableWrapper.Body>{children}</TableWrapper.Body>
     </TableWrapper>
   );
 }
