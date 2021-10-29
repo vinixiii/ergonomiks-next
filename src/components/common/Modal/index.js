@@ -26,6 +26,7 @@ export function Modal({ isOpen, onClose, children }) {
         transition={{
           duration: 0.3,
         }}
+        style={{ overflowY: 'auto' }}
       >
         {children({ 'data-modal-safe-area': 'true' })}
       </motion.div>

@@ -5,6 +5,7 @@ import { Sidebar } from '../../common/Sidebar';
 import { Header } from '../../common/Header';
 import { Box } from '../../foundation/Box';
 import { Modal } from '../../common/Modal';
+import { RegisterManagerForm } from '../../forms/RegisterManagerForm';
 
 export default function WebsitePageWrapper({
   children,
@@ -23,14 +24,7 @@ export default function WebsitePageWrapper({
       <Box display="flex" flex="1">
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
           {(propsDoModal) => (
-            <div style={{ background: 'white' }} {...propsDoModal}>
-              <h1>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Laboriosam consequatur alias eveniet voluptatem quo, at odit
-                soluta nisi, placeat aut excepturi incidunt iure sunt
-                doloremque, quisquam exercitationem nesciunt harum debitis!
-              </h1>
-            </div>
+            <RegisterManagerForm propsDoModal={propsDoModal} />
           )}
         </Modal>
         {sidebarProps.display && <Sidebar />}
