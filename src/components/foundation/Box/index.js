@@ -26,4 +26,12 @@ export const Box = styled.div`
   ${propToStyle('marginRight')}
   ${propToStyle('borderRadius')}
   ${propToStyle('borderBottom')}
+  
+  ${propToStyle('border')}
+  ${propToStyle('borderTop')}
+  ${propToStyle('alignSelf')}
+  ${propToStyle('minWidth')}
+  ${propToStyle('mWidth')}
+  ${propToStyle('textAlign')}
+  ${propToStyle('height')}
 `;

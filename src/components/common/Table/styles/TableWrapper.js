@@ -22,6 +22,7 @@ TableWrapper.Body = styled.div`
   overflow-y: auto;
 
   table {
+    position: absolute;
     width: 100%;
     text-align: left;
     border-spacing: 0;

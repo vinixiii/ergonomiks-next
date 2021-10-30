@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { WebsitePageContext } from './context';
 import { Sidebar } from '../../common/Sidebar';
 import { Header } from '../../common/Header';
 import { Box } from '../../foundation/Box';
+import { Modal } from '../../common/Modal';
+import { RegisterManagerForm } from '../../forms/RegisterManagerForm';
 
 export default function WebsitePageWrapper({
   children,
@@ -11,9 +13,20 @@ export default function WebsitePageWrapper({
   headerProps,
   sidebarProps,
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <WebsitePageContext.Provider value="">
+    <WebsitePageContext.Provider
+      value={{
+        toggleRegisterManagerModal: () => setIsModalOpen(!isModalOpen),
+      }}
+    >
       <Box display="flex" flex="1">
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          {(propsDoModal) => (
+            <RegisterManagerForm propsDoModal={propsDoModal} />
+          )}
+        </Modal>
         {sidebarProps.display && <Sidebar />}
         <Box display="flex" flexDirection="column" {...pageBoxProps}>
           {headerProps.display && <Header />}
