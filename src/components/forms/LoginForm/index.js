@@ -71,7 +71,7 @@ export function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box display="flex" flexDirection="column">
+      <Box display="flex" flexDirection="column" gap="16px">
         <TextField
           type="text"
           placeholder={t('email')}

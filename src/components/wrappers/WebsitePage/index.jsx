@@ -15,12 +15,7 @@ export default function WebsitePageWrapper({
     <WebsitePageContext.Provider value="">
       <Box display="flex" flex="1">
         {sidebarProps.display && <Sidebar />}
-        <Box
-          width="100%"
-          display="flex"
-          flexDirection="column"
-          {...pageBoxProps}
-        >
+        <Box display="flex" flexDirection="column" {...pageBoxProps}>
           {headerProps.display && <Header />}
           {children}
         </Box>

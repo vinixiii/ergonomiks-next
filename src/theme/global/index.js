@@ -14,6 +14,11 @@ export const GlobalStyle = createGlobalStyle`
     line-height: normal;
   }
 
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
+
   html, body {
     display: flex;
     min-height: 100vh;

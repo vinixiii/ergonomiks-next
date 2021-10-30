@@ -5,6 +5,7 @@ import { Link } from '../Link';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const ButtonWrapper = styled.button`
+  height: 36px;
   color: #ffffff;
   background: #3f77df;
   font-size: 16px;

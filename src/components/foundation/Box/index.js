@@ -7,6 +7,7 @@ export const Box = styled.div`
   ${propToStyle('flexDirection')}
   ${propToStyle('justifyContent')}
   ${propToStyle('flexWrap')}
+  ${propToStyle('gap')}
   ${propToStyle('backgroundColor')}
   ${propToStyle('backgroundImage')}
   ${propToStyle('backgroundRepeat')}
@@ -24,4 +25,5 @@ export const Box = styled.div`
   ${propToStyle('marginBottom')}
   ${propToStyle('marginRight')}
   ${propToStyle('borderRadius')}
+  ${propToStyle('borderBottom')}
 `;

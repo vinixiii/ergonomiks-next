@@ -2,17 +2,27 @@ import styled, { css } from 'styled-components';
 import { Text } from '../../Text';
 
 export const InputWrapper = styled.div`
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background-color: ${({ theme }) => theme.colors.primaryBackground};
+  padding-left: 6px;
+  color: ${({ theme }) => theme.colors.secondaryText};
+
+  > svg {
+    font-size: 24px;
+  }
 `;
 
 export const Input = styled(Text)`
   width: 100%;
   height: 36px;
-  border: 1px solid ${({ theme }) => theme.colors.secondaryText};
+  border: none;
+  outline: 0;
   padding: 6px 12px;
   border-radius: ${({ theme }) => theme.borderRadius};
-  outline-color: ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => theme.colors.tertiaryBackground};
+  background-color: ${({ theme }) => theme.colors.primaryBackground};
 `;
 
 Input.defaultProps = {
