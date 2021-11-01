@@ -12,7 +12,7 @@ export const lightMode = {
     tertiaryBackground: '#F8F9FD',
     border: '#D6D6D6',
     primaryText: '#2F2E41',
-    secondaryText: '#7A7A7A',
+    secondaryText: '#7C7A93',
     red: '#F82740',
   },
   typographyVariants,
