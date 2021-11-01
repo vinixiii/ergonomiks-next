@@ -32,7 +32,7 @@ export const darkMode = {
     primaryBackground: '#2A2B33',
     secondaryBackground: '#2D2E36',
     tertiaryBackground: '#373842',
-    border: '#212228',
+    border: '#3F3F46',
     primaryText: '#FFFFFF',
     secondaryText: '#c4c4c4',
     red: '#F82740',

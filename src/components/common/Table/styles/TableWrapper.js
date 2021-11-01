@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const TableWrapper = styled.div`
   flex: 1;
-  margin: 0 40px 40px;
+  margin: 0 16px 40px;
   background-color: ${({ theme }) => theme.colors.primaryBackground};
   border: 1px solid ${({ theme }) => theme.colors.border};
   /* box-shadow: ${({ theme }) => theme.boxShadow}; */

@@ -14,25 +14,29 @@ export function ManagersScreen() {
 
   return (
     <>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        gap="18px"
-        flexWrap="wrap"
-        // backgroundColor={colors.primaryBackground}
-        padding="40px"
-        // borderBottom={`1px solid ${colors.border}`}
-      >
-        <TextField placeholder="Search a manager" icon={<MdSearch />} />
-        <Button onClick={toggleRegisterManagerModal}>+ Add manager</Button>
+      <Box display="flex" flex="1" justifyContent="center">
+        <Box display="flex" flex="1" flexDirection="column" maxWidth="1366px">
+          <Box
+            display="flex"
+            flexDirection={{ xs: 'column', md: 'row' }}
+            justifyContent="space-between"
+            alignItems={{ md: 'center' }}
+            gap="18px"
+            flexWrap="wrap"
+            // backgroundColor={colors.primaryBackground}
+            padding="40px 16px"
+            // borderBottom={`1px solid ${colors.border}`}
+          >
+            <TextField placeholder="Search a manager" icon={<MdSearch />} />
+            <Button onClick={toggleRegisterManagerModal}>+ Add manager</Button>
+          </Box>
+          <Table
+            title="Banana"
+            columns={['Name', 'Email', 'Phone']}
+            rows={managers}
+          />
+        </Box>
       </Box>
-
-      <Table
-        title="Managers"
-        columns={['Name', 'Email', 'Phone']}
-        rows={managers}
-      />
     </>
   );
 }

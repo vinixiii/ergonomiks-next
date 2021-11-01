@@ -31,7 +31,7 @@ export const Box = styled.div`
   ${propToStyle('borderTop')}
   ${propToStyle('alignSelf')}
   ${propToStyle('minWidth')}
-  ${propToStyle('mWidth')}
+  ${propToStyle('maxWidth')}
   ${propToStyle('textAlign')}
   ${propToStyle('height')}
 
