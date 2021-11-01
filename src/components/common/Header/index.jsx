@@ -1,14 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ThemeContext } from 'styled-components';
 
-import { MdLightMode, MdHelpOutline, MdMenu, MdClose } from 'react-icons/md';
+import {
+  MdLightMode,
+  MdHelpOutline,
+  MdMenu,
+  MdClose,
+  MdLanguage,
+} from 'react-icons/md';
 
 import { HeaderWrapper } from './styles/HeaderWrapper';
 import { Box } from '../../foundation/Box';
 import { Text } from '../../foundation/Text';
 import { Link } from '../Link';
 import { Logo } from '../../img/Logo';
+import { setCookie } from 'nookies';
 
 const links = {
   admin: [
@@ -49,14 +56,30 @@ const links = {
   ],
 };
 
+const languages = ['en-US', 'pt-BR'];
+
 export function Header() {
   const router = useRouter();
+  const { locale } = router;
   const pathname = router.pathname;
 
   const [isNavDropdownOpen, setIsNavDropdownOpen] = useState(false);
-  const { colors } = useContext(ThemeContext);
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const { colors, borderRadius } = useContext(ThemeContext);
 
   const role = pathname.split('/')[2];
+
+  const changeLanguage = (language) => {
+    const locale = language;
+    router.push(router.pathname, router.asPath, { locale });
+  };
+
+  useEffect(() => {
+    setCookie(null, 'NEXT_LOCALE', locale, {
+      path: '/',
+      maxAge: 86400 * 7,
+    });
+  }, [locale]);
 
   return (
     <Box
@@ -92,7 +115,7 @@ export function Header() {
               </ul>
             </nav>
 
-            <Box id="dropdown">
+            <Box id="nav-dropdown" className="dropdown">
               <Box onClick={() => setIsNavDropdownOpen(!isNavDropdownOpen)}>
                 {isNavDropdownOpen ? (
                   <MdClose
@@ -109,8 +132,9 @@ export function Header() {
                 )}
               </Box>
               <nav
-                id="dropdown-content"
-                className={isNavDropdownOpen ? 'dropdown-active' : ''}
+                className={`dropdown-content ${
+                  isNavDropdownOpen ? 'dropdown-active' : ''
+                }`}
               >
                 <ul>
                   {links[role]?.map((item, index) => (
@@ -135,7 +159,7 @@ export function Header() {
             alignItems="center"
             padding="0 18px"
             gap="18px"
-            borderRight="1px solid gray"
+            borderRight={`1px solid ${colors.border}`}
           >
             <Box onClick={() => console.log('oi')}>
               <MdLightMode
@@ -149,6 +173,48 @@ export function Header() {
               size="36"
               onClick={() => console.log('oi')}
             />
+
+            <Box id="language-dropdown" className="dropdown">
+              <Box
+                display="flex"
+                alignItems="center"
+                backgroundColor={colors.tertiaryBackground}
+                borderRadius={borderRadius}
+                cursor="pointer"
+                onClick={() =>
+                  setIsLanguageDropdownOpen(!isLanguageDropdownOpen)
+                }
+              >
+                <MdLanguage
+                  className="icon"
+                  size="36"
+                  style={{ display: 'block' }}
+                />
+                <Text id="language" variant="paragraph2" paddingRight="6px">
+                  {locale}
+                </Text>
+              </Box>
+              <Box
+                id="language-dropdown-content"
+                className={`dropdown-content ${
+                  isLanguageDropdownOpen ? 'dropdown-active' : ''
+                }`}
+              >
+                <ul>
+                  {languages.map((language) => (
+                    <li className={locale === language ? 'active' : ''}>
+                      <Text
+                        variant="paragraph1"
+                        color="primaryText"
+                        onClick={() => changeLanguage(language)}
+                      >
+                        {language}
+                      </Text>
+                    </li>
+                  ))}
+                </ul>
+              </Box>
+            </Box>
           </Box>
           <Box display="flex" alignItems="center" gap="12px">
             {/* <Box

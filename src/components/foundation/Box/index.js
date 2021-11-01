@@ -36,4 +36,6 @@ export const Box = styled.div`
   ${propToStyle('height')}
 
   ${propToStyle('borderRight')}
+  ${propToStyle('cursor')}
+  ${propToStyle('color')}
 `;

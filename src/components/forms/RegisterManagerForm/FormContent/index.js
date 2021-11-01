@@ -42,11 +42,10 @@ export function ManagerFormContent() {
             border={`1px dashed ${colors.primary}`}
             borderRadius={borderRadius}
             textAlign="center"
+            color={colors.secondaryText}
           >
             <MdOutlineAddAPhoto size="48" color={colors.primary} />
-            <Text variant="paragraph3" color={colors.secondaryText}>
-              No image chosen yet
-            </Text>
+            <Text variant="paragraph3">No image chosen yet</Text>
           </Box>
           <Button type="button">Chose file</Button>
         </Box>
