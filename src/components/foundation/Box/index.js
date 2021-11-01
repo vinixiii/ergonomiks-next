@@ -34,4 +34,8 @@ export const Box = styled.div`
   ${propToStyle('mWidth')}
   ${propToStyle('textAlign')}
   ${propToStyle('height')}
+
+  ${propToStyle('borderRight')}
+  ${propToStyle('cursor')}
+  ${propToStyle('color')}
 `;

@@ -29,7 +29,7 @@ export function LoginScreen() {
             borderRadius={borderRadius}
             boxShadow={boxShadow}
           >
-            <Logo color={colors.primaryText} />
+            <Logo secondaryColor={colors.primaryText} />
             <Text
               tag="h1"
               variant="title2"

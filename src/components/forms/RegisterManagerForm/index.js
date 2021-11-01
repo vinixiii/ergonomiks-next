@@ -9,7 +9,7 @@ import { Text } from '../../foundation/Text';
 import { ManagerFormContent } from './FormContent';
 
 export function RegisterManagerForm({ propsDoModal }) {
-  const { colors } = useContext(ThemeContext);
+  const { colors, boxShadow, borderRadius } = useContext(ThemeContext);
 
   return (
     <Grid.Row flex="1" alignItems="center" justifyContent="center">
@@ -23,7 +23,9 @@ export function RegisterManagerForm({ propsDoModal }) {
           display="flex"
           flex="1"
           flexDirection="column"
-          backgroundColor="white"
+          backgroundColor={colors.primaryBackground}
+          boxShadow={boxShadow}
+          borderRadius={borderRadius}
           {...propsDoModal}
         >
           <Box

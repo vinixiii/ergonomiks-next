@@ -47,6 +47,7 @@ TableWrapper.Body = styled.div`
       color: ${({ theme }) => theme.colors.secondaryText};
       cursor: pointer;
       transition: all ${({ theme }) => theme.transition};
+      border-radius: ${({ theme }) => theme.borderRadius};
     }
 
     .edit-icon {

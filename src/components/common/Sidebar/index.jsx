@@ -72,7 +72,7 @@ export function Sidebar() {
   return (
     <SidebarWrapper>
       <SidebarWrapper.Top>
-        <Logo color={colors.primaryText} />
+        <Logo secondaryColor={colors.primaryText} />
       </SidebarWrapper.Top>
 
       <SidebarWrapper.Center>

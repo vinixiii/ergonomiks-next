@@ -27,7 +27,7 @@ export default function WebsitePageWrapper({
             <RegisterManagerForm propsDoModal={propsDoModal} />
           )}
         </Modal>
-        {sidebarProps.display && <Sidebar />}
+        {/* {sidebarProps.display && <Sidebar />} */}
         <Box display="flex" flexDirection="column" {...pageBoxProps}>
           {headerProps.display && <Header />}
           {children}
