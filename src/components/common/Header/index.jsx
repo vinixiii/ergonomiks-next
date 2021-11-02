@@ -163,7 +163,7 @@ export function Header() {
           >
             <Box>
               <MdLightMode
-                className="icon light-icon"
+                className="icon theme-icon"
                 size="36"
                 style={{ display: 'block' }}
               />
@@ -172,9 +172,9 @@ export function Header() {
 
             <Box id="language-dropdown" className="dropdown">
               <Box
+                id="language-option"
                 display="flex"
                 alignItems="center"
-                backgroundColor={colors.tertiaryBackground}
                 borderRadius={borderRadius}
                 cursor="pointer"
                 onClick={() =>
@@ -182,9 +182,9 @@ export function Header() {
                 }
               >
                 <MdLanguage
-                  className="icon"
+                  // className="icon"
                   size="36"
-                  style={{ display: 'block' }}
+                  style={{ display: 'block', padding: '6px' }}
                 />
                 <Text id="language" variant="paragraph2" paddingRight="6px">
                   {locale}

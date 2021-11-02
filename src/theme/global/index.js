@@ -36,7 +36,6 @@ export const GlobalStyle = createGlobalStyle`
   .icon {
     font-size: 28px;
     padding: 4px;
-    background-color: ${({ theme }) => theme.colors.tertiaryBackground};
     color: ${({ theme }) => theme.colors.secondaryText};
     cursor: pointer;
     transition: all ${({ theme }) => theme.transition};
@@ -45,12 +44,14 @@ export const GlobalStyle = createGlobalStyle`
 
   .edit-icon {
     &:hover {
+      background-color: ${({ theme }) => theme.colors.tertiaryBackground};
       color: ${({ theme }) => theme.colors.primary};
     }
   }
 
   .close-icon {
     &:hover {
+      background-color: ${({ theme }) => theme.colors.tertiaryBackground};
       color: ${({ theme }) => theme.colors.red};
     }
   }

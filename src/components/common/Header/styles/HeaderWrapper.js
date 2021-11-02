@@ -16,16 +16,21 @@ export const HeaderWrapper = styled.header`
     transition: all ${({ theme }) => theme.transition};
     cursor: pointer;
     border-radius: ${({ theme }) => theme.borderRadius};
-    background-color: ${({ theme }) => theme.colors.tertiaryBackground};
+
+    &.theme-icon {
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.tertiaryBackground};
+      }
+    }
 
     &.help-icon {
       &:hover {
+        background-color: ${({ theme }) => theme.colors.tertiaryBackground};
         color: ${({ theme }) => theme.colors.primary};
       }
     }
 
     &:hover {
-      background-color: ${({ theme }) => theme.colors.tertiaryBackground};
       color: ${({ theme }) => theme.colors.primaryText};
     }
   }
@@ -177,6 +182,16 @@ HeaderWrapper.Right = styled.div`
   align-items: center;
   gap: 18px;
   text-align: right;
+
+  #language-option {
+    border-radius: ${({ theme }) => theme.borderRadius};
+    transition: all ${({ theme }) => theme.transition};
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.tertiaryBackground};
+      color: ${({ theme }) => theme.colors.primaryText};
+    }
+  }
 
   img {
     width: 100%;
