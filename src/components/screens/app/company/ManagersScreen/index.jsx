@@ -28,10 +28,10 @@ export function ManagersScreen() {
             // borderBottom={`1px solid ${colors.border}`}
           >
             <TextField placeholder="Search a manager" icon={<MdSearch />} />
-            <Button onClick={toggleRegisterManagerModal}>+ Add manager</Button>
+            <Button onClick={toggleRegisterManagerModal}>Add manager</Button>
           </Box>
           <Table
-            title="Banana"
+            title="Managers"
             columns={['Name', 'Email', 'Phone']}
             rows={managers}
           />

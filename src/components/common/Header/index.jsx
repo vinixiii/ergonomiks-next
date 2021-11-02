@@ -161,18 +161,14 @@ export function Header() {
             gap="18px"
             borderRight={`1px solid ${colors.border}`}
           >
-            <Box onClick={() => console.log('oi')}>
+            <Box>
               <MdLightMode
                 className="icon light-icon"
                 size="36"
                 style={{ display: 'block' }}
               />
             </Box>
-            <MdHelpOutline
-              className="icon help-icon"
-              size="36"
-              onClick={() => console.log('oi')}
-            />
+            <MdHelpOutline className="icon help-icon" size="36" />
 
             <Box id="language-dropdown" className="dropdown">
               <Box
@@ -202,10 +198,12 @@ export function Header() {
               >
                 <ul>
                   {languages.map((language) => (
-                    <li className={locale === language ? 'active' : ''}>
+                    <li
+                      key={language}
+                      className={locale === language ? 'active' : ''}
+                    >
                       <Text
                         variant="paragraph1"
-                        color="primaryText"
                         onClick={() => changeLanguage(language)}
                       >
                         {language}

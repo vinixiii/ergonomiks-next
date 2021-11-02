@@ -18,9 +18,11 @@ export const ModalWrapper = styled.div`
       ? css`
           opacity: 1;
           pointer-events: all;
+          transform: translateY(0);
         `
       : css`
           opacity: 0;
           pointer-events: none;
+          transform: translateY(-20px);
         `}
 `;

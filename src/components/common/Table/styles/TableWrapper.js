@@ -39,27 +39,5 @@ TableWrapper.Body = styled.div`
       align-items: center;
       gap: 12px;
     }
-
-    .icon {
-      font-size: 28px;
-      padding: 4px;
-      background-color: ${({ theme }) => theme.colors.tertiaryBackground};
-      color: ${({ theme }) => theme.colors.secondaryText};
-      cursor: pointer;
-      transition: all ${({ theme }) => theme.transition};
-      border-radius: ${({ theme }) => theme.borderRadius};
-    }
-
-    .edit-icon {
-      &:hover {
-        color: ${({ theme }) => theme.colors.primary};
-      }
-    }
-
-    .delete-icon {
-      &:hover {
-        color: ${({ theme }) => theme.colors.red};
-      }
-    }
   }
 `;
