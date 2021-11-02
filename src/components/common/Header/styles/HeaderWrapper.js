@@ -42,6 +42,7 @@ export const HeaderWrapper = styled.header`
     opacity: 0;
     pointer-events: none;
     transform: translateY(-10px);
+    transition: all ${({ theme }) => theme.transition};
     z-index: 100;
 
     &#language-dropdown-content {

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ThemeContext } from 'styled-components';
-import { MdOutlineAddAPhoto } from 'react-icons/md';
+import { MdClose, MdOutlineAddAPhoto } from 'react-icons/md';
 
 import { Box } from '../../foundation/Box';
 import { Text } from '../../foundation/Text';
@@ -14,6 +14,7 @@ export function RegisterManagerForm() {
   const fileInputRef = useRef();
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
+  const [a, setA] = useState(false);
 
   // Form
   const [managerInfo, setManagerInfo] = useState({
@@ -48,8 +49,27 @@ export function RegisterManagerForm() {
     }
   }, [image]);
 
-  function handleSubmit(event) {
+  useEffect(() => {
+    setA(true);
+  }, []);
+
+  async function handleSubmit(event) {
     event.preventDefault();
+
+    const fd = new FormData();
+
+    if (image) {
+      fd.append('image', image, image.name);
+    }
+
+    fd.append('firstName', managerInfo.firstName);
+    fd.append('lastName', managerInfo.lastName);
+    fd.append('phone', managerInfo.phone);
+    fd.append('email', managerInfo.email);
+    fd.append('password', managerInfo.password);
+    fd.append('confirmPassword', managerInfo.confirmPassword);
+
+    console.table([...fd]);
   }
 
   return (
@@ -83,22 +103,34 @@ export function RegisterManagerForm() {
               justifyContent="center"
               alignItems="center"
               gap="18px"
-              border={`2px dashed ${colors.primary}`}
+              border={preview ? `` : `2px dashed ${colors.primary}`}
               borderRadius={borderRadius}
               textAlign="center"
               color={colors.secondaryText}
             >
               {preview ? (
-                <img
-                  src={preview}
-                  alt="Uploaded user image"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: borderRadius,
-                  }}
-                />
+                <>
+                  <img
+                    src={preview}
+                    alt="Uploaded user image"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      borderRadius: '6px',
+                    }}
+                  />
+                  <MdClose
+                    className="icon close-icon"
+                    size="28"
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      right: 0,
+                    }}
+                    onClick={() => setImage(null)}
+                  />
+                </>
               ) : (
                 <>
                   <MdOutlineAddAPhoto size="48" color={colors.primary} />
@@ -106,6 +138,7 @@ export function RegisterManagerForm() {
                 </>
               )}
             </Box>
+
             <Button
               onClick={(event) => {
                 event.preventDefault();

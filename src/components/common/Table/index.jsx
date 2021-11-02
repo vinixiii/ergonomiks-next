@@ -30,7 +30,7 @@ export function Table({ title, columns, rows }) {
         <td>
           <div id="icons">
             <MdEdit className="icon edit-icon" />
-            <MdClose className="icon delete-icon" />
+            <MdClose className="icon close-icon" />
           </div>
         </td>
       </tr>

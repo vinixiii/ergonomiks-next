@@ -25,17 +25,4 @@ export const ModalWrapper = styled.div`
           pointer-events: none;
           transform: translateY(-20px);
         `}
-
-  #close-icon {
-    font-size: 28px;
-    padding: 4px;
-    color: ${({ theme }) => theme.colors.secondaryText};
-    border-radius: ${({ theme }) => theme.borderRadius};
-    transition: all ${({ theme }) => theme.transition};
-
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.tertiaryBackground};
-      color: ${({ theme }) => theme.colors.red};
-    }
-  }
 `;

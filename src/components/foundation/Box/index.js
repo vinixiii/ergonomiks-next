@@ -38,4 +38,5 @@ export const Box = styled.div`
   ${propToStyle('borderRight')}
   ${propToStyle('cursor')}
   ${propToStyle('color')}
+  ${propToStyle('position')}
 `;
