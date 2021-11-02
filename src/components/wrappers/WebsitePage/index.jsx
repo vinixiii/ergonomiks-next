@@ -11,7 +11,7 @@ export default function WebsitePageWrapper({
   children,
   pageBoxProps,
   headerProps,
-  sidebarProps,
+  // sidebarProps,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,10 +22,12 @@ export default function WebsitePageWrapper({
       }}
     >
       <Box display="flex" flex="1">
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          {(propsDoModal) => (
-            <RegisterManagerForm propsDoModal={propsDoModal} />
-          )}
+        <Modal
+          title="New manager"
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        >
+          <RegisterManagerForm />
         </Modal>
         {/* {sidebarProps.display && <Sidebar />} */}
         <Box display="flex" flexDirection="column" {...pageBoxProps}>

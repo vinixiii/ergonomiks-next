@@ -31,7 +31,7 @@ export function ManagersScreen() {
             <Button onClick={toggleRegisterManagerModal}>+ Add manager</Button>
           </Box>
           <Table
-            title="Banana"
+            title="Managers"
             columns={['Name', 'Email', 'Phone']}
             rows={managers}
           />
