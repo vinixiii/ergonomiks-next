@@ -11,24 +11,17 @@ export default function WebsitePageWrapper({
   children,
   pageBoxProps,
   headerProps,
-  // sidebarProps,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <WebsitePageContext.Provider
       value={{
+        isModalOpen: isModalOpen,
         toggleRegisterManagerModal: () => setIsModalOpen(!isModalOpen),
       }}
     >
       <Box display="flex" flex="1">
-        <Modal
-          title="New manager"
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        >
-          <RegisterManagerForm />
-        </Modal>
         {/* {sidebarProps.display && <Sidebar />} */}
         <Box display="flex" flexDirection="column" {...pageBoxProps}>
           {headerProps.display && <Header />}
@@ -41,9 +34,6 @@ export default function WebsitePageWrapper({
 
 WebsitePageWrapper.defaultProps = {
   headerProps: {
-    display: true,
-  },
-  sidebarProps: {
     display: true,
   },
 };

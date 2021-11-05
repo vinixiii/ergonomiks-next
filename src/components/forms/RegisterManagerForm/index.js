@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { ThemeContext } from 'styled-components';
 import { MdClose, MdOutlineAddAPhoto } from 'react-icons/md';
 
@@ -6,8 +7,12 @@ import { Box } from '../../foundation/Box';
 import { Text } from '../../foundation/Text';
 import { TextField } from '../../foundation/TextField';
 import { Button } from '../../common/Button';
+import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
+import { api } from '../../infra/api';
 
 export function RegisterManagerForm() {
+  const router = useRouter();
+  const { toggleRegisterManagerModal } = useContext(WebsitePageContext);
   const { colors, borderRadius } = useContext(ThemeContext);
 
   const fileInputRef = useRef();
@@ -20,7 +25,6 @@ export function RegisterManagerForm() {
     phone: '',
     email: '',
     password: '',
-    confirmPassword: '',
   });
 
   function handleChangeFieldValue(event) {
@@ -60,9 +64,18 @@ export function RegisterManagerForm() {
     fd.append('phone', managerInfo.phone);
     fd.append('email', managerInfo.email);
     fd.append('password', managerInfo.password);
-    fd.append('confirmPassword', managerInfo.confirmPassword);
+    fd.append('idCompany', 'aa67cbd8-85c0-46a3-ae98-01b698589417');
 
     console.table([...fd]);
+
+    const result = await api.post('manager/register', fd);
+
+    if (result.status === 200) {
+      console.log(result);
+
+      toggleRegisterManagerModal();
+      router.push(router.pathname);
+    }
   }
 
   return (
@@ -217,13 +230,6 @@ export function RegisterManagerForm() {
               placeholder="Password"
               name="password"
               value={managerInfo.password}
-              onChange={handleChangeFieldValue}
-            />
-            <TextField
-              type="password"
-              placeholder="Password confirmation"
-              name="confirmPassword"
-              value={managerInfo.confirmPassword}
               onChange={handleChangeFieldValue}
             />
           </Box>
