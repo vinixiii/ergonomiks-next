@@ -10,13 +10,10 @@ import { Button } from '../../common/Button';
 export function RegisterManagerForm() {
   const { colors, borderRadius } = useContext(ThemeContext);
 
-  // Image preview
   const fileInputRef = useRef();
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
-  const [a, setA] = useState(false);
 
-  // Form
   const [managerInfo, setManagerInfo] = useState({
     firstName: '',
     lastName: '',
@@ -48,10 +45,6 @@ export function RegisterManagerForm() {
       setPreview(null);
     }
   }, [image]);
-
-  useEffect(() => {
-    setA(true);
-  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
