@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { websitePageHOC } from '../../../src/components/wrappers/WebsitePage/hoc';
 import { ManagersScreen } from '../../../src/components/screens/app/company/ManagersScreen';
+import { authService } from '../../../src/services/auth/authService';
 import { api } from '../../../src/components/infra/api';
 
 export default websitePageHOC(ManagersScreen, {
@@ -12,9 +12,14 @@ export default websitePageHOC(ManagersScreen, {
 });
 
 export async function getServerSideProps(context) {
+  const auth = authService(context);
+  const session = await auth.getSession();
+
+  console.log(session);
+
   const { data, status } = await api.post(
     'manager',
-    { id: 'aa67cbd8-85c0-46a3-ae98-01b698589417' },
+    { id: session.idCompany },
     { headers: { 'Content-Type': 'application/json' } }
   );
 
@@ -23,6 +28,7 @@ export async function getServerSideProps(context) {
   if (status === 200) {
     return {
       props: {
+        user: session,
         managers: data.data,
       },
     };
