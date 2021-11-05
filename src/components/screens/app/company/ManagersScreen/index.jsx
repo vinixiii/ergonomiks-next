@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { MdSearch, MdEdit, MdClose } from 'react-icons/md';
 import { ThemeContext } from 'styled-components';
 
@@ -8,15 +8,45 @@ import { Text } from '../../../../foundation/Text';
 import { TextField } from '../../../../foundation/TextField';
 import { Button } from '../../../../common/Button';
 import { Table } from '../../../../common/Table';
+import { Modal } from '../../../../common/Modal';
+import { RegisterManagerForm } from '../../../../forms/RegisterManagerForm';
 
-import { managers } from '../../../../../../mock/managers';
-
-export function ManagersScreen() {
-  const { toggleRegisterManagerModal } = useContext(WebsitePageContext);
+export function ManagersScreen({ managers }) {
+  const { isModalOpen, toggleRegisterManagerModal } =
+    useContext(WebsitePageContext);
   const { borderRadius } = useContext(ThemeContext);
+
+  // async function getManagersList() {
+  //   try {
+  //     const { data, status } = await api.post(
+  //       'manager',
+  //       { id: 'aa67cbd8-85c0-46a3-ae98-01b698589417' },
+  //       { headers: { 'Content-Type': 'application/json' } }
+  //     );
+
+  //     if (status === 200) {
+  //       setManagersList(data.data);
+  //       console.log(data.data);
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getManagersList();
+  // }, []);
 
   return (
     <>
+      <Modal
+        title="New manager"
+        isOpen={isModalOpen}
+        onClose={toggleRegisterManagerModal}
+      >
+        <RegisterManagerForm />
+      </Modal>
+
       <Box display="flex" flex="1" justifyContent="center">
         <Box display="flex" flex="1" flexDirection="column" maxWidth="1366px">
           <Box
@@ -58,28 +88,29 @@ export function ManagersScreen() {
             </thead>
             <tbody>
               {managers.map((manager) => (
-                <tr key={manager.name}>
+                <tr key={manager.id}>
                   <td>
                     <Box display="flex" alignItems="center" gap="12px">
                       <Box width="36px" height="36px">
                         <img
-                          src="https://github.com/vinixiii.png"
+                          src={`http://localhost:5000/resources/images/${manager.image}`}
                           alt="eu"
                           style={{
                             width: '100%',
+                            height: '100%',
                             borderRadius: borderRadius,
                             objectFit: 'cover',
                           }}
                         />
                       </Box>
                       <Text variant="paragraph3" color="primaryText">
-                        {manager.name}
+                        {`${manager.firstName} ${manager.lastName}`}
                       </Text>
                     </Box>
                   </td>
                   <td>
                     <Text variant="paragraph3" color="primaryText">
-                      {manager.email}
+                      {manager.user.email}
                     </Text>
                   </td>
                   <td>
