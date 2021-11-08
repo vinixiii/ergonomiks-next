@@ -4,7 +4,7 @@ export const TableWrapper = styled.div`
   flex: 1;
   margin: 0 16px 40px;
   background-color: ${({ theme }) => theme.colors.primaryBackground};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  /* border: 1px solid ${({ theme }) => theme.colors.border}; */
   /* box-shadow: ${({ theme }) => theme.boxShadow}; */
   border-radius: ${({ theme }) => theme.borderRadius};
 `;

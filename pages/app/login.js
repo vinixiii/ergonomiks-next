@@ -6,10 +6,12 @@ import { LoginScreen } from '../../src/components/screens/LoginScreen';
 export default websitePageHOC(LoginScreen, {
   pageWrapperProps: {
     headerProps: { display: false },
-    sidebarProps: { display: false },
     pageBoxProps: {
       flex: 1,
-      backgroundImage: 'url(/img/background-illustration.svg)',
+      backgroundImage: {
+        xs: '',
+        xl: 'url(/img/background-illustration.svg)',
+      },
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'bottom left',
     },

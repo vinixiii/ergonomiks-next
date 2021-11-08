@@ -8,6 +8,8 @@ import {
   MdMenu,
   MdClose,
   MdLanguage,
+  MdSettings,
+  MdLogout,
 } from 'react-icons/md';
 
 import { HeaderWrapper } from './styles/HeaderWrapper';
@@ -15,7 +17,8 @@ import { Box } from '../../foundation/Box';
 import { Text } from '../../foundation/Text';
 import { Link } from '../Link';
 import { Logo } from '../../img/Logo';
-import { setCookie } from 'nookies';
+import { setCookie, destroyCookie } from 'nookies';
+import Dropdown from '../Dropdown';
 
 const links = {
   admin: [
@@ -56,15 +59,13 @@ const links = {
   ],
 };
 
-const languages = ['en-US', 'pt-BR'];
-
 export function Header() {
   const router = useRouter();
   const { locale } = router;
   const pathname = router.pathname;
 
   const [isNavDropdownOpen, setIsNavDropdownOpen] = useState(false);
-  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [isOptionsDropdownOpen, setIsOptionsDropdownOpen] = useState(false);
   const { colors, borderRadius } = useContext(ThemeContext);
 
   const role = pathname.split('/')[2];
@@ -99,8 +100,34 @@ export function Header() {
 
           <img id="logo-sm" src="/img/logo-sm.svg" alt="Ergonomiks logo" />
 
-          <HeaderWrapper.Nav>
-            <nav id="long-nav">
+          <Box position={{ sm: 'relative' }}>
+            <Box
+              display={{ lg: 'none' }}
+              onClick={() => {
+                setIsNavDropdownOpen(!isNavDropdownOpen);
+                setIsOptionsDropdownOpen(false);
+              }}
+            >
+              {isNavDropdownOpen ? (
+                <MdClose
+                  className="icon menu-icon"
+                  size="36"
+                  style={{ display: 'block' }}
+                />
+              ) : (
+                <MdMenu
+                  className="icon menu-icon"
+                  size="36"
+                  style={{ display: 'block' }}
+                />
+              )}
+            </Box>
+            <Dropdown
+              tag="nav"
+              isActive={isNavDropdownOpen}
+              alignLeft
+              isHeaderNav
+            >
               <ul>
                 {links[role]?.map((item, index) => (
                   <li
@@ -113,111 +140,24 @@ export function Header() {
                   </li>
                 ))}
               </ul>
-            </nav>
-
-            <Box id="nav-dropdown" className="dropdown">
-              <Box onClick={() => setIsNavDropdownOpen(!isNavDropdownOpen)}>
-                {isNavDropdownOpen ? (
-                  <MdClose
-                    className="icon menu-icon"
-                    size="36"
-                    style={{ display: 'block' }}
-                  />
-                ) : (
-                  <MdMenu
-                    className="icon menu-icon"
-                    size="36"
-                    style={{ display: 'block' }}
-                  />
-                )}
-              </Box>
-              <nav
-                className={`dropdown-content ${
-                  isNavDropdownOpen ? 'dropdown-active' : ''
-                }`}
-              >
-                <ul>
-                  {links[role]?.map((item, index) => (
-                    <li
-                      key={index}
-                      className={pathname === item.url ? 'active' : ''}
-                    >
-                      <Link href={item.url}>
-                        <Text variant="paragraph1">{item.text}</Text>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </Box>
-          </HeaderWrapper.Nav>
+            </Dropdown>
+          </Box>
         </HeaderWrapper.Left>
 
         <HeaderWrapper.Right>
           <Box
             display="flex"
             alignItems="center"
-            padding="0 18px"
+            padding="0 12px"
             gap="18px"
-            borderRight={`1px solid ${colors.border}`}
+            // borderRight={`1px solid ${colors.border}`}
           >
-            <Box>
-              <MdLightMode
-                className="icon theme-icon"
-                size="36"
-                style={{ display: 'block' }}
-              />
-            </Box>
             <MdHelpOutline className="icon help-icon" size="36" />
-
-            <Box id="language-dropdown" className="dropdown">
-              <Box
-                id="language-option"
-                display="flex"
-                alignItems="center"
-                borderRadius={borderRadius}
-                cursor="pointer"
-                onClick={() =>
-                  setIsLanguageDropdownOpen(!isLanguageDropdownOpen)
-                }
-              >
-                <MdLanguage
-                  // className="icon"
-                  size="36"
-                  style={{ display: 'block', padding: '6px' }}
-                />
-                <Text id="language" variant="paragraph2" paddingRight="6px">
-                  {locale}
-                </Text>
-              </Box>
-              <Box
-                id="language-dropdown-content"
-                className={`dropdown-content ${
-                  isLanguageDropdownOpen ? 'dropdown-active' : ''
-                }`}
-              >
-                <ul>
-                  {languages.map((language) => (
-                    <li
-                      key={language}
-                      className={locale === language ? 'active' : ''}
-                    >
-                      <Text
-                        variant="paragraph1"
-                        onClick={() => changeLanguage(language)}
-                      >
-                        {language}
-                      </Text>
-                    </li>
-                  ))}
-                </ul>
-              </Box>
-            </Box>
           </Box>
           <Box display="flex" alignItems="center" gap="12px">
             {/* <Box
               textAlign="right"
-              display="flex"
+              display={{ xs: 'none', lg: 'flex' }}
               flexDirection="column"
               justifyContent="center"
             >
@@ -228,11 +168,43 @@ export function Header() {
                 vinicius.figueiroa@4people.com
               </Text>
             </Box> */}
-            <Box width="36px" height="36px">
-              <img
-                src="https://github.com/vinixiii.png"
-                alt="Imagem do usuário"
-              />
+            <Box position={{ sm: 'relative' }}>
+              <Box
+                width="48px"
+                height="48px"
+                padding="2px"
+                border={`2px solid ${colors.primaryText}`}
+                borderRadius={borderRadius}
+                cursor="pointer"
+                onClick={() => {
+                  setIsOptionsDropdownOpen(!isOptionsDropdownOpen);
+                  setIsNavDropdownOpen(false);
+                }}
+              >
+                <img
+                  src="https://github.com/vinixiii.png"
+                  alt="Imagem do usuário"
+                />
+              </Box>
+              <Dropdown isActive={isOptionsDropdownOpen} alignRight>
+                <ul>
+                  <li>
+                    <Link href="/preferences">
+                      <MdSettings className="icon" size="36" />
+                      <Text variant="paragraph1">Preferences</Text>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/app/login"
+                      onClick={() => destroyCookie(null, 'LOGIN_APP_AUTH')}
+                    >
+                      <MdLogout className="icon" size="36" />
+                      <Text variant="paragraph1">Logout</Text>
+                    </Link>
+                  </li>
+                </ul>
+              </Dropdown>
             </Box>
           </Box>
         </HeaderWrapper.Right>

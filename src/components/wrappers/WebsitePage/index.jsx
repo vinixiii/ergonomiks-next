@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 
 import { WebsitePageContext } from './context';
-import { Sidebar } from '../../common/Sidebar';
 import { Header } from '../../common/Header';
 import { Box } from '../../foundation/Box';
-import { Modal } from '../../common/Modal';
 import { RegisterManagerForm } from '../../forms/RegisterManagerForm';
 
 export default function WebsitePageWrapper({
@@ -22,8 +20,7 @@ export default function WebsitePageWrapper({
       }}
     >
       <Box display="flex" flex="1">
-        {/* {sidebarProps.display && <Sidebar />} */}
-        <Box display="flex" flexDirection="column" {...pageBoxProps}>
+        <Box display="flex" flex="1" flexDirection="column" {...pageBoxProps}>
           {headerProps.display && <Header />}
           {children}
         </Box>

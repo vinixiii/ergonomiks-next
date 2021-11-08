@@ -53,12 +53,7 @@ function Home() {
   );
 }
 
-export default websitePageHOC(Home, {
-  pageWrapperProps: {
-    headerProps: { display: false },
-    sidebarProps: { display: false },
-  },
-});
+export default websitePageHOC(Home);
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
