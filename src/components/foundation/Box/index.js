@@ -39,4 +39,7 @@ export const Box = styled.div`
   ${propToStyle('cursor')}
   ${propToStyle('color')}
   ${propToStyle('position')}
+
+  ${propToStyle('maxHeight')}
+  ${propToStyle('top')}
 `;

@@ -28,6 +28,7 @@ const Container = styled.div`
   ${propToStyle('display')};
   ${propToStyle('flex')};
   ${propToStyle('alignItems')};
+  ${propToStyle('marginTop')};
 `;
 
 const Row = styled.div`
@@ -37,6 +38,7 @@ const Row = styled.div`
   ${propToStyle('flex')};
   ${propToStyle('alignItems')};
   ${propToStyle('justifyContent')};
+  ${propToStyle('position')};
 `;
 
 const Column = styled.div`
@@ -140,6 +142,7 @@ const Column = styled.div`
   ${propToStyle('flexDirection')};
   ${propToStyle('alignItems')};
   ${propToStyle('justifyContent')};
+  ${propToStyle('paddingBottom')};
 `;
 
 export const Grid = {

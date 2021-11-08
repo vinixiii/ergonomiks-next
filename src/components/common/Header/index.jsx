@@ -189,7 +189,7 @@ export function Header() {
               <Dropdown isActive={isOptionsDropdownOpen} alignRight>
                 <ul>
                   <li>
-                    <Link href="/preferences">
+                    <Link href="/app/preferences">
                       <MdSettings className="icon" size="36" />
                       <Text variant="paragraph1">Preferences</Text>
                     </Link>
