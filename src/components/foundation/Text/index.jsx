@@ -50,6 +50,7 @@ const TextBase = styled.span`
   ${propToStyle('marginBottom')};
   ${propToStyle('padding')};
   ${propToStyle('paddingRight')};
+  ${propToStyle('lineHeight')};
 `;
 
 export function Text({ children, tag, variant, ...props }) {

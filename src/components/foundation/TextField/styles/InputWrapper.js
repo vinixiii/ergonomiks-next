@@ -7,8 +7,12 @@ export const InputWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.secondaryBackground};
-  padding-left: 6px;
   color: ${({ theme }) => theme.colors.secondaryText};
+  ${({ icon }) =>
+    icon &&
+    css`
+      padding-left: 6px;
+    `};
 
   > svg {
     font-size: 24px;

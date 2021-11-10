@@ -11,7 +11,7 @@ export function TextField({
 }) {
   return (
     <InputWrapper>
-      {icon}
+      {icon && icon}
       <Input
         placeholder={placeholder}
         name={name}
