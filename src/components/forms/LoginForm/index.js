@@ -47,7 +47,7 @@ export function LoginForm() {
         const decodedToken = jwt.decode(response.data.token);
         console.log(decodedToken);
 
-        setCookie(null, 'token', response.data.token, {
+        setCookie(null, 'LOGIN_APP_AUTH', response.data.token, {
           path: '/',
           maxAge: 86400 * 7,
         });

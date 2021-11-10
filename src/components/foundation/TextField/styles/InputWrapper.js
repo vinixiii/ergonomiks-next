@@ -6,7 +6,7 @@ export const InputWrapper = styled.div`
   align-items: center;
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 1px solid ${({ theme }) => theme.colors.border};
-  background-color: ${({ theme }) => theme.colors.primaryBackground};
+  background-color: ${({ theme }) => theme.colors.secondaryBackground};
   padding-left: 6px;
   color: ${({ theme }) => theme.colors.secondaryText};
 
@@ -22,7 +22,7 @@ export const Input = styled(Text)`
   outline: 0;
   padding: 6px 12px;
   border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: ${({ theme }) => theme.colors.primaryBackground};
+  background-color: ${({ theme }) => theme.colors.secondaryBackground};
 `;
 
 Input.defaultProps = {
