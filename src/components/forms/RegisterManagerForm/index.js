@@ -151,7 +151,7 @@ export function RegisterManagerForm() {
                 fileInputRef.current.click();
               }}
             >
-              Chose file
+              Choose file
             </Button>
             <input
               type="file"

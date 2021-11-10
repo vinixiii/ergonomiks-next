@@ -19,6 +19,7 @@ import { Link } from '../Link';
 import { Logo } from '../../img/Logo';
 import { setCookie, destroyCookie } from 'nookies';
 import Dropdown from '../Dropdown';
+import { authService } from '../../../services/auth/authService';
 
 const links = {
   admin: [
@@ -61,26 +62,25 @@ const links = {
 
 export function Header() {
   const router = useRouter();
-  const { locale } = router;
-  const pathname = router.pathname;
+  const { locale, pathname } = router;
+
+  const { colors, borderRadius } = useContext(ThemeContext);
 
   const [isNavDropdownOpen, setIsNavDropdownOpen] = useState(false);
   const [isOptionsDropdownOpen, setIsOptionsDropdownOpen] = useState(false);
-  const { colors, borderRadius } = useContext(ThemeContext);
-
-  const role = pathname.split('/')[2];
+  const [role, setRole] = useState('');
 
   const changeLanguage = (language) => {
     const locale = language;
     router.push(router.pathname, router.asPath, { locale });
   };
 
-  useEffect(() => {
-    setCookie(null, 'NEXT_LOCALE', locale, {
-      path: '/',
-      maxAge: 86400 * 7,
-    });
-  }, [locale]);
+  useEffect(async () => {
+    const auth = authService();
+    const session = await auth.getSession();
+    console.log('session', session.role);
+    setRole(session.role);
+  }, []);
 
   return (
     <Box

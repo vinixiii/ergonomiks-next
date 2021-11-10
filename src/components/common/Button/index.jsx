@@ -4,10 +4,15 @@ import styled, { css } from 'styled-components';
 import { Link } from '../Link';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 
+const GhostButton = css`
+  background-color: unset;
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
 const ButtonWrapper = styled.button`
   height: 36px;
   color: #ffffff;
-  background: #3f77df;
+  background-color: ${({ theme }) => theme.colors.primary};
   font-size: 16px;
   font-weight: 500;
   border: 0;
@@ -16,6 +21,8 @@ const ButtonWrapper = styled.button`
   padding: 6px 24px;
   transition: all ${({ theme }) => theme.transition};
   opacity: 1;
+
+  ${({ ghost }) => ghost && GhostButton};
 
   &:hover,
   &:focus {
