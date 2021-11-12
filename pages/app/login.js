@@ -1,7 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { websitePageHOC } from '../../src/components/wrappers/WebsitePage/hoc';
-import { LoginScreen } from '../../src/components/screens/LoginScreen';
+import { LoginScreen } from '../../src/components/screens/app/LoginScreen';
 
 export default websitePageHOC(LoginScreen, {
   pageWrapperProps: {

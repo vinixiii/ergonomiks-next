@@ -4,8 +4,6 @@ import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const Container = styled.div`
   width: 100%;
-  padding-right: 28px;
-  padding-left: 28px;
   margin-right: auto;
   margin-left: auto;
   max-width: initial;
@@ -39,6 +37,9 @@ const Row = styled.div`
   ${propToStyle('alignItems')};
   ${propToStyle('justifyContent')};
   ${propToStyle('position')};
+  ${propToStyle('margin')};
+  ${propToStyle('marginTop')};
+  ${propToStyle('marginBottom')};
 `;
 
 const Column = styled.div`
@@ -143,6 +144,7 @@ const Column = styled.div`
   ${propToStyle('alignItems')};
   ${propToStyle('justifyContent')};
   ${propToStyle('paddingBottom')};
+  ${propToStyle('gap')};
 `;
 
 export const Grid = {
