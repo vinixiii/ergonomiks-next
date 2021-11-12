@@ -10,41 +10,21 @@ import { Button } from '../../../../common/Button';
 import { Table } from '../../../../common/Table';
 import { Modal } from '../../../../common/Modal';
 import { RegisterManagerForm } from '../../../../forms/RegisterManagerForm';
+import { RegisterEmployeeForm } from '../../../../forms/RegisterEmployeeForm';
 
-export function ManagersScreen({ managers, user }) {
+export function EmployeesScreen({ employees, managers, session }) {
   const { isModalOpen, toggleRegisterManagerModal } =
     useContext(WebsitePageContext);
   const { borderRadius } = useContext(ThemeContext);
 
-  // async function getManagersList() {
-  //   try {
-  //     const { data, status } = await api.post(
-  //       'manager',
-  //       { id: 'aa67cbd8-85c0-46a3-ae98-01b698589417' },
-  //       { headers: { 'Content-Type': 'application/json' } }
-  //     );
-
-  //     if (status === 200) {
-  //       setManagersList(data.data);
-  //       console.log(data.data);
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getManagersList();
-  // }, []);
-
   return (
     <>
       <Modal
-        title="New manager"
+        title="New employee"
         isOpen={isModalOpen}
         onClose={toggleRegisterManagerModal}
       >
-        <RegisterManagerForm session={user} />
+        <RegisterEmployeeForm managers={managers} session={session} />
       </Modal>
 
       <Box display="flex" flex="1" justifyContent="center">
@@ -58,10 +38,10 @@ export function ManagersScreen({ managers, user }) {
             flexWrap="wrap"
             padding="40px 16px"
           >
-            <TextField placeholder="Search a manager" icon={<MdSearch />} />
-            <Button onClick={toggleRegisterManagerModal}>Add manager</Button>
+            <TextField placeholder="Search an employee" icon={<MdSearch />} />
+            <Button onClick={toggleRegisterManagerModal}>Add employee</Button>
           </Box>
-          <Table title="Managers">
+          <Table title="Employees">
             <thead>
               <tr>
                 <th>
@@ -87,7 +67,7 @@ export function ManagersScreen({ managers, user }) {
               </tr>
             </thead>
             <tbody>
-              {managers.map((manager) => (
+              {employees.map((manager) => (
                 <tr key={manager.id}>
                   <td>
                     <Box display="flex" alignItems="center" gap="12px">

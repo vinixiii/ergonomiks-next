@@ -6,10 +6,10 @@ export function authService(context) {
   const token = cookies.LOGIN_APP_AUTH;
 
   return {
-    async getToken() {
+    getToken() {
       return token;
     },
-    async getSession() {
+    getSession() {
       const session = jwt.decode(token);
 
       return session;

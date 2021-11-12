@@ -7,13 +7,15 @@ export default websitePageHOC(ManagersScreen);
 
 export async function getServerSideProps(context) {
   const auth = authService(context);
-  const session = await auth.getSession();
+  const session = auth.getSession();
+  const token = auth.getToken();
 
-  const { data, status } = await api.post(
-    'manager',
-    { id: session.idCompany },
-    { headers: { 'Content-Type': 'application/json' } }
-  );
+  const { data, status } = await api('manager/id/company', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
 
   if (status === 200) {
     return {

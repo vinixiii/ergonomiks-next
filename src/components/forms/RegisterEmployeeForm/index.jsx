@@ -11,7 +11,7 @@ import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 import { api } from '../../infra/api';
 import { authService } from '../../../services/auth/authService';
 
-export function RegisterManagerForm({ session }) {
+export function RegisterEmployeeForm({ managers, session }) {
   const auth = authService();
   const token = auth.getToken();
 
@@ -29,6 +29,7 @@ export function RegisterManagerForm({ session }) {
     phone: '',
     email: '',
     password: '',
+    idManager: '',
   });
 
   function handleChangeFieldValue(event) {
@@ -54,6 +55,8 @@ export function RegisterManagerForm({ session }) {
     }
   }, [image]);
 
+  console.log(session);
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -69,19 +72,20 @@ export function RegisterManagerForm({ session }) {
     fd.append('email', managerInfo.email);
     fd.append('password', managerInfo.password);
     fd.append('idCompany', session.idCompany);
+    fd.append('idManager', managerInfo.idManager);
 
-    const result = await api.post('manager', fd, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    console.log(managerInfo);
 
-    if (result.status === 200) {
-      console.log(result);
+    // const result = await api.post('manager', fd, {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // });
 
-      toggleRegisterManagerModal();
-      router.push(router.pathname);
-    }
+    // if (result.status === 200) {
+    //   toggleRegisterManagerModal();
+    //   router.push(router.pathname);
+    // }
   }
 
   return (
@@ -186,33 +190,67 @@ export function RegisterManagerForm({ session }) {
             display="flex"
             flex="1"
             flexDirection="column"
-            gap="16px"
+            gap="24px"
             minWidth="180px"
           >
-            <Text tag="h3" variant="paragraph1" color="primaryText">
-              General info
-            </Text>
-            <TextField
-              type="text"
-              placeholder="First Name"
-              name="firstName"
-              value={managerInfo.firstName}
-              onChange={handleChangeFieldValue}
-            />
-            <TextField
-              type="text"
-              placeholder="Last Name"
-              name="lastName"
-              value={managerInfo.lastName}
-              onChange={handleChangeFieldValue}
-            />
-            <TextField
-              type="text"
-              placeholder="Phone"
-              name="phone"
-              value={managerInfo.phone}
-              onChange={handleChangeFieldValue}
-            />
+            <Box
+              display="flex"
+              flex="1"
+              flexDirection="column"
+              gap="16px"
+              minWidth="180px"
+            >
+              <Text tag="h3" variant="paragraph1" color="primaryText">
+                General info
+              </Text>
+              <TextField
+                type="text"
+                placeholder="First Name"
+                name="firstName"
+                value={managerInfo.firstName}
+                onChange={handleChangeFieldValue}
+              />
+              <TextField
+                type="text"
+                placeholder="Last Name"
+                name="lastName"
+                value={managerInfo.lastName}
+                onChange={handleChangeFieldValue}
+              />
+              <TextField
+                type="text"
+                placeholder="Phone"
+                name="phone"
+                value={managerInfo.phone}
+                onChange={handleChangeFieldValue}
+              />
+            </Box>
+            <Box
+              display="flex"
+              flex="1"
+              flexDirection="column"
+              gap="16px"
+              minWidth="180px"
+            >
+              <Text tag="h3" variant="paragraph1" color="primaryText">
+                Select a manager
+              </Text>
+              <TextField
+                tag="select"
+                type="text"
+                placeholder="First Name"
+                name="idManager"
+                value={managerInfo.idManager}
+                onChange={handleChangeFieldValue}
+              >
+                <option value="0">No manager selected</option>
+                {managers.map((manager) => (
+                  <option key={manager.id} value={manager.id}>
+                    {`${manager.firstName} ${manager.lastName}`}
+                  </option>
+                ))}
+              </TextField>
+            </Box>
           </Box>
           <Box
             display="flex"
@@ -247,7 +285,7 @@ export function RegisterManagerForm({ session }) {
         padding="24px 40px"
         borderTop={`1px solid ${colors.border}`}
       >
-        <Button>Add manager</Button>
+        <Button>Add employee</Button>
       </Box>
     </form>
   );
