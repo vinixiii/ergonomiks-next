@@ -8,8 +8,9 @@ export const InputWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.secondaryBackground};
   color: ${({ theme }) => theme.colors.secondaryText};
-  ${({ icon }) =>
-    icon &&
+
+  ${({ hasIcon }) =>
+    hasIcon &&
     css`
       padding-left: 6px;
     `};
