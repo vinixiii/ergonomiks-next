@@ -40,6 +40,8 @@ const Row = styled.div`
   ${propToStyle('margin')};
   ${propToStyle('marginTop')};
   ${propToStyle('marginBottom')};
+  ${propToStyle('padding')};
+  ${propToStyle('flexWrap')};
 `;
 
 const Column = styled.div`
@@ -143,8 +145,10 @@ const Column = styled.div`
   ${propToStyle('flexDirection')};
   ${propToStyle('alignItems')};
   ${propToStyle('justifyContent')};
+  ${propToStyle('paddingTop')};
   ${propToStyle('paddingBottom')};
   ${propToStyle('gap')};
+  ${propToStyle('textAlign')};
 `;
 
 export const Grid = {

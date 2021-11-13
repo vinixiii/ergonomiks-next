@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { WebsitePageContext } from './context';
 import { Header } from '../../common/Header';
 import { Box } from '../../foundation/Box';
-import { RegisterManagerForm } from '../../forms/RegisterManagerForm';
 
 export default function WebsitePageWrapper({
   children,
@@ -19,9 +18,15 @@ export default function WebsitePageWrapper({
         toggleRegisterManagerModal: () => setIsModalOpen(!isModalOpen),
       }}
     >
-      <Box display="flex" flex="1">
-        <Box display="flex" flex="1" flexDirection="column" {...pageBoxProps}>
-          {headerProps.display && <Header />}
+      <Box display="flex" flex="1" flexDirection="column">
+        {headerProps.display && <Header />}
+        <Box
+          display="flex"
+          flex="1"
+          flexDirection="column"
+          marginTop={headerProps.display ? '80px' : undefined}
+          {...pageBoxProps}
+        >
           {children}
         </Box>
       </Box>

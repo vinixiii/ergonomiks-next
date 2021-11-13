@@ -91,10 +91,11 @@ export function Header() {
   return (
     <Box
       width="100%"
+      position="fixed"
       display="flex"
       justifyContent="center"
       backgroundColor={colors.primaryBackground}
-      borderBottom={`1px solid ${colors.border}`}
+      boxShadow={`0 2px 2px -2px ${colors.border}`}
     >
       <HeaderWrapper>
         <HeaderWrapper.Left>

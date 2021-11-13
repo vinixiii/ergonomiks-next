@@ -14,6 +14,7 @@ const GhostButton = css`
 const ButtonWrapper = styled.button`
   height: 36px;
   display: flex;
+  justify-content: center;
   align-items: center;
   color: #ffffff;
   background-color: ${({ theme }) => theme.colors.primary};
