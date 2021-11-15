@@ -26,7 +26,11 @@ function Home() {
   }, [locale]);
 }
 
-export default websitePageHOC(HomeScreen);
+export default websitePageHOC(HomeScreen, {
+  pageWrapperProps: {
+    footerProps: { display: true },
+  },
+});
 
 export const getStaticProps = async ({ locale }) => ({
   props: {

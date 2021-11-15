@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { WebsitePageContext } from './context';
 import { Header } from '../../common/Header';
 import { Box } from '../../foundation/Box';
+import Footer from '../../common/Footer';
 
 export default function WebsitePageWrapper({
   children,
   pageBoxProps,
   headerProps,
+  footerProps,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -29,6 +31,7 @@ export default function WebsitePageWrapper({
         >
           {children}
         </Box>
+        {footerProps.display && <Footer />}
       </Box>
     </WebsitePageContext.Provider>
   );
@@ -37,5 +40,8 @@ export default function WebsitePageWrapper({
 WebsitePageWrapper.defaultProps = {
   headerProps: {
     display: true,
+  },
+  footerProps: {
+    display: false,
   },
 };

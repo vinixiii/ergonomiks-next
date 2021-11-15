@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../../foundation/Box';
+
 import { DropdownWrapper } from './styles/DropdownWrapper';
 
 export default function Dropdown({
