@@ -46,11 +46,7 @@ export function Modal({ isOpen, onClose, title, children }) {
                 <Text tag="h2" variant="subtitle" color="primaryText">
                   {title}
                 </Text>
-                <MdClose
-                  className="icon close-icon"
-                  size="28"
-                  onClick={onClose}
-                />
+                <MdClose className="icon close-icon" onClick={onClose} />
               </Box>
 
               <Box display="flex" flex="1" flexDirection="column">

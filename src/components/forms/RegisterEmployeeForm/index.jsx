@@ -74,18 +74,16 @@ export function RegisterEmployeeForm({ managers, session }) {
     fd.append('idCompany', session.idCompany);
     fd.append('idManager', managerInfo.idManager);
 
-    console.log(managerInfo);
+    const result = await api.post('employee', fd, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-    // const result = await api.post('manager', fd, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // });
-
-    // if (result.status === 200) {
-    //   toggleRegisterManagerModal();
-    //   router.push(router.pathname);
-    // }
+    if (result.status === 200) {
+      toggleRegisterManagerModal();
+      router.push(router.pathname);
+    }
   }
 
   return (
@@ -138,7 +136,6 @@ export function RegisterEmployeeForm({ managers, session }) {
                   />
                   <MdClose
                     className="icon close-icon"
-                    size="28"
                     style={{
                       position: 'absolute',
                       top: 0,

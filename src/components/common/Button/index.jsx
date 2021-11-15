@@ -3,18 +3,21 @@ import styled, { css } from 'styled-components';
 
 import { Link } from '../Link';
 import { propToStyle } from '../../../theme/utils/propToStyle';
+import { breakpointsMediaQuery } from '../../../theme/utils/breakpointsMediaQuery';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 
 const GhostButton = css`
-  background-color: unset;
-  color: ${({ theme }) => theme.colors.primary};
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.primaryText};
 `;
 
 const ButtonWrapper = styled.button`
   height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #ffffff;
   background-color: ${({ theme }) => theme.colors.primary};
-  font-size: 16px;
-  font-weight: 500;
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -23,6 +26,15 @@ const ButtonWrapper = styled.button`
   opacity: 1;
 
   ${({ ghost }) => ghost && GhostButton};
+
+  ${breakpointsMediaQuery({
+    xs: css`
+      ${TextStyleVariantsMap.paragraph3}
+    `,
+    md: css`
+      ${TextStyleVariantsMap.paragraph1}
+    `,
+  })}
 
   &:hover,
   &:focus {

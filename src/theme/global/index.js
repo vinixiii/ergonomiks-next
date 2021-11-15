@@ -34,7 +34,7 @@ export const GlobalStyle = createGlobalStyle`
   };
 
   .icon {
-    font-size: 28px;
+    font-size: 32px;
     padding: 6px;
     color: ${({ theme }) => theme.colors.secondaryText};
     cursor: pointer;

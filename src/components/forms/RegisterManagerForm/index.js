@@ -134,7 +134,6 @@ export function RegisterManagerForm({ session }) {
                   />
                   <MdClose
                     className="icon close-icon"
-                    size="28"
                     style={{
                       position: 'absolute',
                       top: 0,

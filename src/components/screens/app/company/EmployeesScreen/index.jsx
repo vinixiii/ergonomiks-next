@@ -9,10 +9,9 @@ import { TextField } from '../../../../foundation/TextField';
 import { Button } from '../../../../common/Button';
 import { Table } from '../../../../common/Table';
 import { Modal } from '../../../../common/Modal';
-import { RegisterManagerForm } from '../../../../forms/RegisterManagerForm';
 import { RegisterEmployeeForm } from '../../../../forms/RegisterEmployeeForm';
 
-export function EmployeesScreen({ employees, managers, session }) {
+export function EmployeesScreen({ employees, managers, user }) {
   const { isModalOpen, toggleRegisterManagerModal } =
     useContext(WebsitePageContext);
   const { borderRadius } = useContext(ThemeContext);
@@ -24,7 +23,7 @@ export function EmployeesScreen({ employees, managers, session }) {
         isOpen={isModalOpen}
         onClose={toggleRegisterManagerModal}
       >
-        <RegisterEmployeeForm managers={managers} session={session} />
+        <RegisterEmployeeForm managers={managers} session={user} />
       </Modal>
 
       <Box display="flex" flex="1" justifyContent="center">
