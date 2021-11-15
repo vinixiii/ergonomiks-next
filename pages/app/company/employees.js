@@ -1,8 +1,10 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import { websitePageHOC } from '../../../src/components/wrappers/WebsitePage/hoc';
+import { EmployeesScreen } from '../../../src/components/screens/app/company/EmployeesScreen';
 
 import { authService } from '../../../src/services/auth/authService';
 import { api } from '../../../src/components/infra/api';
-import { EmployeesScreen } from '../../../src/components/screens/app/company/EmployeesScreen';
 
 function CompanyEmployeesScreen() {
   return (
@@ -39,6 +41,10 @@ export async function getServerSideProps(context) {
         user: session,
         employees: employeesListResponse.data.data,
         managers: managersListResponse.data.data,
+        ...(await serverSideTranslations(context.locale, [
+          'company-employees',
+          'header',
+        ])),
       },
     };
   }

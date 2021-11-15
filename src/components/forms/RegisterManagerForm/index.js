@@ -161,6 +161,7 @@ export function RegisterManagerForm({ session }) {
             </Box>
 
             <Button
+              width="100%"
               onClick={(event) => {
                 event.preventDefault();
                 fileInputRef.current.click();

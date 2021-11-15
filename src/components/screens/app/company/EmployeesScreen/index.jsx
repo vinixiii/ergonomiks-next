@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { MdSearch, MdEdit, MdClose } from 'react-icons/md';
 import { ThemeContext } from 'styled-components';
+import { useTranslation } from 'next-i18next';
 
 import { WebsitePageContext } from '../../../../wrappers/WebsitePage/context';
 import { Box } from '../../../../foundation/Box';
@@ -16,10 +17,12 @@ export function EmployeesScreen({ employees, managers, user }) {
     useContext(WebsitePageContext);
   const { borderRadius } = useContext(ThemeContext);
 
+  const { t } = useTranslation('company-employees');
+
   return (
     <>
       <Modal
-        title="New employee"
+        title={t('modal_title')}
         isOpen={isModalOpen}
         onClose={toggleRegisterManagerModal}
       >
@@ -37,30 +40,32 @@ export function EmployeesScreen({ employees, managers, user }) {
             flexWrap="wrap"
             padding="40px 16px"
           >
-            <TextField placeholder="Search an employee" icon={<MdSearch />} />
-            <Button onClick={toggleRegisterManagerModal}>Add employee</Button>
+            <TextField placeholder={t('search_input')} icon={<MdSearch />} />
+            <Button onClick={toggleRegisterManagerModal}>
+              {t('btn_add_employee')}
+            </Button>
           </Box>
-          <Table title="Employees">
+          <Table title={t('table_title')}>
             <thead>
               <tr>
                 <th>
                   <Text variant="paragraph1" color="primaryText">
-                    Name
+                    {t('thead')}
                   </Text>
                 </th>
                 <th>
                   <Text variant="paragraph1" color="primaryText">
-                    Email
+                    {t('thead2')}
                   </Text>
                 </th>
                 <th>
                   <Text variant="paragraph1" color="primaryText">
-                    Phone
+                    {t('thead3')}
                   </Text>
                 </th>
                 <th>
                   <Text variant="paragraph1" color="primaryText">
-                    Actions
+                    {t('actions')}
                   </Text>
                 </th>
               </tr>
