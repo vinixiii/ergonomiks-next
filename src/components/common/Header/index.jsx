@@ -23,50 +23,10 @@ import { Button } from '../Button';
 import Dropdown from '../Dropdown';
 import { authService } from '../../../services/auth/authService';
 
-const links = {
-  admin: [
-    {
-      text: 'Companies',
-      url: '/app/admin/companies',
-    },
-  ],
-  company: [
-    {
-      text: 'Managers',
-      url: '/app/company/managers',
-    },
-    {
-      text: 'Employees',
-      url: '/app/company/employees',
-    },
-  ],
-  manager: [
-    {
-      text: 'Dashboard',
-      url: '/app/manager/dashboard',
-    },
-    {
-      text: 'Team',
-      url: '/app/manager/team',
-    },
-    {
-      text: 'Profile',
-      url: '/app/manager/profile',
-    },
-  ],
-  employee: [
-    {
-      text: 'Dashboard',
-      url: '/app/employee/dashboard',
-    },
-  ],
-};
-
 export function Header() {
   const router = useRouter();
-  const { locale, pathname } = router;
+  const { pathname } = router;
   const isPublicPage = !pathname.includes('app');
-  const { t } = useTranslation('common');
 
   const { colors, borderRadius } = useContext(ThemeContext);
 
@@ -74,9 +34,35 @@ export function Header() {
   const [isOptionsDropdownOpen, setIsOptionsDropdownOpen] = useState(false);
   const [role, setRole] = useState('');
 
-  const changeLanguage = (language) => {
-    const locale = language;
-    router.push(router.pathname, router.asPath, { locale });
+  const { t } = useTranslation('header');
+
+  const links = {
+    company: [
+      {
+        text: t('company_nav'),
+        url: '/app/company/managers',
+      },
+      {
+        text: t('company_nav2'),
+        url: '/app/company/employees',
+      },
+    ],
+    manager: [
+      {
+        text: t('manager_nav'),
+        url: '/app/manager/dashboard',
+      },
+      {
+        text: t('manager_nav2'),
+        url: '/app/manager/team',
+      },
+    ],
+    employee: [
+      {
+        text: t('employee_nav'),
+        url: '/app/employee/dashboard',
+      },
+    ],
   };
 
   useEffect(() => {
@@ -161,24 +147,10 @@ export function Header() {
                 alignItems="center"
                 padding="0 12px"
                 gap="18px"
-                // borderRight={`1px solid ${colors.border}`}
               >
                 <MdHelpOutline className="icon help-icon" size="36" />
               </Box>
               <Box display="flex" alignItems="center" gap="12px">
-                {/* <Box
-              textAlign="right"
-              display={{ xs: 'none', lg: 'flex' }}
-              flexDirection="column"
-              justifyContent="center"
-            >
-              <Text variant="paragraph1" color="primaryText">
-                Vinícius Figueiroa
-              </Text>
-              <Text variant="paragraph1" color="secondaryText">
-                vinicius.figueiroa@4people.com
-              </Text>
-            </Box> */}
                 <Box position={{ sm: 'relative' }}>
                   <Box
                     width="48px"
@@ -202,7 +174,7 @@ export function Header() {
                       <li>
                         <Link href="/app/preferences">
                           <MdSettings className="icon" size="36" />
-                          <Text variant="paragraph1">Preferences</Text>
+                          <Text variant="paragraph1">{t('common_nav')}</Text>
                         </Link>
                       </li>
                       <li>
@@ -211,7 +183,7 @@ export function Header() {
                           onClick={() => destroyCookie(null, 'LOGIN_APP_AUTH')}
                         >
                           <MdLogout className="icon" size="36" />
-                          <Text variant="paragraph1">Logout</Text>
+                          <Text variant="paragraph1">{t('common_nav2')}</Text>
                         </Link>
                       </li>
                     </ul>

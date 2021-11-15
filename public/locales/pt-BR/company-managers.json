@@ -1,0 +1,27 @@
+{
+  "search_input": "Procurar um gestor",
+  "btn_add_manager": "Adicionar gestor",
+
+  "table_title": "Gestores",
+  "thead": "Nome",
+  "thead2": "Email",
+  "thead3": "Telefone",
+  "actions": "Ações",
+
+  "modal_title": "Novo gestor",
+
+  "modal_section_title": "Foto",
+  "img_not_chosen": "Nenhum arquivo selecionado",
+  "btn_choose_file": "Escolher arquivo",
+
+  "modal_section_title2": "Informações gerais",
+  "placeholder": "Nome",
+  "placeholder2": "Sobrenome",
+  "placeholder3": "Telefone",
+
+  "modal_section_title3": "Email e senha",
+  "placeholder4": "Email",
+  "placeholder5": "Senha",
+
+  "btn_add": "Adicionar"
+}

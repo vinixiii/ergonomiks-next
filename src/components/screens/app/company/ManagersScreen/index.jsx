@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { MdSearch, MdEdit, MdClose } from 'react-icons/md';
 import { ThemeContext } from 'styled-components';
+import { useTranslation } from 'next-i18next';
 
 import { WebsitePageContext } from '../../../../wrappers/WebsitePage/context';
 import { Box } from '../../../../foundation/Box';
@@ -16,31 +17,12 @@ export function ManagersScreen({ managers, user }) {
     useContext(WebsitePageContext);
   const { borderRadius } = useContext(ThemeContext);
 
-  // async function getManagersList() {
-  //   try {
-  //     const { data, status } = await api.post(
-  //       'manager',
-  //       { id: 'aa67cbd8-85c0-46a3-ae98-01b698589417' },
-  //       { headers: { 'Content-Type': 'application/json' } }
-  //     );
-
-  //     if (status === 200) {
-  //       setManagersList(data.data);
-  //       console.log(data.data);
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getManagersList();
-  // }, []);
+  const { t } = useTranslation('company-managers');
 
   return (
     <>
       <Modal
-        title="New manager"
+        title={t('modal_title')}
         isOpen={isModalOpen}
         onClose={toggleRegisterManagerModal}
       >
@@ -58,30 +40,32 @@ export function ManagersScreen({ managers, user }) {
             flexWrap="wrap"
             padding="40px 16px"
           >
-            <TextField placeholder="Search a manager" icon={<MdSearch />} />
-            <Button onClick={toggleRegisterManagerModal}>Add manager</Button>
+            <TextField placeholder={t('search_input')} icon={<MdSearch />} />
+            <Button onClick={toggleRegisterManagerModal}>
+              {t('btn_add_manager')}
+            </Button>
           </Box>
-          <Table title="Managers">
+          <Table title={t('table_title')}>
             <thead>
               <tr>
                 <th>
                   <Text variant="paragraph1" color="primaryText">
-                    Name
+                    {t('thead')}
                   </Text>
                 </th>
                 <th>
                   <Text variant="paragraph1" color="primaryText">
-                    Email
+                    {t('thead2')}
                   </Text>
                 </th>
                 <th>
                   <Text variant="paragraph1" color="primaryText">
-                    Phone
+                    {t('thead3')}
                   </Text>
                 </th>
                 <th>
                   <Text variant="paragraph1" color="primaryText">
-                    Actions
+                    {t('actions')}
                   </Text>
                 </th>
               </tr>
