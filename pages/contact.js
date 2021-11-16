@@ -1,9 +1,9 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { websitePageHOC } from '../src/components/wrappers/WebsitePage/hoc';
-import { HomeScreen } from '../src/components/screens/HomeScreen';
+import { ContactScreen } from '../src/components/screens/ContactScreen';
 
-export default websitePageHOC(HomeScreen, {
+export default websitePageHOC(ContactScreen, {
   pageWrapperProps: {
     footerProps: { display: true },
   },
@@ -11,6 +11,6 @@ export default websitePageHOC(HomeScreen, {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common', 'header'])),
+    ...(await serverSideTranslations(locale, ['header'])),
   },
 });

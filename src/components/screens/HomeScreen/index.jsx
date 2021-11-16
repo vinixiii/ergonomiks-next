@@ -33,7 +33,7 @@ export function HomeScreen() {
               {t('banner_subtitle')}
             </Text>
             <Box marginTop="24px">
-              <Button>{t('btn_contact_us')}</Button>
+              <Button href="/contact">{t('btn_contact_us')}</Button>
             </Box>
           </Grid.Column>
           <Grid.Column
