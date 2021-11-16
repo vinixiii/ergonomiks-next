@@ -57,7 +57,9 @@ export default function Footer() {
               size="36"
               style={{ display: 'block' }}
             />
-            <Text variant="paragraph2">{locale}</Text>
+            <Text variant="paragraph2">
+              {locale === 'en-US' ? 'English' : 'Português (Brasil)'}
+            </Text>
             {isLanguageDropdownOpen ? (
               <MdExpandLess
                 className="icon"
@@ -86,7 +88,7 @@ export default function Footer() {
                   onClick={changeLanguage}
                   color={locale === 'en-US' ? 'primaryText' : undefined}
                 >
-                  en-US
+                  {locale === 'en-US' ? 'English' : 'Inglês'}
                 </Text>
               </li>
               <li>
@@ -98,7 +100,9 @@ export default function Footer() {
                   onClick={changeLanguage}
                   color={locale === 'pt-BR' ? 'primaryText' : undefined}
                 >
-                  pt-BR
+                  {locale === 'en-US'
+                    ? 'Portuguese (Brasil)'
+                    : 'Português (Brasil)'}
                 </Text>
               </li>
               {/* <li>
