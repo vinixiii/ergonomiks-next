@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { ThemeContext } from 'styled-components';
+import { useTranslation } from 'next-i18next';
 
 import { Grid } from '../../../foundation/Grid';
 import { Box } from '../../../foundation/Box';
@@ -11,6 +12,7 @@ import { PreferencesScreenWrapper } from './styles/PreferencesScreenWrapper';
 
 function CompanyInfo() {
   const { colors, borderRadius } = useContext(ThemeContext);
+  const { t } = useTranslation('preferences');
 
   return (
     <Box>
@@ -21,7 +23,7 @@ function CompanyInfo() {
         borderBottom={`1px solid ${colors.border}`}
       >
         <Text lineHeight="80px" variant="subtitle" color="primaryText">
-          Account
+          {t('account')}
         </Text>
       </Box>
 
@@ -30,11 +32,11 @@ function CompanyInfo() {
         flexDirection="column"
         gap="16px"
         padding="22px 40px 40px"
-        backgroundColor={colors.secondaryBackground}
+        backgroundColor={colors.primaryBackground}
       >
         <Box display="flex" flexDirection="column" gap="16px">
           <Text variant="paragraph2" color="primaryText">
-            Company name
+            {t('company_label')}
           </Text>
           <TextField value="4PEOPLE" readOnly />
         </Box>
@@ -52,15 +54,15 @@ function CompanyInfo() {
         </Box>
         <Box display="flex" flexDirection="column" gap="16px">
           <Text variant="paragraph2" color="primaryText">
-            Email
+            {t('common_label')}
           </Text>
           <TextField value="rh@4people.com" readOnly />
         </Box>
         <Box display="flex" flexDirection="column" gap="16px">
           <Text variant="paragraph2" color="primaryText">
-            Password
+            {t('common_label2')}
           </Text>
-          <TextField value="**********" action="change" readOnly />
+          <TextField value="**********" action={t('change_pwd')} readOnly />
         </Box>
       </Box>
     </Box>
@@ -71,6 +73,7 @@ export function PreferencesScreen() {
   const router = useRouter();
   const { locale } = router;
   const { title, colors, borderRadius } = useContext(ThemeContext);
+  const { t } = useTranslation('preferences');
 
   const changeLanguage = (e) => {
     const locale = e.target.getAttribute('name');
@@ -92,132 +95,6 @@ export function PreferencesScreen() {
         <Grid.Column value={{ xs: 12, md: 6 }}>
           <PreferencesScreenWrapper>
             <CompanyInfo />
-            {/* <Box
-            display="flex"
-            flexDirection="column"
-            flex="1"
-            position="sticky"
-            top="40px"
-            maxHeight="184px"
-            gap="16px"
-            padding="22px 24px"
-            backgroundColor={colors.secondaryBackground}
-            borderRadius={borderRadius}
-          >
-            <Text lineHeight="36px">Account</Text>
-            <Text lineHeight="36px">Language</Text>
-            <Text lineHeight="36px">Theme</Text>
-          </Box> */}
-            {/* <Box>
-              <Box
-                padding="0 40px"
-                backgroundColor={colors.secondaryBackground}
-                borderRadius={borderRadius}
-                borderBottom={`1px solid ${colors.border}`}
-              >
-                <Text lineHeight="80px" variant="subtitle">
-                  Language
-                </Text>
-              </Box>
-
-              <Box
-                display="flex"
-                flexDirection="column"
-                gap="16px"
-                padding="22px 40px 40px"
-                backgroundColor={colors.secondaryBackground}
-              >
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  padding="0 12px"
-                  // borderRadius={borderRadius}
-                  backgroundColor={
-                    locale === 'en-US' && colors.tertiaryBackground
-                  }
-                  className={`language-option ${
-                    locale === 'en-US' && 'active'
-                  }`}
-                >
-                  <Text
-                    lineHeight="36px"
-                    variant="paragraph2"
-                    name="en-US"
-                    onClick={changeLanguage}
-                    color={locale === 'en-US' && 'primaryText'}
-                  >
-                    English
-                  </Text>
-                </Box>
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  padding="0 12px"
-                  // borderRadius={borderRadius}
-                  color={locale === 'pt-BR' && colors.primaryText}
-                  backgroundColor={
-                    locale === 'pt-BR' && colors.tertiaryBackground
-                  }
-                  className={`language-option ${
-                    locale === 'pt-BR' && 'active'
-                  }`}
-                >
-                  <Text
-                    lineHeight="36px"
-                    variant="paragraph2"
-                    name="pt-BR"
-                    onClick={changeLanguage}
-                    color={locale === 'pt-BR' && 'primaryText'}
-                  >
-                    Portuguese (Brasil)
-                  </Text>
-                </Box>
-              </Box>
-            </Box>
-
-            <Box>
-              <Box
-                padding="0 40px"
-                backgroundColor={colors.secondaryBackground}
-                borderRadius={borderRadius}
-                borderBottom={`1px solid ${colors.border}`}
-              >
-                <Text lineHeight="80px" variant="subtitle">
-                  Theme
-                </Text>
-              </Box>
-
-              <Box
-                display="flex"
-                flexDirection="column"
-                gap="16px"
-                padding="22px 40px 40px"
-                backgroundColor={colors.secondaryBackground}
-              >
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  padding="0 12px"
-                  backgroundColor={colors.tertiaryBackground}
-                  borderRadius={borderRadius}
-                >
-                  <Text lineHeight="36px" variant="paragraph2">
-                    Light
-                  </Text>
-                </Box>
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  padding="0 12px"
-                  backgroundColor={colors.primaryBackground}
-                  borderRadius={borderRadius}
-                >
-                  <Text lineHeight="36px" variant="paragraph2">
-                    Dark
-                  </Text>
-                </Box>
-              </Box>
-            </Box> */}
           </PreferencesScreenWrapper>
         </Grid.Column>
 
@@ -231,7 +108,7 @@ export function PreferencesScreen() {
                 borderBottom={`1px solid ${colors.border}`}
               >
                 <Text lineHeight="80px" variant="subtitle" color="primaryText">
-                  Language
+                  {t('language')}
                 </Text>
               </Box>
 
@@ -240,7 +117,7 @@ export function PreferencesScreen() {
                 flexDirection="column"
                 gap="16px"
                 padding="22px 40px 40px"
-                backgroundColor={colors.secondaryBackground}
+                backgroundColor={colors.primaryBackground}
               >
                 <Box
                   display="flex"
@@ -260,7 +137,7 @@ export function PreferencesScreen() {
                     onClick={changeLanguage}
                     color={locale === 'en-US' ? 'primaryText' : undefined}
                   >
-                    English
+                    {t('en_us')}
                   </Text>
                 </Box>
                 <Box
@@ -281,7 +158,7 @@ export function PreferencesScreen() {
                     onClick={changeLanguage}
                     color={locale === 'pt-BR' ? 'primaryText' : undefined}
                   >
-                    Portuguese (Brasil)
+                    {t('pt_br')}
                   </Text>
                 </Box>
               </Box>
@@ -295,7 +172,7 @@ export function PreferencesScreen() {
                 borderBottom={`1px solid ${colors.border}`}
               >
                 <Text lineHeight="80px" variant="subtitle" color="primaryText">
-                  Theme
+                  {t('theme')}
                 </Text>
               </Box>
 
@@ -304,7 +181,7 @@ export function PreferencesScreen() {
                 flexDirection="column"
                 gap="16px"
                 padding="22px 40px 40px"
-                backgroundColor={colors.secondaryBackground}
+                backgroundColor={colors.primaryBackground}
               >
                 <Box
                   display="flex"
@@ -322,7 +199,7 @@ export function PreferencesScreen() {
                     variant="paragraph2"
                     color={title === 'lightMode' ? 'primaryText' : undefined}
                   >
-                    Light
+                    {t('light')}
                   </Text>
                 </Box>
                 <Box
@@ -341,7 +218,7 @@ export function PreferencesScreen() {
                     variant="paragraph2"
                     color={title === 'darkMode' ? 'primaryText' : undefined}
                   >
-                    Dark
+                    {t('dark')}
                   </Text>
                 </Box>
               </Box>

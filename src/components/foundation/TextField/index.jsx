@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import { Button } from '../../common/Button';
 import { InputWrapper, Input } from './styles/InputWrapper';
 
@@ -11,6 +12,8 @@ export function TextField({
   action,
   ...props
 }) {
+  const { colors } = useContext(ThemeContext);
+
   return (
     <InputWrapper hasIcon={Boolean(icon)}>
       {icon}
@@ -21,7 +24,11 @@ export function TextField({
         value={value}
         {...props}
       />
-      {action && <Button ghost>{action}</Button>}
+      {action && (
+        <Button color={colors.primary} ghost>
+          {action}
+        </Button>
+      )}
     </InputWrapper>
   );
 }
