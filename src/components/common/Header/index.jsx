@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ThemeContext } from 'styled-components';
-import { setCookie, destroyCookie } from 'nookies';
+import { destroyCookie } from 'nookies';
 import { useTranslation } from 'next-i18next';
 
 import {
-  MdLightMode,
   MdHelpOutline,
   MdMenu,
   MdClose,
-  MdLanguage,
   MdSettings,
   MdLogout,
+  MdBusiness,
 } from 'react-icons/md';
 
 import { HeaderWrapper } from './styles/HeaderWrapper';
@@ -32,7 +31,7 @@ export function Header() {
 
   const [isNavDropdownOpen, setIsNavDropdownOpen] = useState(false);
   const [isOptionsDropdownOpen, setIsOptionsDropdownOpen] = useState(false);
-  const [role, setRole] = useState('');
+  const [user, setUser] = useState('');
 
   const { t } = useTranslation('header');
 
@@ -65,12 +64,17 @@ export function Header() {
     ],
   };
 
+  function handleSignOut() {
+    destroyCookie({}, 'LOGIN_APP_AUTH');
+    router.push('/');
+  }
+
   useEffect(() => {
     const auth = authService();
-    const session = auth.getSession();
+    const user = auth.getSession();
 
-    if (session !== null) {
-      setRole(session.role);
+    if (user !== null) {
+      setUser(user);
     }
   }, []);
 
@@ -123,7 +127,7 @@ export function Header() {
                 isHeaderNav
               >
                 <ul>
-                  {links[role]?.map((item, index) => (
+                  {links[user?.role]?.map((item, index) => (
                     <li
                       key={index}
                       className={pathname === item.url ? 'active' : ''}
@@ -148,13 +152,18 @@ export function Header() {
                 padding="0 12px"
                 gap="18px"
               >
-                <MdHelpOutline className="icon help-icon" size="36" />
+                {user?.role === 'employee' && (
+                  <MdHelpOutline className="icon help-icon" size="36" />
+                )}
               </Box>
               <Box display="flex" alignItems="center" gap="12px">
                 <Box position={{ sm: 'relative' }}>
                   <Box
                     width="48px"
                     height="48px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
                     padding="2px"
                     border={`2px solid ${colors.primaryText}`}
                     borderRadius={borderRadius}
@@ -164,10 +173,18 @@ export function Header() {
                       setIsNavDropdownOpen(false);
                     }}
                   >
-                    <img
-                      src="https://github.com/vinixiii.png"
-                      alt="Imagem do usuário"
-                    />
+                    {user?.role === 'company' ? (
+                      <MdBusiness
+                        className="icon"
+                        size="36"
+                        style={{ display: 'block', margin: 'auto' }}
+                      />
+                    ) : (
+                      <img
+                        src="https://github.com/vinixiii.png"
+                        alt="Imagem do usuário"
+                      />
+                    )}
                   </Box>
                   <Dropdown isActive={isOptionsDropdownOpen} alignRight>
                     <ul>
@@ -178,13 +195,16 @@ export function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link
-                          href="/"
-                          onClick={() => destroyCookie(null, 'LOGIN_APP_AUTH')}
+                        <Box
+                          display="flex"
+                          alignItems="center"
+                          gap="12px"
+                          cursor="pointer"
+                          onClick={handleSignOut}
                         >
                           <MdLogout className="icon" size="36" />
                           <Text variant="paragraph1">{t('common_nav2')}</Text>
-                        </Link>
+                        </Box>
                       </li>
                     </ul>
                   </Dropdown>
