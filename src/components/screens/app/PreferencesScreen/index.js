@@ -38,7 +38,7 @@ function CompanyInfo() {
           <Text variant="paragraph2" color="primaryText">
             {t('company_label')}
           </Text>
-          <TextField value="4PEOPLE" readOnly />
+          <TextField value="Arkham Asylum" readOnly />
         </Box>
         <Box display="flex" flexDirection="column" gap="16px">
           <Text variant="paragraph2" color="primaryText">
@@ -56,7 +56,7 @@ function CompanyInfo() {
           <Text variant="paragraph2" color="primaryText">
             {t('common_label')}
           </Text>
-          <TextField value="rh@4people.com" readOnly />
+          <TextField value="arkham@asylum.com" readOnly />
         </Box>
         <Box display="flex" flexDirection="column" gap="16px">
           <Text variant="paragraph2" color="primaryText">
