@@ -88,7 +88,7 @@ export function RegisterManagerForm({ session }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} autoComplete="off">
       <Box padding="24px 40px">
         <Text
           tag="h3"
@@ -240,6 +240,7 @@ export function RegisterManagerForm({ session }) {
               name="email"
               value={managerInfo.email}
               onChange={handleChangeFieldValue}
+              autoComplete="off"
             />
             <TextField
               type="password"
@@ -247,6 +248,7 @@ export function RegisterManagerForm({ session }) {
               name="password"
               value={managerInfo.password}
               onChange={handleChangeFieldValue}
+              autoComplete="off"
             />
           </Box>
         </Box>

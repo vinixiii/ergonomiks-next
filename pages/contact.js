@@ -11,6 +11,6 @@ export default websitePageHOC(ContactScreen, {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['header'])),
+    ...(await serverSideTranslations(locale, ['contact', 'header'])),
   },
 });

@@ -8,6 +8,7 @@ import { Box } from '../../../foundation/Box';
 import { Logo } from '../../../img/Logo';
 import { Text } from '../../../foundation/Text';
 import { LoginForm } from '../../../forms/LoginForm';
+import { Link } from '../../../common/Link';
 
 export function LoginScreen() {
   const { t } = useTranslation('login');
@@ -29,10 +30,12 @@ export function LoginScreen() {
             borderRadius={borderRadius}
             boxShadow={boxShadow}
           >
-            <Logo
-              primaryColor={colors.primary}
-              secondaryColor={colors.primaryText}
-            />
+            <Link href="/" display="flex" alignItems="center">
+              <Logo
+                primaryColor={colors.primary}
+                secondaryColor={colors.primaryText}
+              />
+            </Link>
             <Text
               tag="h1"
               variant="title2"

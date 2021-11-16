@@ -1,0 +1,13 @@
+{
+  "title": "Contact our team!",
+  "subtitle": "Fill up the form and send us a message. Our team will be happy to give you more information about our system!",
+
+  "placeholder": "First name",
+  "placeholder2": "Last name",
+  "placeholder3": "Work email",
+  "placeholder4": "Company name",
+  "placeholder5": "Country",
+  "placeholder6": "Message, questions, suggestions...",
+
+  "btn_submit": "Submit"
+}

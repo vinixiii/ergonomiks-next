@@ -89,13 +89,17 @@ export function Header() {
     >
       <HeaderWrapper>
         <HeaderWrapper.Left>
-          <Logo
-            id="logo"
-            primaryColor={colors.primary}
-            secondaryColor={colors.primaryText}
-          />
+          <Link href="/" display="flex" alignItems="center">
+            <Logo
+              id="logo"
+              primaryColor={colors.primary}
+              secondaryColor={colors.primaryText}
+            />
+          </Link>
 
-          <img id="logo-sm" src="/img/logo-sm.svg" alt="Ergonomiks logo" />
+          <Link href="/" display="flex" alignItems="center">
+            <img id="logo-sm" src="/img/logo-sm.svg" alt="Ergonomiks logo" />
+          </Link>
 
           {!isPublicPage && (
             <Box position={{ sm: 'relative' }}>
@@ -181,7 +185,7 @@ export function Header() {
                       />
                     ) : (
                       <img
-                        src="https://github.com/vinixiii.png"
+                        src={`http://localhost:5000/resources/images/${user?.jti}.png`}
                         alt="Imagem do usuário"
                       />
                     )}
