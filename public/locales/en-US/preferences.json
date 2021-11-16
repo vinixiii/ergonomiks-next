@@ -1,0 +1,22 @@
+{
+  "account": "Account",
+
+  "company_label": "Company name",
+
+  "person_label": "First name",
+  "person_label2": "Last name",
+  "person_label3": "Phone",
+
+  "common_label": "Email",
+  "common_label2": "Password",
+
+  "change_pwd": "change",
+
+  "language": "Language",
+  "en_us": "English (USA)",
+  "pt_br": "Portuguese (Brazil)",
+
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark"
+}

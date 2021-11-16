@@ -34,6 +34,6 @@ export default websitePageHOC(HomeScreen, {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common'])),
+    ...(await serverSideTranslations(locale, ['common', 'header'])),
   },
 });

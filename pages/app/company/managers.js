@@ -1,5 +1,8 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import { websitePageHOC } from '../../../src/components/wrappers/WebsitePage/hoc';
 import { ManagersScreen } from '../../../src/components/screens/app/company/ManagersScreen';
+
 import { authService } from '../../../src/services/auth/authService';
 import { api } from '../../../src/components/infra/api';
 
@@ -22,6 +25,10 @@ export async function getServerSideProps(context) {
       props: {
         user: session,
         managers: data.data,
+        ...(await serverSideTranslations(context.locale, [
+          'company-managers',
+          'header',
+        ])),
       },
     };
   }

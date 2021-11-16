@@ -1,0 +1,27 @@
+{
+  "search_input": "Search a manager",
+  "btn_add_manager": "Add manager",
+
+  "table_title": "Managers",
+  "thead": "Name",
+  "thead2": "Email",
+  "thead3": "Phone",
+  "actions": "Actions",
+
+  "modal_title": "New manager",
+
+  "modal_section_title": "Photo",
+  "img_not_chosen": "No image chosen yet",
+  "btn_choose_file": "Choose file",
+
+  "modal_section_title2": "General info",
+  "placeholder": "First name",
+  "placeholder2": "Last name",
+  "placeholder3": "Phone",
+
+  "modal_section_title3": "Email and password",
+  "placeholder4": "Email",
+  "placeholder5": "Password",
+
+  "btn_add": "Add"
+}

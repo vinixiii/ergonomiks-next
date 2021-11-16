@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ThemeContext } from 'styled-components';
 import { MdClose, MdOutlineAddAPhoto } from 'react-icons/md';
+import { useTranslation } from 'next-i18next';
 
 import { Box } from '../../foundation/Box';
 import { Text } from '../../foundation/Text';
@@ -22,6 +23,8 @@ export function RegisterManagerForm({ session }) {
   const fileInputRef = useRef();
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
+
+  const { t } = useTranslation('company-managers');
 
   const [managerInfo, setManagerInfo] = useState({
     firstName: '',
@@ -93,7 +96,7 @@ export function RegisterManagerForm({ session }) {
           color="primaryText"
           marginBottom="16px"
         >
-          Photo
+          {t('modal_section_title')}
         </Text>
         <Box
           display="flex"
@@ -105,7 +108,14 @@ export function RegisterManagerForm({ session }) {
           borderRadius={borderRadius}
           marginBottom="16px"
         >
-          <Box padding="48px" display="flex" flexDirection="column" gap="18px">
+          <Box
+            padding="48px"
+            display="flex"
+            flexDirection="column"
+            gap="18px"
+            justifyContent="center"
+            alignItems="center"
+          >
             <Box
               width="147px"
               height="147px"
@@ -145,18 +155,19 @@ export function RegisterManagerForm({ session }) {
               ) : (
                 <>
                   <MdOutlineAddAPhoto size="48" color={colors.primary} />
-                  <Text variant="paragraph3">No image chosen yet</Text>
+                  <Text variant="paragraph3">{t('img_not_chosen')}</Text>
                 </>
               )}
             </Box>
 
             <Button
+              width="100%"
               onClick={(event) => {
                 event.preventDefault();
                 fileInputRef.current.click();
               }}
             >
-              Choose file
+              {t('btn_choose_file')}
             </Button>
             <input
               type="file"
@@ -189,25 +200,25 @@ export function RegisterManagerForm({ session }) {
             minWidth="180px"
           >
             <Text tag="h3" variant="paragraph1" color="primaryText">
-              General info
+              {t('modal_section_title2')}
             </Text>
             <TextField
               type="text"
-              placeholder="First Name"
+              placeholder={t('placeholder')}
               name="firstName"
               value={managerInfo.firstName}
               onChange={handleChangeFieldValue}
             />
             <TextField
               type="text"
-              placeholder="Last Name"
+              placeholder={t('placeholder2')}
               name="lastName"
               value={managerInfo.lastName}
               onChange={handleChangeFieldValue}
             />
             <TextField
               type="text"
-              placeholder="Phone"
+              placeholder={t('placeholder3')}
               name="phone"
               value={managerInfo.phone}
               onChange={handleChangeFieldValue}
@@ -221,18 +232,18 @@ export function RegisterManagerForm({ session }) {
             minWidth="180px"
           >
             <Text tag="h3" variant="paragraph1" color="primaryText">
-              Email and password
+              {t('modal_section_title3')}
             </Text>
             <TextField
               type="text"
-              placeholder="Email"
+              placeholder={t('placeholder4')}
               name="email"
               value={managerInfo.email}
               onChange={handleChangeFieldValue}
             />
             <TextField
               type="password"
-              placeholder="Password"
+              placeholder={t('placeholder5')}
               name="password"
               value={managerInfo.password}
               onChange={handleChangeFieldValue}
@@ -246,7 +257,7 @@ export function RegisterManagerForm({ session }) {
         padding="24px 40px"
         borderTop={`1px solid ${colors.border}`}
       >
-        <Button>Add manager</Button>
+        <Button> {t('btn_add')}</Button>
       </Box>
     </form>
   );

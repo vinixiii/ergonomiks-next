@@ -43,6 +43,8 @@ const ButtonWrapper = styled.button`
 
   ${propToStyle('alignSelf')};
   ${propToStyle('marginTop')};
+  ${propToStyle('width')};
+  ${propToStyle('color')};
 `;
 
 export function Button({ href, children, ...props }) {

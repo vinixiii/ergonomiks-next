@@ -1,0 +1,22 @@
+{
+  "account": "Conta",
+
+  "company_label": "Nome da empresa",
+
+  "person_label": "Nome",
+  "person_label2": "Sobrenome",
+  "person_label3": "Telefone",
+
+  "common_label": "Email",
+  "common_label2": "Senha",
+
+  "change_pwd": "alterar",
+
+  "language": "Idioma",
+  "en_us": "Inglês (USA)",
+  "pt_br": "Português (Brasil)",
+
+  "theme": "Tema",
+  "light": "Claro",
+  "dark": "Escuro"
+}
