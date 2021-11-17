@@ -51,6 +51,8 @@ const TextBase = styled.span`
   ${propToStyle('padding')};
   ${propToStyle('paddingRight')};
   ${propToStyle('lineHeight')};
+  ${propToStyle('minHeight')};
+  ${propToStyle('resize')};
 `;
 
 export function Text({ children, tag, variant, ...props }) {

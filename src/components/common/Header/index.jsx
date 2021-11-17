@@ -217,7 +217,7 @@ export function Header() {
                 {t('btn_sign_in')}
               </Button>
 
-              <Button>{t('btn_contact_us')}</Button>
+              <Button href="/contact">{t('btn_contact_us')}</Button>
             </>
           )}
         </HeaderWrapper.Right>
