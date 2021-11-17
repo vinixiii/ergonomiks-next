@@ -50,8 +50,6 @@ export async function getServerSideProps(context) {
     response = data.data;
   }
 
-  console.log('oloco bicho', response);
-
   return {
     props: {
       account: response,

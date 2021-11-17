@@ -80,8 +80,6 @@ export function RegisterManagerForm({ session }) {
     });
 
     if (result.status === 200) {
-      console.log(result);
-
       toggleRegisterManagerModal();
       router.push(router.pathname);
     }

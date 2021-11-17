@@ -58,8 +58,6 @@ export function RegisterEmployeeForm({ managers, session }) {
     }
   }, [image]);
 
-  console.log(session);
-
   async function handleSubmit(event) {
     event.preventDefault();
 
