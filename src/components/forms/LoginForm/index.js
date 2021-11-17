@@ -53,16 +53,24 @@ export function LoginForm() {
         });
 
         if (decodedToken.role === 'admin') {
-          router.push('/app/admin/companies');
+          router.push('/app/admin/companies', '/app/admin/companies', {
+            locale: router.locale,
+          });
         }
         if (decodedToken.role === 'company') {
-          router.push('/app/company/managers');
+          router.push('/app/company/managers', '/app/company/managers', {
+            locale: router.locale,
+          });
         }
         if (decodedToken.role === 'manager') {
-          router.push('/app/manager/dashboard');
+          router.push('/app/manager/dashboard', '/app/manager/dashboard', {
+            locale: router.locale,
+          });
         }
         if (decodedToken.role === 'employee') {
-          router.push('/app/employee/dashboard');
+          router.push('/app/employee/dashboard', '/app/employee/dashboard', {
+            locale: router.locale,
+          });
         }
       }
     });

@@ -1,6 +1,4 @@
 import { websitePageHOC } from '../../../src/components/wrappers/WebsitePage/hoc';
-import nookies from 'nookies';
-import jwt from 'jsonwebtoken';
 
 function ManagerProfileScreen() {
   return (
@@ -11,22 +9,3 @@ function ManagerProfileScreen() {
 }
 
 export default websitePageHOC(ManagerProfileScreen);
-
-export async function getServerSideProps(context) {
-  const token = await nookies.get(context).token;
-
-  const decodedToken = jwt.decode(token);
-
-  if (decodedToken?.role !== 'manager') {
-    return {
-      redirect: {
-        destination: '/app/login',
-        permanet: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-}
