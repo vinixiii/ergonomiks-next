@@ -4,7 +4,7 @@ import { websitePageHOC } from '../../../src/components/wrappers/WebsitePage/hoc
 import { EmployeesScreen } from '../../../src/components/screens/app/company/EmployeesScreen';
 
 import { authService } from '../../../src/services/auth/authService';
-import { api } from '../../../src/components/infra/api';
+import { api } from '../../../src/infra/api';
 
 function CompanyEmployeesScreen() {
   return (

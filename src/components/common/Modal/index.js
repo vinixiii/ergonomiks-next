@@ -19,7 +19,7 @@ export function Modal({ isOpen, onClose, title, children }) {
         if (!isSafeArea) onClose();
       }}
     >
-      <div style={{ height: '100%' }}>
+      <div style={{ height: '100%', padding: '40px 0' }}>
         <Grid.Row
           flex="1"
           alignItems="center"
