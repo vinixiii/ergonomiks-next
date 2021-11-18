@@ -41,11 +41,9 @@ export function LoginForm() {
       },
     }).then(async (res) => {
       const response = await res.json();
-      console.log(response);
 
       if (response.success === true) {
         const decodedToken = jwt.decode(response.data.token);
-        console.log(decodedToken);
 
         setCookie(null, 'LOGIN_APP_AUTH', response.data.token, {
           path: '/',

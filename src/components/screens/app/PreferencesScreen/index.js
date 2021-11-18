@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 import { setCookie } from 'nookies';
 import { PreferencesScreenWrapper } from './styles/PreferencesScreenWrapper';
 
-function CompanyInfo() {
+function CompanyInfo({ account }) {
   const { colors, borderRadius } = useContext(ThemeContext);
   const { t } = useTranslation('preferences');
 
@@ -38,25 +38,25 @@ function CompanyInfo() {
           <Text variant="paragraph2" color="primaryText">
             {t('company_label')}
           </Text>
-          <TextField value="4PEOPLE" readOnly />
+          <TextField value={account.corporateName} readOnly />
         </Box>
         <Box display="flex" flexDirection="column" gap="16px">
           <Text variant="paragraph2" color="primaryText">
             CNPJ
           </Text>
-          <TextField value="71.568.916/0001-90" readOnly />
+          <TextField value={account.cnpj} readOnly />
         </Box>
         <Box display="flex" flexDirection="column" gap="16px">
           <Text variant="paragraph2" color="primaryText">
             CEP
           </Text>
-          <TextField value="59012-256" readOnly />
+          <TextField value={account.cep} readOnly />
         </Box>
         <Box display="flex" flexDirection="column" gap="16px">
           <Text variant="paragraph2" color="primaryText">
             {t('common_label')}
           </Text>
-          <TextField value="fourpeople@email.com" readOnly />
+          <TextField value={account.user?.email} readOnly />
         </Box>
         <Box display="flex" flexDirection="column" gap="16px">
           <Text variant="paragraph2" color="primaryText">
@@ -69,7 +69,66 @@ function CompanyInfo() {
   );
 }
 
-export function PreferencesScreen() {
+function ContributorInfo({ account }) {
+  const { colors, borderRadius } = useContext(ThemeContext);
+  const { t } = useTranslation('preferences');
+
+  return (
+    <Box>
+      <Box
+        padding="0 40px"
+        backgroundColor={colors.secondaryBackground}
+        borderRadius={borderRadius}
+        borderBottom={`1px solid ${colors.border}`}
+      >
+        <Text lineHeight="80px" variant="subtitle" color="primaryText">
+          {t('account')}
+        </Text>
+      </Box>
+
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap="16px"
+        padding="22px 40px 40px"
+        backgroundColor={colors.primaryBackground}
+      >
+        <Box display="flex" flexDirection="column" gap="16px">
+          <Text variant="paragraph2" color="primaryText">
+            {t('person_label')}
+          </Text>
+          <TextField value={account.firstName} readOnly />
+        </Box>
+        <Box display="flex" flexDirection="column" gap="16px">
+          <Text variant="paragraph2" color="primaryText">
+            {t('person_label2')}
+          </Text>
+          <TextField value={account.lastName} readOnly />
+        </Box>
+        <Box display="flex" flexDirection="column" gap="16px">
+          <Text variant="paragraph2" color="primaryText">
+            {t('person_label3')}
+          </Text>
+          <TextField value={account.phone} readOnly />
+        </Box>
+        <Box display="flex" flexDirection="column" gap="16px">
+          <Text variant="paragraph2" color="primaryText">
+            {t('common_label')}
+          </Text>
+          <TextField value={account.user?.email} readOnly />
+        </Box>
+        <Box display="flex" flexDirection="column" gap="16px">
+          <Text variant="paragraph2" color="primaryText">
+            {t('common_label2')}
+          </Text>
+          <TextField value="**********" action={t('change_pwd')} readOnly />
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
+export function PreferencesScreen({ account, user }) {
   const router = useRouter();
   const { locale } = router;
   const { title, colors, borderRadius } = useContext(ThemeContext);
@@ -94,7 +153,9 @@ export function PreferencesScreen() {
       <Grid.Row justifyContent="center">
         <Grid.Column value={{ xs: 12, md: 6 }}>
           <PreferencesScreenWrapper>
-            <CompanyInfo />
+            {user.role === 'company' && <CompanyInfo account={account} />}
+            {user.role === 'manager' && <ContributorInfo account={account} />}
+            {user.role === 'employee' && <ContributorInfo account={account} />}
           </PreferencesScreenWrapper>
         </Grid.Column>
 
