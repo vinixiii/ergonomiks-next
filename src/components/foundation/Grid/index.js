@@ -27,6 +27,8 @@ const Container = styled.div`
   ${propToStyle('flex')};
   ${propToStyle('alignItems')};
   ${propToStyle('marginTop')};
+  ${propToStyle('height')};
+  ${propToStyle('maxHeight')};
 `;
 
 const Row = styled.div`
@@ -42,6 +44,8 @@ const Row = styled.div`
   ${propToStyle('marginBottom')};
   ${propToStyle('padding')};
   ${propToStyle('flexWrap')};
+  ${propToStyle('height')};
+  ${propToStyle('maxHeight')};
 `;
 
 const Column = styled.div`
@@ -140,6 +144,12 @@ const Column = styled.div`
     });
   }};
 
+  ${breakpointsMediaQuery({
+    lg: css`
+      ${propToStyle('maxWidth')}
+    `,
+  })}
+
   ${propToStyle('display')};
   ${propToStyle('flex')};
   ${propToStyle('flexDirection')};
@@ -149,6 +159,8 @@ const Column = styled.div`
   ${propToStyle('paddingBottom')};
   ${propToStyle('gap')};
   ${propToStyle('textAlign')};
+  ${propToStyle('height')};
+  ${propToStyle('maxHeight')};
 `;
 
 export const Grid = {

@@ -42,4 +42,5 @@ export const Box = styled.div`
 
   ${propToStyle('maxHeight')}
   ${propToStyle('top')}
+  ${propToStyle('overflowY')}
 `;

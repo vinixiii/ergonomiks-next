@@ -10,6 +10,7 @@ export function TextField({
   value,
   icon,
   action,
+  onActionClick,
   ...props
 }) {
   const { colors } = useContext(ThemeContext);
@@ -25,7 +26,7 @@ export function TextField({
         {...props}
       />
       {action && (
-        <Button color={colors.primary} ghost>
+        <Button color={colors.primary} onClick={onActionClick} ghost>
           {action}
         </Button>
       )}

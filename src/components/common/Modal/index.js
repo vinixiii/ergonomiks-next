@@ -19,12 +19,19 @@ export function Modal({ isOpen, onClose, title, children }) {
         if (!isSafeArea) onClose();
       }}
     >
-      <div style={{ overflowY: 'auto' }}>
-        <Grid.Row flex="1" alignItems="center" justifyContent="center">
+      <div style={{ height: '100%' }}>
+        <Grid.Row
+          flex="1"
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+        >
           <Grid.Column
             display="flex"
             flex="1"
             flexDirection="column"
+            maxWidth="650px"
+            maxHeight="100%"
             value={{ xs: 12, xl: 6 }}
           >
             <Box
@@ -35,6 +42,8 @@ export function Modal({ isOpen, onClose, title, children }) {
               boxShadow={boxShadow}
               borderRadius={borderRadius}
               data-modal-safe-area="true"
+              maxHeight="100%"
+              overflowY="auto"
             >
               <Box
                 display="flex"
