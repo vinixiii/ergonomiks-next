@@ -1,18 +1,4 @@
 {
-  "company_nav": "Managers",
-  "company_nav2": "Employees",
-
-  "manager_nav": "Dashboard",
-  "manager_nav2": "Team",
-
-  "employee_nav": "Dashboard",
-
-  "common_nav": "Preferences",
-  "common_nav2": "Log out",
-
-  "btn_sign_in": "Sign in",
-  "btn_contact_us": "Contact us",
-
   "tips_modal_title": "Ergonomics tips!",
 
   "text": "The keyboard, like the mouse, should be in line with your elbows when bent.",

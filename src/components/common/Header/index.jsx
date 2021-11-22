@@ -88,7 +88,7 @@ export function Header() {
   return (
     <>
       <Modal
-        title="Ergonomic tips"
+        title={t('tips_modal_title')}
         isOpen={isTipsModalOpen}
         onClose={toggleTipsModal}
       >

@@ -1,18 +1,4 @@
 {
-  "company_nav": "Gestores",
-  "company_nav2": "Colaboradores",
-
-  "manager_nav": "Painel de controle",
-  "manager_nav2": "Time",
-
-  "employee_nav": "Painel de controle",
-
-  "common_nav": "Preferências",
-  "common_nav2": "Sair",
-
-  "btn_sign_in": "Entrar",
-  "btn_contact_us": "Contato",
-
   "tips_modal_title": "Dicas de ergonomia!",
 
   "text": "O teclado, assim como o mouse, deve estar na linha dos cotovelos quando dobrados.",

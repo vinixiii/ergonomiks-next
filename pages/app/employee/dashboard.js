@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
       session,
       userInfo: data.data,
       ...(await serverSideTranslations(context.locale, [
-        'preferences',
+        'employee-dashboard',
         'header',
       ])),
     },

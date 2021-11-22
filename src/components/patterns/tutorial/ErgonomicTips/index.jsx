@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ThemeContext } from 'styled-components';
+import { useTranslation } from 'next-i18next';
 
 import { Box } from '../../../foundation/Box';
 import { Text } from '../../../foundation/Text';
@@ -9,6 +10,9 @@ import { WebsitePageContext } from '../../../wrappers/WebsitePage/context';
 export function ErgonomicTips() {
   const { toggleTipsModal } = useContext(WebsitePageContext);
   const { colors } = useContext(ThemeContext);
+
+  const { t } = useTranslation('header');
+
   const [stage, setStage] = useState(0);
 
   return (
@@ -36,13 +40,10 @@ export function ErgonomicTips() {
               height="130px"
             >
               <Text tag="p">
-                The keyboard, like the mouse, should be in line with your elbows
-                when bent.
+                {t('text')}
               </Text>
               <Text tag="p">
-                The working screen must be at eye level. If you are using a
-                notebook, it can be difficult to use the keyboard. An external
-                keyboard solves the problem.
+              {t('text2')}
               </Text>
             </Box>
           </Box>
