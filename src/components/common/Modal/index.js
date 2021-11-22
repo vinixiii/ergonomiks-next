@@ -30,7 +30,7 @@ export function Modal({ isOpen, onClose, title, children }) {
             display="flex"
             flex="1"
             flexDirection="column"
-            maxWidth="650px"
+            maxWidth="825px"
             maxHeight="100%"
             value={{ xs: 12, xl: 6 }}
           >
