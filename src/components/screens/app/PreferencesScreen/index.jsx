@@ -17,7 +17,7 @@ export function PreferencesScreen({ account, user }) {
   const router = useRouter();
   const { locale } = router;
 
-  const { isModalOpen, toggleRegisterManagerModal } =
+  const { isModalOpen, toggleModal } =
     useContext(WebsitePageContext);
   const { title, colors, borderRadius } = useContext(ThemeContext);
   const { t } = useTranslation('preferences');
@@ -41,7 +41,7 @@ export function PreferencesScreen({ account, user }) {
       <Modal
         title="Change password"
         isOpen={isModalOpen}
-        onClose={toggleRegisterManagerModal}
+        onClose={toggleModal}
       >
         <ChangePasswordForm />
       </Modal>
@@ -93,7 +93,7 @@ export function PreferencesScreen({ account, user }) {
                     <TextField
                       value="**********"
                       action={t('change_pwd')}
-                      onActionClick={toggleRegisterManagerModal}
+                      onActionClick={toggleModal}
                       readOnly
                     />
                   </Box>

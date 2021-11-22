@@ -13,7 +13,7 @@ import { Modal } from '../../../../common/Modal';
 import { RegisterManagerForm } from '../../../../forms/RegisterManagerForm';
 
 export function ManagersScreen({ managers, user }) {
-  const { isModalOpen, toggleRegisterManagerModal } =
+  const { isModalOpen, toggleModal } =
     useContext(WebsitePageContext);
   const { borderRadius } = useContext(ThemeContext);
 
@@ -24,7 +24,7 @@ export function ManagersScreen({ managers, user }) {
       <Modal
         title={t('modal_title')}
         isOpen={isModalOpen}
-        onClose={toggleRegisterManagerModal}
+        onClose={toggleModal}
       >
         <RegisterManagerForm session={user} />
       </Modal>
@@ -41,7 +41,7 @@ export function ManagersScreen({ managers, user }) {
             padding="40px 16px"
           >
             <TextField placeholder={t('search_input')} icon={<MdSearch />} />
-            <Button onClick={toggleRegisterManagerModal}>
+            <Button onClick={toggleModal}>
               {t('btn_add_manager')}
             </Button>
           </Box>

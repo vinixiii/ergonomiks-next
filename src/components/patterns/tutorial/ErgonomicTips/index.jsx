@@ -7,8 +7,8 @@ import { Button } from '../../../common/Button';
 import { WebsitePageContext } from '../../../wrappers/WebsitePage/context';
 
 export function ErgonomicTips() {
-  const { toggleRegisterManagerModal } = useContext(WebsitePageContext);
-  const { colors, borderRadius } = useContext(ThemeContext);
+  const { toggleTipsModal } = useContext(WebsitePageContext);
+  const { colors } = useContext(ThemeContext);
   const [stage, setStage] = useState(0);
 
   return (
@@ -160,11 +160,11 @@ export function ErgonomicTips() {
             if (stage < 3) setStage(stage + 1);
 
             if (stage === 3) {
-              toggleRegisterManagerModal();
+              toggleTipsModal();
 
-              // setTimeout(() => {
-              //   setStage(0);
-              // }, 1000);
+              setTimeout(() => {
+                setStage(0);
+              }, 1000);
             }
           }}
         >

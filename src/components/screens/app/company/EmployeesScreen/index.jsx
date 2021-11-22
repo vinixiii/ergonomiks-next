@@ -13,7 +13,7 @@ import { Modal } from '../../../../common/Modal';
 import { RegisterEmployeeForm } from '../../../../forms/RegisterEmployeeForm';
 
 export function EmployeesScreen({ employees, managers, user }) {
-  const { isModalOpen, toggleRegisterManagerModal } =
+  const { isModalOpen, toggleModal } =
     useContext(WebsitePageContext);
   const { borderRadius } = useContext(ThemeContext);
 
@@ -24,7 +24,7 @@ export function EmployeesScreen({ employees, managers, user }) {
       <Modal
         title={t('modal_title')}
         isOpen={isModalOpen}
-        onClose={toggleRegisterManagerModal}
+        onClose={toggleModal}
       >
         <RegisterEmployeeForm managers={managers} session={user} />
       </Modal>
@@ -41,7 +41,7 @@ export function EmployeesScreen({ employees, managers, user }) {
             padding="40px 16px"
           >
             <TextField placeholder={t('search_input')} icon={<MdSearch />} />
-            <Button onClick={toggleRegisterManagerModal}>
+            <Button onClick={toggleModal}>
               {t('btn_add_employee')}
             </Button>
           </Box>

@@ -31,7 +31,7 @@ export function Header() {
   const { pathname } = router;
   const isPublicPage = !pathname.includes('app');
 
-  const { isModalOpen, toggleRegisterManagerModal } =
+  const { isTipsModalOpen, toggleTipsModal } =
     useContext(WebsitePageContext);
 
   const { colors, borderRadius } = useContext(ThemeContext);
@@ -89,8 +89,8 @@ export function Header() {
     <>
       <Modal
         title="Ergonomic tips"
-        isOpen={isModalOpen}
-        onClose={toggleRegisterManagerModal}
+        isOpen={isTipsModalOpen}
+        onClose={toggleTipsModal}
       >
         <ErgonomicTips />
       </Modal>
@@ -176,7 +176,7 @@ export function Header() {
                     <MdHelpOutline
                       className="icon help-icon"
                       size="36"
-                      onClick={toggleRegisterManagerModal}
+                      onClick={toggleTipsModal}
                     />
                   )}
                 </Box>

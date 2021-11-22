@@ -12,12 +12,15 @@ export default function WebsitePageWrapper({
   footerProps,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTipsModalOpen, setIsTipsModalOpen] = useState(false);
 
   return (
     <WebsitePageContext.Provider
       value={{
         isModalOpen: isModalOpen,
-        toggleRegisterManagerModal: () => setIsModalOpen(!isModalOpen),
+        toggleModal: () => setIsModalOpen(!isModalOpen),
+        isTipsModalOpen: isTipsModalOpen,
+        toggleTipsModal: () => setIsTipsModalOpen(!isTipsModalOpen),
       }}
     >
       <Box display="flex" flex="1" flexDirection="column">
