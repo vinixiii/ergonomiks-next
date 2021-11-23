@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { i18n } from 'next-i18next';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 
 function App({ Component, pageProps }) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <>
       <Head>
@@ -15,7 +19,7 @@ function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />
+      {isMounted && <Component {...pageProps} />}
     </>
   );
 }
