@@ -18,131 +18,72 @@ export function ErgonomicTips() {
   return (
     <>
       <Box padding="24px 40px">
-        {stage === 0 && (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexWrap="wrap"
+          gap="24px"
+        >
+          {stage === 0 && (
+            <img
+              src="/img/tips/tip-illustration.svg"
+              alt="Illustration"
+              style={{ display: 'block', maxWidth: '100%' }}
+            />
+          )}
+          {stage === 1 && (
+            <img
+              src="/img/tips/tip-illustration2.svg"
+              alt="Illustration"
+              style={{ display: 'block', maxWidth: '100%' }}
+            />
+          )}
+          {stage === 2 && (
+            <img
+              src="/img/tips/tip-illustration3.svg"
+              alt="Illustration"
+              style={{ display: 'block', maxWidth: '100%' }}
+            />
+          )}
+          {stage === 3 && (
+            <img
+              src="/img/tips/tip-illustration4.svg"
+              alt="Illustration"
+              style={{ display: 'block', maxWidth: '100%' }}
+            />
+          )}
           <Box
             display="flex"
-            justifyContent="center"
-            alignItems="center"
             flexWrap="wrap"
-            gap="24px"
-          >
-            <Box height="287px">
-              <img
-                src="/img/tips/tip-illustration.svg"
-                alt="Illustration"
-                style={{ display: 'block', maxWidth: '100%' }}
-              />
-            </Box>
-            <Box
-              display="flex"
-              flexWrap="wrap"
-              alignItems="center"
-              height="130px"
-            >
-              <Text tag="p">
-                {t('text')}
-              </Text>
-              <Text tag="p">
-              {t('text2')}
-              </Text>
-            </Box>
-          </Box>
-        )}
-        {stage === 1 && (
-          <Box
-            display="flex"
-            justifyContent="center"
             alignItems="center"
-            flexWrap="wrap"
-            gap="24px"
+            height="165px"
           >
-            <Box display="flex" alignItems="center" height="287px">
-              <img
-                src="/img/tips/tip02-illustration.svg"
-                alt="Illustration"
-                style={{ display: 'block', maxWidth: '100%' }}
-              />
-            </Box>
-            <Box
-              display="flex"
-              flexWrap="wrap"
-              alignItems="center"
-              height="130px"
-            >
-              <Text tag="p">
-                The spine should be straight, in line with the hips. It is
-                recommended to use a chair with a backrest to maintain good
-                posture.
-              </Text>
-              <Text tag="p">
-                Feet should be flat on the floor or on a step or box if the seat
-                is too high.
-              </Text>
-            </Box>
+            {stage === 0 && (
+              <>
+                <Text tag="p">{t('text')}</Text>
+                <Text tag="p">{t('text2')}</Text>
+              </>
+            )}
+            {stage === 1 && (
+              <>
+                <Text tag="p">{t('text_stage2')}</Text>
+                <Text tag="p">{t('text2_stage2')}</Text>
+              </>
+            )}
+            {stage === 2 && (
+              <>
+                <Text tag="p">{t('text_stage3')}</Text>
+              </>
+            )}
+            {stage === 3 && (
+              <>
+                <Text tag="p">{t('text_stage4')}</Text>
+                <Text tag="p">{t('text2_stage4')}</Text>
+              </>
+            )}
           </Box>
-        )}
-        {stage === 2 && (
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            flexWrap="wrap"
-            gap="24px"
-          >
-            <Box height="287px">
-              <img
-                src="/img/tips/tip03-illustration.svg"
-                alt="Illustration"
-                style={{ display: 'block', maxWidth: '100%' }}
-              />
-            </Box>
-            <Box
-              display="flex"
-              flexWrap="wrap"
-              alignItems="center"
-              height="130px"
-            >
-              <Text tag="p">
-                Sometimes it may be necessary to stretch out in the chair and
-                it's okay to do so, as long as you don't stay in that position
-                for too long!
-              </Text>
-            </Box>
-          </Box>
-        )}
-        {stage === 3 && (
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            flexWrap="wrap"
-            gap="24px"
-          >
-            <Box height="287px">
-              <img
-                src="/img/tips/tip04-illustration.svg"
-                alt="Illustration"
-                style={{ display: 'block', maxWidth: '100%' }}
-              />
-            </Box>
-            <Box
-              display="flex"
-              flexWrap="wrap"
-              alignItems="center"
-              height="130px"
-            >
-              <Text tag="p">
-                Varying your body position and taking breaks to lift and stretch
-                your limbs every hour you work relieves pressure on your joints,
-                as well as promoting good circulation.
-              </Text>
-              <Text tag="p">
-                In your free time, try to include times for physical activity:
-                they prepare your body for the next shift.
-              </Text>
-            </Box>
-          </Box>
-        )}
+        </Box>
       </Box>
       <Box
         display="flex"
