@@ -52,7 +52,7 @@ const DefaultListStyle = css`
     list-style: none;
 
     li {
-      padding: 6px 24px 6px 0;
+      padding: 4px 24px 4px 0;
       text-align: left;
       border-radius: ${({ theme }) => theme.borderRadius};
       transition: all ${({ theme }) => theme.transition};

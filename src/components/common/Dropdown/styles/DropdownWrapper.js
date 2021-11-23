@@ -18,6 +18,7 @@ const ExpandedNavStyle = css`
     li {
       padding: 0 6px;
       border-left: unset;
+      border-radius: unset;
       height: 80px;
       display: flex;
       align-items: center;
@@ -27,6 +28,10 @@ const ExpandedNavStyle = css`
         border-left: unset;
         border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
         color: ${({ theme }) => theme.colors.primaryText};
+      }
+
+      &:hover {
+        background: unset;
       }
 
       a {
@@ -66,12 +71,13 @@ const DefaultListStyle = css`
 const NavListStyle = css`
   ul {
     list-style: none;
-    padding-left: 6px;
 
     li {
-      padding: 6px 24px 6px 18px;
+      height: 44px;
       text-align: left;
-      border-left: 3px solid ${({ theme }) => theme.colors.primaryBackground};
+      border-radius: 0 ${({ theme }) => theme.borderRadius}
+        ${({ theme }) => theme.borderRadius} 0;
+      padding: 4px 0;
 
       &.active {
         border-left: 3px solid ${({ theme }) => theme.colors.primary};
@@ -79,7 +85,17 @@ const NavListStyle = css`
       }
 
       &:hover {
+        background: ${({ theme }) => theme.colors.tertiaryBackground};
         color: ${({ theme }) => theme.colors.primaryText};
+      }
+
+      a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 24px 0 18px;
       }
     }
   }
