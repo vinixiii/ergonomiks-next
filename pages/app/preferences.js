@@ -4,7 +4,7 @@ import { websitePageHOC } from '../../src/components/wrappers/WebsitePage/hoc';
 import { PreferencesScreen } from '../../src/components/screens/app/PreferencesScreen';
 
 import { authService } from '../../src/services/auth/authService';
-import { api } from '../../src/components/infra/api';
+import { api } from '../../src/infra/api';
 
 export default websitePageHOC(PreferencesScreen);
 

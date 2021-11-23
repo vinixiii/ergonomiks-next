@@ -9,7 +9,7 @@ import { Text } from '../../foundation/Text';
 import { TextField } from '../../foundation/TextField';
 import { Button } from '../../common/Button';
 import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
-import { api } from '../../infra/api';
+import { api } from '../../../infra/api';
 import { authService } from '../../../services/auth/authService';
 
 export function RegisterEmployeeForm({ managers, session }) {
