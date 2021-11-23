@@ -1,11 +1,14 @@
-import { websitePageHOC } from '../../../src/components/wrappers/WebsitePage/hoc';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-function ManagerDashboardScreen() {
-  return (
-    <div style={{ display: 'flex', flex: 1, padding: 40 }}>
-      <h1>Manager Dashboard</h1>
-    </div>
-  );
-}
+import { websitePageHOC } from '../../../src/components/wrappers/WebsitePage/hoc';
+import { ManagerDashboardScreen } from '../../../src/components/screens/app/manager/ManagerDashboardScreen';
 
 export default websitePageHOC(ManagerDashboardScreen);
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      ...(await serverSideTranslations(context.locale, ['header'])),
+    },
+  };
+}
