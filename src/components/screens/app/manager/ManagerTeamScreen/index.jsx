@@ -8,11 +8,14 @@ import { Box } from '../../../../foundation/Box';
 import { Text } from '../../../../foundation/Text';
 import { TextField } from '../../../../foundation/TextField';
 import { Table } from '../../../../common/Table';
+import router from 'next/router';
 
 export function ManagerTeamScreen({ employees }) {
   const { borderRadius } = useContext(ThemeContext);
 
   const { t } = useTranslation('manager-team');
+
+  console.log(employees);
 
   return (
     <Box display="flex" flex="1" justifyContent="center">
@@ -87,7 +90,12 @@ export function ManagerTeamScreen({ employees }) {
                 </td>
                 <td>
                   <div id="icons">
-                    <MdOutlineVisibility className="icon edit-icon" />
+                    <MdOutlineVisibility
+                      className="icon edit-icon"
+                      onClick={() =>
+                        router.push(`/app/manager/${employee.idUser}`)
+                      }
+                    />
                   </div>
                 </td>
               </tr>
