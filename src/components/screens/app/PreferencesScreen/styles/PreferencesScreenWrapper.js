@@ -10,6 +10,8 @@ export const PreferencesScreenWrapper = styled.div`
   .language-option {
     cursor: pointer;
     border-left: 3px solid ${({ theme }) => theme.colors.primaryBackground};
+    border-radius: 0 ${({ theme }) => theme.borderRadius}
+      ${({ theme }) => theme.borderRadius} 0;
     color: ${({ theme }) => theme.colors.secondaryText};
 
     &.active {

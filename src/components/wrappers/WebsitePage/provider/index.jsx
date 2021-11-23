@@ -1,13 +1,11 @@
-import { ThemeProvider } from 'styled-components';
-
+import { GlobalThemeProvider } from '../../../../infra/contexts/ThemeContext';
 import { GlobalStyle } from '../../../../theme/global';
-import { lightMode, darkMode } from '../../../../theme';
 
 export function WebsiteGlobalProvider({ children }) {
   return (
-    <ThemeProvider theme={lightMode}>
+    <GlobalThemeProvider>
       <GlobalStyle />
       {children}
-    </ThemeProvider>
+    </GlobalThemeProvider>
   );
 }

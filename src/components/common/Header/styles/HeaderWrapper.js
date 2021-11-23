@@ -9,7 +9,6 @@ export const HeaderWrapper = styled.header`
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.secondaryText};
   padding: 0 16px;
-  transition: all ${({ theme }) => theme.transition};
 
   ${breakpointsMediaQuery({
     xl: css`

@@ -12,14 +12,16 @@ import { PreferencesScreenWrapper } from './styles/PreferencesScreenWrapper';
 import { Modal } from '../../../common/Modal';
 import { WebsitePageContext } from '../../../wrappers/WebsitePage/context';
 import { ChangePasswordForm } from '../../../forms/preferences/ChangePasswordForm';
+import { GlobalThemeContext } from '../../../../infra/contexts/ThemeContext';
 
 export function PreferencesScreen({ account, user }) {
   const router = useRouter();
   const { locale } = router;
 
-  const { isModalOpen, toggleModal } =
-    useContext(WebsitePageContext);
+  const { isModalOpen, toggleModal } = useContext(WebsitePageContext);
   const { title, colors, borderRadius } = useContext(ThemeContext);
+  const { setTheme } = useContext(GlobalThemeContext);
+
   const { t } = useTranslation('preferences');
 
   const changeLanguage = (e) => {
@@ -38,11 +40,7 @@ export function PreferencesScreen({ account, user }) {
 
   return (
     <>
-      <Modal
-        title="Change password"
-        isOpen={isModalOpen}
-        onClose={toggleModal}
-      >
+      <Modal title="Change password" isOpen={isModalOpen} onClose={toggleModal}>
         <ChangePasswordForm />
       </Modal>
 
@@ -205,6 +203,7 @@ export function PreferencesScreen({ account, user }) {
                     className={`language-option ${
                       title === 'lightMode' && 'active'
                     }`}
+                    onClick={() => setTheme('light')}
                   >
                     <Text
                       lineHeight="36px"
@@ -224,6 +223,7 @@ export function PreferencesScreen({ account, user }) {
                     className={`language-option ${
                       title === 'darkMode' && 'active'
                     }`}
+                    onClick={() => setTheme('dark')}
                   >
                     <Text
                       lineHeight="36px"

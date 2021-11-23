@@ -18,16 +18,20 @@ const ExpandedNavStyle = css`
     li {
       padding: 0 6px;
       border-left: unset;
+      border-radius: unset;
       height: 80px;
       display: flex;
       align-items: center;
       border-bottom: 3px solid ${({ theme }) => theme.colors.primaryBackground};
-      transition: all ${({ theme }) => theme.transition};
 
       &.active {
         border-left: unset;
         border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
         color: ${({ theme }) => theme.colors.primaryText};
+      }
+
+      &:hover {
+        background: unset;
       }
 
       a {
@@ -45,7 +49,6 @@ const DefaultListStyle = css`
       padding: 4px 24px 4px 0px;
       text-align: left;
       border-radius: ${({ theme }) => theme.borderRadius};
-      transition: all ${({ theme }) => theme.transition};
 
       &.active {
         color: ${({ theme }) => theme.colors.primaryText};
@@ -68,13 +71,13 @@ const DefaultListStyle = css`
 const NavListStyle = css`
   ul {
     list-style: none;
-    padding-left: 6px;
 
     li {
-      padding: 6px 24px 6px 18px;
+      height: 44px;
       text-align: left;
-      border-left: 3px solid ${({ theme }) => theme.colors.primaryBackground};
-      transition: all ${({ theme }) => theme.transition};
+      border-radius: 0 ${({ theme }) => theme.borderRadius}
+        ${({ theme }) => theme.borderRadius} 0;
+      padding: 4px 0;
 
       &.active {
         border-left: 3px solid ${({ theme }) => theme.colors.primary};
@@ -82,7 +85,17 @@ const NavListStyle = css`
       }
 
       &:hover {
+        background: ${({ theme }) => theme.colors.tertiaryBackground};
         color: ${({ theme }) => theme.colors.primaryText};
+      }
+
+      a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 24px 0 18px;
       }
     }
   }
@@ -102,7 +115,8 @@ export const DropdownWrapper = styled.div`
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
-  transition: all ${({ theme }) => theme.transition};
+  transition: transform ${({ theme }) => theme.transition},
+    opacity ${({ theme }) => theme.transition};
   z-index: 100;
 
   /* &::before {
