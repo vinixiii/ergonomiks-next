@@ -22,7 +22,6 @@ const ExpandedNavStyle = css`
       display: flex;
       align-items: center;
       border-bottom: 3px solid ${({ theme }) => theme.colors.primaryBackground};
-      transition: all ${({ theme }) => theme.transition};
 
       &.active {
         border-left: unset;
@@ -45,7 +44,6 @@ const DefaultListStyle = css`
       padding: 4px 24px 4px 0px;
       text-align: left;
       border-radius: ${({ theme }) => theme.borderRadius};
-      transition: all ${({ theme }) => theme.transition};
 
       &.active {
         color: ${({ theme }) => theme.colors.primaryText};
@@ -74,7 +72,6 @@ const NavListStyle = css`
       padding: 6px 24px 6px 18px;
       text-align: left;
       border-left: 3px solid ${({ theme }) => theme.colors.primaryBackground};
-      transition: all ${({ theme }) => theme.transition};
 
       &.active {
         border-left: 3px solid ${({ theme }) => theme.colors.primary};
@@ -102,7 +99,8 @@ export const DropdownWrapper = styled.div`
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
-  transition: all ${({ theme }) => theme.transition};
+  transition: transform ${({ theme }) => theme.transition},
+    opacity ${({ theme }) => theme.transition};
   z-index: 100;
 
   /* &::before {

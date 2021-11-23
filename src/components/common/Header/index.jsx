@@ -31,8 +31,7 @@ export function Header() {
   const { pathname } = router;
   const isPublicPage = !pathname.includes('app');
 
-  const { isTipsModalOpen, toggleTipsModal } =
-    useContext(WebsitePageContext);
+  const { isTipsModalOpen, toggleTipsModal } = useContext(WebsitePageContext);
 
   const { colors, borderRadius } = useContext(ThemeContext);
 
