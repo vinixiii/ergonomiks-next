@@ -8,6 +8,18 @@ export const GlobalStyle = createGlobalStyle`
   
   ${normalize};
 
+  /* ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background-color: lightgray;
+    border: 5px solid white;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 50px;
+  } */
+
   html, body, h1, h2, h3, h4 {
     margin: 0;
     padding: 0;

@@ -17,7 +17,7 @@ export function RegisterManagerForm({ session }) {
   const token = auth.getToken();
 
   const router = useRouter();
-  const { toggleRegisterManagerModal } = useContext(WebsitePageContext);
+  const { toggleModal } = useContext(WebsitePageContext);
   const { colors, borderRadius } = useContext(ThemeContext);
 
   const fileInputRef = useRef();
@@ -80,7 +80,7 @@ export function RegisterManagerForm({ session }) {
     });
 
     if (result.status === 200) {
-      toggleRegisterManagerModal();
+      toggleModal();
       router.push(router.pathname);
     }
   }

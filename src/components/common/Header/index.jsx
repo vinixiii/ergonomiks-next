@@ -19,13 +19,20 @@ import { Text } from '../../foundation/Text';
 import { Link } from '../Link';
 import { Logo } from '../../img/Logo';
 import { Button } from '../Button';
+import { Modal } from '../Modal';
+import { ErgonomicTips } from '../../patterns/tutorial/ErgonomicTips';
 import Dropdown from '../Dropdown';
+
 import { authService } from '../../../services/auth/authService';
+import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 
 export function Header() {
   const router = useRouter();
   const { pathname } = router;
   const isPublicPage = !pathname.includes('app');
+
+  const { isTipsModalOpen, toggleTipsModal } =
+    useContext(WebsitePageContext);
 
   const { colors, borderRadius } = useContext(ThemeContext);
 
@@ -79,153 +86,167 @@ export function Header() {
   }, []);
 
   return (
-    <Box
-      width="100%"
-      position="fixed"
-      display="flex"
-      justifyContent="center"
-      backgroundColor={colors.primaryBackground}
-      boxShadow={`0 2px 2px -2px ${colors.border}`}
-    >
-      <HeaderWrapper>
-        <HeaderWrapper.Left>
-          <Link href="/" display="flex" alignItems="center">
-            <Logo
-              id="logo"
-              primaryColor={colors.primary}
-              secondaryColor={colors.primaryText}
-            />
-          </Link>
+    <>
+      <Modal
+        title={t('tips_modal_title')}
+        isOpen={isTipsModalOpen}
+        onClose={toggleTipsModal}
+      >
+        <ErgonomicTips />
+      </Modal>
 
-          <Link href="/" display="flex" alignItems="center">
-            <img id="logo-sm" src="/img/logo-sm.svg" alt="Ergonomiks logo" />
-          </Link>
+      <Box
+        width="100%"
+        position="fixed"
+        display="flex"
+        justifyContent="center"
+        backgroundColor={colors.primaryBackground}
+        boxShadow={`0 2px 2px -2px ${colors.border}`}
+      >
+        <HeaderWrapper>
+          <HeaderWrapper.Left>
+            <Link href="/" display="flex" alignItems="center">
+              <Logo
+                id="logo"
+                primaryColor={colors.primary}
+                secondaryColor={colors.primaryText}
+              />
+            </Link>
 
-          {!isPublicPage && (
-            <Box position={{ sm: 'relative' }}>
-              <Box
-                display={{ lg: 'none' }}
-                onClick={() => {
-                  setIsNavDropdownOpen(!isNavDropdownOpen);
-                  setIsOptionsDropdownOpen(false);
-                }}
-              >
-                {isNavDropdownOpen ? (
-                  <MdClose
-                    className="icon menu-icon"
-                    size="36"
-                    style={{ display: 'block' }}
-                  />
-                ) : (
-                  <MdMenu
-                    className="icon menu-icon"
-                    size="36"
-                    style={{ display: 'block' }}
-                  />
-                )}
-              </Box>
-              <Dropdown
-                tag="nav"
-                isActive={isNavDropdownOpen}
-                alignLeft
-                isHeaderNav
-              >
-                <ul>
-                  {links[user?.role]?.map((item, index) => (
-                    <li
-                      key={index}
-                      className={pathname === item.url ? 'active' : ''}
-                    >
-                      <Link href={item.url}>
-                        <Text variant="paragraph1">{item.text}</Text>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </Dropdown>
-            </Box>
-          )}
-        </HeaderWrapper.Left>
+            <Link href="/" display="flex" alignItems="center">
+              <img id="logo-sm" src="/img/logo-sm.svg" alt="Ergonomiks logo" />
+            </Link>
 
-        <HeaderWrapper.Right>
-          {!isPublicPage ? (
-            <>
-              <Box
-                display="flex"
-                alignItems="center"
-                padding="0 12px"
-                gap="18px"
-              >
-                {user?.role === 'employee' && (
-                  <MdHelpOutline className="icon help-icon" size="36" />
-                )}
-              </Box>
-              <Box display="flex" alignItems="center" gap="12px">
-                <Box position={{ sm: 'relative' }}>
-                  <Box
-                    width="48px"
-                    height="48px"
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    padding="2px"
-                    border={`2px solid ${colors.primaryText}`}
-                    borderRadius={borderRadius}
-                    cursor="pointer"
-                    onClick={() => {
-                      setIsOptionsDropdownOpen(!isOptionsDropdownOpen);
-                      setIsNavDropdownOpen(false);
-                    }}
-                  >
-                    {user?.role === 'company' ? (
-                      <MdBusiness
-                        className="icon"
-                        size="36"
-                        style={{ display: 'block', margin: 'auto' }}
-                      />
-                    ) : (
-                      <img
-                        src={`http://localhost:5000/resources/images/${user?.jti}.png`}
-                        alt="Imagem do usuário"
-                      />
-                    )}
-                  </Box>
-                  <Dropdown isActive={isOptionsDropdownOpen} alignRight>
-                    <ul>
-                      <li>
-                        <Link href="/app/preferences">
-                          <MdSettings className="icon" size="36" />
-                          <Text variant="paragraph1">{t('common_nav')}</Text>
+            {!isPublicPage && (
+              <Box position={{ sm: 'relative' }}>
+                <Box
+                  display={{ lg: 'none' }}
+                  onClick={() => {
+                    setIsNavDropdownOpen(!isNavDropdownOpen);
+                    setIsOptionsDropdownOpen(false);
+                  }}
+                >
+                  {isNavDropdownOpen ? (
+                    <MdClose
+                      className="icon menu-icon"
+                      size="36"
+                      style={{ display: 'block' }}
+                    />
+                  ) : (
+                    <MdMenu
+                      className="icon menu-icon"
+                      size="36"
+                      style={{ display: 'block' }}
+                    />
+                  )}
+                </Box>
+                <Dropdown
+                  tag="nav"
+                  isActive={isNavDropdownOpen}
+                  alignLeft
+                  isHeaderNav
+                >
+                  <ul>
+                    {links[user?.role]?.map((item, index) => (
+                      <li
+                        key={index}
+                        className={pathname === item.url ? 'active' : ''}
+                      >
+                        <Link href={item.url}>
+                          <Text variant="paragraph1">{item.text}</Text>
                         </Link>
                       </li>
-                      <li>
-                        <Box
-                          display="flex"
-                          alignItems="center"
-                          gap="12px"
-                          cursor="pointer"
-                          onClick={handleSignOut}
-                        >
-                          <MdLogout className="icon" size="36" />
-                          <Text variant="paragraph1">{t('common_nav2')}</Text>
-                        </Box>
-                      </li>
-                    </ul>
-                  </Dropdown>
-                </Box>
+                    ))}
+                  </ul>
+                </Dropdown>
               </Box>
-            </>
-          ) : (
-            <>
-              <Button href="/app/login" ghost>
-                {t('btn_sign_in')}
-              </Button>
+            )}
+          </HeaderWrapper.Left>
 
-              <Button href="/contact">{t('btn_contact_us')}</Button>
-            </>
-          )}
-        </HeaderWrapper.Right>
-      </HeaderWrapper>
-    </Box>
+          <HeaderWrapper.Right>
+            {!isPublicPage ? (
+              <>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  padding="0 12px"
+                  gap="18px"
+                >
+                  {user?.role === 'employee' && (
+                    <MdHelpOutline
+                      className="icon help-icon"
+                      size="36"
+                      onClick={toggleTipsModal}
+                    />
+                  )}
+                </Box>
+                <Box display="flex" alignItems="center" gap="12px">
+                  <Box position={{ sm: 'relative' }}>
+                    <Box
+                      width="48px"
+                      height="48px"
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                      padding="2px"
+                      border={`2px solid ${colors.primaryText}`}
+                      borderRadius={borderRadius}
+                      cursor="pointer"
+                      onClick={() => {
+                        setIsOptionsDropdownOpen(!isOptionsDropdownOpen);
+                        setIsNavDropdownOpen(false);
+                      }}
+                    >
+                      {user?.role === 'company' ? (
+                        <MdBusiness
+                          className="icon"
+                          size="36"
+                          style={{ display: 'block', margin: 'auto' }}
+                        />
+                      ) : (
+                        <img
+                          src={`http://localhost:5000/resources/images/${user?.jti}.png`}
+                          alt="Imagem do usuário"
+                        />
+                      )}
+                    </Box>
+                    <Dropdown isActive={isOptionsDropdownOpen} alignRight>
+                      <ul>
+                        <li>
+                          <Link href="/app/preferences">
+                            <MdSettings className="icon" size="36" />
+                            <Text variant="paragraph1">{t('common_nav')}</Text>
+                          </Link>
+                        </li>
+                        <li>
+                          <Box
+                            display="flex"
+                            alignItems="center"
+                            gap="12px"
+                            cursor="pointer"
+                            onClick={handleSignOut}
+                          >
+                            <MdLogout className="icon" size="36" />
+                            <Text variant="paragraph1">{t('common_nav2')}</Text>
+                          </Box>
+                        </li>
+                      </ul>
+                    </Dropdown>
+                  </Box>
+                </Box>
+              </>
+            ) : (
+              <>
+                <Button href="/app/login" ghost>
+                  {t('btn_sign_in')}
+                </Button>
+
+                <Button href="/contact">{t('btn_contact_us')}</Button>
+              </>
+            )}
+          </HeaderWrapper.Right>
+        </HeaderWrapper>
+      </Box>
+    </>
   );
 }

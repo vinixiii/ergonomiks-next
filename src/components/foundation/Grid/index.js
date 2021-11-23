@@ -161,6 +161,7 @@ const Column = styled.div`
   ${propToStyle('textAlign')};
   ${propToStyle('height')};
   ${propToStyle('maxHeight')};
+  ${propToStyle('padding')};
 `;
 
 export const Grid = {
