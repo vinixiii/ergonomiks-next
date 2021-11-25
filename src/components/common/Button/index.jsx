@@ -11,6 +11,10 @@ const GhostButton = css`
   color: ${({ theme }) => theme.colors.primaryText};
 `;
 
+const DeleteButton = css`
+  background-color: ${({ theme }) => theme.colors.red};
+`;
+
 const ButtonWrapper = styled.button`
   height: 36px;
   display: flex;
@@ -26,6 +30,8 @@ const ButtonWrapper = styled.button`
   opacity: 1;
 
   ${({ ghost }) => ghost && GhostButton};
+
+  ${({ del }) => del && DeleteButton};
 
   ${breakpointsMediaQuery({
     xs: css`

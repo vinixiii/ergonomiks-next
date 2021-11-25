@@ -11,13 +11,22 @@ import { Button } from '../../../../common/Button';
 import { Table } from '../../../../common/Table';
 import { Modal } from '../../../../common/Modal';
 import { RegisterEmployeeForm } from '../../../../forms/RegisterEmployeeForm';
+import { DeleteConfirmation } from '../../../../patterns/modal/delete';
 
 export function EmployeesScreen({ employees, managers, user }) {
-  const { isModalOpen, toggleModal } =
+  const { isModalOpen, toggleModal, isDeleteModalOpen, toggleDeleteModal } =
     useContext(WebsitePageContext);
+
   const { borderRadius } = useContext(ThemeContext);
 
+  const [managerId, setManagerId] = useState();
+
   const { t } = useTranslation('company-employees');
+
+  function handleOpenDeleteModal(id) {
+    setManagerId(id);
+    toggleDeleteModal();
+  }
 
   return (
     <>
@@ -27,6 +36,14 @@ export function EmployeesScreen({ employees, managers, user }) {
         onClose={toggleModal}
       >
         <RegisterEmployeeForm managers={managers} session={user} />
+      </Modal>
+
+      <Modal
+        title="Delete manager"
+        isOpen={isDeleteModalOpen}
+        onClose={toggleDeleteModal}
+      >
+        <DeleteConfirmation managerId={managerId} />
       </Modal>
 
       <Box display="flex" flex="1" justifyContent="center">
@@ -41,9 +58,7 @@ export function EmployeesScreen({ employees, managers, user }) {
             padding="40px 16px"
           >
             <TextField placeholder={t('search_input')} icon={<MdSearch />} />
-            <Button onClick={toggleModal}>
-              {t('btn_add_employee')}
-            </Button>
+            <Button onClick={toggleModal}>{t('btn_add_employee')}</Button>
           </Box>
           <Table title={t('table_title')}>
             <thead>
@@ -105,7 +120,10 @@ export function EmployeesScreen({ employees, managers, user }) {
                   <td>
                     <div id="icons">
                       <MdEdit className="icon edit-icon" />
-                      <MdClose className="icon close-icon" />
+                      <MdClose
+                        className="icon close-icon"
+                        onClick={() => handleOpenDeleteModal(manager.id)}
+                      />
                     </div>
                   </td>
                 </tr>
