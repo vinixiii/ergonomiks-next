@@ -15,8 +15,6 @@ export function ManagerTeamScreen({ employees }) {
 
   const { t } = useTranslation('manager-team');
 
-  console.log(employees);
-
   return (
     <Box display="flex" flex="1" justifyContent="center">
       <Box display="flex" flex="1" flexDirection="column" maxWidth="1366px">

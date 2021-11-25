@@ -43,7 +43,7 @@ export function TeamMemberScreen() {
   }
 
   useEffect(() => {
-    // getTeamMemberInfo();
+    getTeamMemberInfo();
   }, []);
 
   return (
@@ -63,15 +63,15 @@ export function TeamMemberScreen() {
                   border={`2px solid ${colors.primaryText}`}
                   borderRadius={borderRadius}
                 >
-                  {/* <img
-                    src={`http://localhost:5000/resources/images/${session.image}`}
+                  <img
+                    src={`http://localhost:5000/resources/images/${teamMemberInfo?.image}`}
                     alt="User image"
                     style={{
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
                     }}
-                  /> */}
+                  />
                 </Box>
                 <Box
                   display="flex"
@@ -79,26 +79,29 @@ export function TeamMemberScreen() {
                   justifyContent="space-between"
                 >
                   <Text variant="title2" color="primaryText">
-                    {userId}
+                    {`${teamMemberInfo?.firstName} ${teamMemberInfo?.lastName}`}
                   </Text>
-                  {/* <Text variant="paragraph3" color="secondaryText">
+                  <Text variant="paragraph3" color="secondaryText">
                     Member since:{' '}
-                    {new Date(userInfo.creationDate).toLocaleDateString()}
+                    {new Date(
+                      teamMemberInfo?.creationDate
+                    ).toLocaleDateString()}
                   </Text>
                   <Box display="flex" flexDirection="column" gap="16px">
                     <Box display="flex" alignItems="center" gap="16px">
                       <MdEmail size="24" color={colors.primary} />
                       <Text variant="paragraph2" color="primaryText">
-                        {userInfo.user.email}
+                        {teamMemberInfo?.user.email}
                       </Text>
                     </Box>
                     <Box display="flex" alignItems="center" gap="16px">
                       <MdLocalPhone size="24" color={colors.primary} />
                       <Text variant="paragraph2" color="primaryText">
-                        {patternMask(userInfo.phone, '(##) #####-####')}
+                        {teamMemberInfo &&
+                          patternMask(teamMemberInfo.phone, '(##) #####-####')}
                       </Text>
                     </Box>
-                  </Box> */}
+                  </Box>
                 </Box>
               </Box>
             </Grid.Column>
