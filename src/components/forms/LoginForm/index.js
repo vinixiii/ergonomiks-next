@@ -1,65 +1,54 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { setCookie } from 'nookies';
-import jwt from 'jsonwebtoken';
 import * as yup from 'yup';
+import jwt from 'jsonwebtoken';
 
 import { TextField } from '../../foundation/TextField';
 import { Button } from '../../common/Button';
 import { Box } from '../../foundation/Box';
+import { Text } from '../../foundation/Text';
 
-const schema = yup
-  .object({
-    email: yup.string().email('must be a valid email').required('cu'),
-    password: yup.string().required('pinto'),
-  })
-  .required();
+import { api } from '../../../infra/api';
 
 export function LoginForm() {
   const router = useRouter();
 
-  const { register, handleSubmit, formState } = useForm({
+  const { t } = useTranslation('login');
+
+  const schema = yup
+    .object({
+      email: yup.string().email(t('valid_email')).required(t('required_email')),
+      password: yup.string().required(t('required_password')),
+    })
+    .required();
+
+  const { register, handleSubmit, formState, setError, clearErrors } = useForm({
     resolver: yupResolver(schema),
   });
 
-  console.log(formState);
+  async function onSubmit(userData) {
+    try {
+      const { data, status } = await api.post(
+        'account/signin',
+        {
+          email: userData.email,
+          password: userData.password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
 
-  const { t } = useTranslation('login');
+      if (status === 200) {
+        const decodedToken = jwt.decode(data.data.token);
 
-  // const [userInfo, setUserInfo] = useState({
-  //   email: '',
-  //   password: '',
-  // });
-
-  // function handleChangeFieldValue(event) {
-  //   const fieldName = event.target.getAttribute('name');
-
-  //   setUserInfo({
-  //     ...userInfo,
-  //     [fieldName]: event.target.value,
-  //   });
-  // }
-
-  function onSubmit(userData) {
-    fetch('http://localhost:5000/v1/account/signin', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: userData.email,
-        password: userData.password,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then(async (res) => {
-      const response = await res.json();
-
-      if (response.success === true) {
-        const decodedToken = jwt.decode(response.data.token);
-
-        setCookie(null, 'LOGIN_APP_AUTH', response.data.token, {
+        setCookie(null, 'LOGIN_APP_AUTH', data.data.token, {
           path: '/',
           maxAge: 86400 * 7,
         });
@@ -85,7 +74,14 @@ export function LoginForm() {
           });
         }
       }
-    });
+    } catch (error) {
+      console.log(error);
+
+      setError('requestError', {
+        type: 'manual',
+        message: t('request_error'),
+      });
+    }
   }
 
   return (
@@ -95,20 +91,21 @@ export function LoginForm() {
           type="text"
           placeholder={t('email')}
           name="email"
-          // value={userInfo.email}
-          // onChange={handleChangeFieldValue}
           register={register}
+          error={formState.errors.email}
+          onClick={() => clearErrors('requestError')}
         />
-        <p>{formState.errors.email?.message}</p>
         <TextField
           type="password"
           placeholder={t('password')}
           name="password"
-          // value={userInfo.password}
-          // onChange={handleChangeFieldValue}
           register={register}
+          error={formState.errors.password}
+          onClick={() => clearErrors('requestError')}
         />
-        <p>{formState.errors.password?.message}</p>
+        <Text variant="smallestException" color="red">
+          {formState.errors.requestError?.message}
+        </Text>
         <Button alignSelf="flex-end" marginTop="32px">
           {t('sign_in')}
         </Button>

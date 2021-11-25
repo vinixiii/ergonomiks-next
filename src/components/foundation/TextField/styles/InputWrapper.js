@@ -18,6 +18,12 @@ export const InputWrapper = styled.div`
   > svg {
     font-size: 24px;
   }
+
+  ${({ theme, isFieldInvalid }) =>
+    isFieldInvalid &&
+    css`
+      border-color: ${theme.colors.red};
+    `}
 `;
 
 export const Input = styled(Text)`
@@ -28,10 +34,10 @@ export const Input = styled(Text)`
   padding: 6px 12px;
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) => theme.colors.secondaryBackground};
+  color: ${({ theme }) => theme.colors.secondaryText};
 `;
 
 Input.defaultProps = {
   tag: 'input',
   variant: 'paragraph2',
-  color: 'secondaryText',
 };
