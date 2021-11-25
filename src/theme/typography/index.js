@@ -29,4 +29,9 @@ export const typographyVariants = {
     fontWeight: '400',
     lineHeight: 1.25, // 125%
   },
+  smallestException: {
+    fontSize: '11px',
+    fontWeight: '400',
+    lineHeight: 1.25, // 125%
+  },
 };

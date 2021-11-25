@@ -1,5 +1,11 @@
 {
   "sign_in": "Entrar",
   "email": "Email",
-  "password": "Senha"
+  "password": "Senha",
+
+  "valid_email": "Deve ser um email válido",
+  "required_email": "O email é obrigatório",
+  "required_password": "A senha é obrigatória",
+
+  "request_error": "Dados inválidos, tente novamente."
 }

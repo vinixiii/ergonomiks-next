@@ -1,5 +1,11 @@
 {
   "sign_in": "Sign in",
   "email": "Email",
-  "password": "Password"
+  "password": "Password",
+
+  "valid_email": "Must be a valid email address",
+  "required_email": "Email is required",
+  "required_password": "Password is required",
+
+  "request_error": "Invalid data, please try again."
 }

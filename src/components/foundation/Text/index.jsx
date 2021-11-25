@@ -40,6 +40,14 @@ export const TextStyleVariantsMap = {
     line-height: ${({ theme }) =>
       theme.typographyVariants.paragraph3.lineHeight};
   `,
+  smallestException: css`
+    font-size: ${({ theme }) =>
+      theme.typographyVariants.smallestException.fontSize};
+    font-weight: ${({ theme }) =>
+      theme.typographyVariants.smallestException.fontWeight};
+    line-height: ${({ theme }) =>
+      theme.typographyVariants.smallestException.lineHeight};
+  `,
 };
 
 const TextBase = styled.span`
