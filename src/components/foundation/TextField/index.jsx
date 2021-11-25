@@ -11,6 +11,7 @@ export function TextField({
   icon,
   action,
   onActionClick,
+  register,
   ...props
 }) {
   const { colors } = useContext(ThemeContext);
@@ -18,13 +19,26 @@ export function TextField({
   return (
     <InputWrapper hasIcon={Boolean(icon)}>
       {icon}
-      <Input
-        placeholder={placeholder}
-        name={name}
-        onChange={onChange}
-        value={value}
-        {...props}
-      />
+      {register ? (
+        <Input
+          as="input"
+          placeholder={placeholder}
+          name={name}
+          onChange={onChange}
+          value={value}
+          {...register(name)}
+          {...props}
+        />
+      ) : (
+        <Input
+          // as="input"
+          placeholder={placeholder}
+          name={name}
+          onChange={onChange}
+          value={value}
+          {...props}
+        />
+      )}
       {action && (
         <Button color={colors.primary} onClick={onActionClick} ghost>
           {action}

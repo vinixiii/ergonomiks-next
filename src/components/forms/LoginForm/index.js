@@ -1,40 +1,54 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { setCookie } from 'nookies';
 import jwt from 'jsonwebtoken';
+import * as yup from 'yup';
 
 import { TextField } from '../../foundation/TextField';
 import { Button } from '../../common/Button';
 import { Box } from '../../foundation/Box';
 
+const schema = yup
+  .object({
+    email: yup.string().email('must be a valid email').required('cu'),
+    password: yup.string().required('pinto'),
+  })
+  .required();
+
 export function LoginForm() {
   const router = useRouter();
 
-  const { t } = useTranslation('login');
-
-  const [userInfo, setUserInfo] = useState({
-    email: '',
-    password: '',
+  const { register, handleSubmit, formState } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  function handleChangeFieldValue(event) {
-    const fieldName = event.target.getAttribute('name');
+  console.log(formState);
 
-    setUserInfo({
-      ...userInfo,
-      [fieldName]: event.target.value,
-    });
-  }
+  const { t } = useTranslation('login');
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  // const [userInfo, setUserInfo] = useState({
+  //   email: '',
+  //   password: '',
+  // });
 
+  // function handleChangeFieldValue(event) {
+  //   const fieldName = event.target.getAttribute('name');
+
+  //   setUserInfo({
+  //     ...userInfo,
+  //     [fieldName]: event.target.value,
+  //   });
+  // }
+
+  function onSubmit(userData) {
     fetch('http://localhost:5000/v1/account/signin', {
       method: 'POST',
       body: JSON.stringify({
-        email: userInfo.email,
-        password: userInfo.password,
+        email: userData.email,
+        password: userData.password,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -75,22 +89,26 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Box display="flex" flexDirection="column" gap="16px">
         <TextField
           type="text"
           placeholder={t('email')}
           name="email"
-          value={userInfo.email}
-          onChange={handleChangeFieldValue}
+          // value={userInfo.email}
+          // onChange={handleChangeFieldValue}
+          register={register}
         />
+        <p>{formState.errors.email?.message}</p>
         <TextField
           type="password"
           placeholder={t('password')}
           name="password"
-          value={userInfo.password}
-          onChange={handleChangeFieldValue}
+          // value={userInfo.password}
+          // onChange={handleChangeFieldValue}
+          register={register}
         />
+        <p>{formState.errors.password?.message}</p>
         <Button alignSelf="flex-end" marginTop="32px">
           {t('sign_in')}
         </Button>
