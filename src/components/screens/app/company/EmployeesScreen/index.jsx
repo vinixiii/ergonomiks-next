@@ -11,7 +11,7 @@ import { Button } from '../../../../common/Button';
 import { Table } from '../../../../common/Table';
 import { Modal } from '../../../../common/Modal';
 import { RegisterEmployeeForm } from '../../../../forms/RegisterEmployeeForm';
-import { DeleteConfirmation } from '../../../../patterns/modal/delete';
+import { DeleteEmployeeForm } from '../../../../forms/app/company/delete/DeleteEmployeeForm';
 
 export function EmployeesScreen({ employees, managers, user }) {
   const { isModalOpen, toggleModal, isDeleteModalOpen, toggleDeleteModal } =
@@ -19,23 +19,9 @@ export function EmployeesScreen({ employees, managers, user }) {
 
   const { borderRadius } = useContext(ThemeContext);
 
-  const [userInfo, setUserInfo] = useState({
-    id: '',
-    userType: '',
-  });
+  const [employeeId, setEmployeeId] = useState();
 
   const { t } = useTranslation('company-employees');
-
-  function handleOpenDeleteModal(id, userType) {
-    setUserInfo({
-      id,
-      userType,
-    });
-
-    toggleDeleteModal();
-  }
-
-  console.log(employees);
 
   return (
     <>
@@ -48,11 +34,12 @@ export function EmployeesScreen({ employees, managers, user }) {
       </Modal>
 
       <Modal
-        title="Delete manager"
+        title="Delete employee"
         isOpen={isDeleteModalOpen}
         onClose={toggleDeleteModal}
+        maxWidth="500px"
       >
-        <DeleteConfirmation userInfo={userInfo} />
+        <DeleteEmployeeForm employeeId={employeeId} />
       </Modal>
 
       <Box display="flex" flex="1" justifyContent="center">
@@ -131,12 +118,10 @@ export function EmployeesScreen({ employees, managers, user }) {
                       <MdEdit className="icon edit-icon" />
                       <MdClose
                         className="icon close-icon"
-                        onClick={() =>
-                          handleOpenDeleteModal(
-                            manager.id,
-                            manager.user.userType
-                          )
-                        }
+                        onClick={() => {
+                          setEmployeeId(manager.id);
+                          toggleDeleteModal();
+                        }}
                       />
                     </div>
                   </td>
