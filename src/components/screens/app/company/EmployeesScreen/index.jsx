@@ -19,14 +19,23 @@ export function EmployeesScreen({ employees, managers, user }) {
 
   const { borderRadius } = useContext(ThemeContext);
 
-  const [managerId, setManagerId] = useState();
+  const [userInfo, setUserInfo] = useState({
+    id: '',
+    userType: '',
+  });
 
   const { t } = useTranslation('company-employees');
 
-  function handleOpenDeleteModal(id) {
-    setManagerId(id);
+  function handleOpenDeleteModal(id, userType) {
+    setUserInfo({
+      id,
+      userType,
+    });
+
     toggleDeleteModal();
   }
+
+  console.log(employees);
 
   return (
     <>
@@ -43,7 +52,7 @@ export function EmployeesScreen({ employees, managers, user }) {
         isOpen={isDeleteModalOpen}
         onClose={toggleDeleteModal}
       >
-        <DeleteConfirmation managerId={managerId} />
+        <DeleteConfirmation userInfo={userInfo} />
       </Modal>
 
       <Box display="flex" flex="1" justifyContent="center">
@@ -122,7 +131,12 @@ export function EmployeesScreen({ employees, managers, user }) {
                       <MdEdit className="icon edit-icon" />
                       <MdClose
                         className="icon close-icon"
-                        onClick={() => handleOpenDeleteModal(manager.id)}
+                        onClick={() =>
+                          handleOpenDeleteModal(
+                            manager.id,
+                            manager.user.userType
+                          )
+                        }
                       />
                     </div>
                   </td>
