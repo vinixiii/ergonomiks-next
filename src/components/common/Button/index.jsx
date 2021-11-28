@@ -47,6 +47,11 @@ const ButtonWrapper = styled.button`
     opacity: 0.8;
   }
 
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
+  }
+
   ${propToStyle('alignSelf')};
   ${propToStyle('marginTop')};
   ${propToStyle('width')};

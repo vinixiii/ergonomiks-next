@@ -36,6 +36,7 @@ const ExpandedNavStyle = css`
 
       a {
         line-height: 80px;
+        padding: unset;
       }
     }
   }

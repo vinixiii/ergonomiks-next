@@ -23,27 +23,28 @@ export function DeleteManagerForm({ managerId, managers }) {
   const [hasEmployees, setHasEmployees] = useState(false);
   const [newManagerId, setNewManagerId] = useState();
 
-  // useEffect(async () => {
-  //   try {
-  //     const { data, status } = await api.post(
-  //       'employee/manager-has-employees',
-  //       {
-  //         id: managerId,
-  //       },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //           'Content-Type': 'application/json',
-  //         },
-  //       }
-  //     );
-  //     if (status === 200) {
-  //       setHasEmployees(true);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, []);
+  useEffect(async () => {
+    try {
+      const { data, status } = await api.post(
+        'employee/manager-has-employees',
+        {
+          id: managerId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (status === 200) {
+        setHasEmployees(data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [managerId]);
 
   async function handleDelete(event) {
     event.preventDefault();
@@ -109,11 +110,13 @@ export function DeleteManagerForm({ managerId, managers }) {
                 onChange={(event) => setNewManagerId(event.target.value)}
               >
                 <option value="0">Selecionar gestor</option>
-                {managers.map((manager) => (
-                  <option key={manager.id} value={manager.id}>
-                    {`${manager.firstName} ${manager.lastName}`}
-                  </option>
-                ))}
+                {managers
+                  .filter((manager) => manager.id !== managerId)
+                  .map((manager) => (
+                    <option key={manager.id} value={manager.id}>
+                      {`${manager.firstName} ${manager.lastName}`}
+                    </option>
+                  ))}
               </TextField>
             </>
           ) : (
@@ -132,7 +135,15 @@ export function DeleteManagerForm({ managerId, managers }) {
         padding="24px 40px"
         borderTop={`1px solid ${colors.border}`}
       >
-        <Button del>Deletar</Button>
+        <Button
+          del
+          disabled={
+            (hasEmployees && !newManagerId) ||
+            (hasEmployees && newManagerId === '0')
+          }
+        >
+          Deletar
+        </Button>
       </Box>
     </form>
   );
