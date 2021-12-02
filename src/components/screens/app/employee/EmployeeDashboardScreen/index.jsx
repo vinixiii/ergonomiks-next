@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import OneSignal from 'react-onesignal';
 import { ThemeContext } from 'styled-components';
 
 import { MdEmail, MdLocalPhone } from 'react-icons/md';
@@ -11,6 +12,12 @@ import { patternMask } from '../../../../../infra/generic/patternMask';
 
 export function EmployeeDashboardScreen({ session, userInfo }) {
   const { colors, borderRadius } = useContext(ThemeContext);
+
+  useEffect(() => {
+    OneSignal.init({
+      appId: '9e730ae1-3d7d-4a9a-b803-ef9c3eb94fa9',
+    });
+  }, []);
 
   return (
     <>
