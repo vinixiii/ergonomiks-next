@@ -14,6 +14,7 @@ export default function WebsitePageWrapper({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTipsModalOpen, setIsTipsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   return (
     <WebsitePageContext.Provider
@@ -24,6 +25,8 @@ export default function WebsitePageWrapper({
         toggleTipsModal: () => setIsTipsModalOpen(!isTipsModalOpen),
         isDeleteModalOpen: isDeleteModalOpen,
         toggleDeleteModal: () => setIsDeleteModalOpen(!isDeleteModalOpen),
+        isUpdateModalOpen: isUpdateModalOpen,
+        toggleUpdateModal: () => setIsUpdateModalOpen(!isUpdateModalOpen),
       }}
     >
       <Box display="flex" flex="1" flexDirection="column">
