@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { MdSearch, MdEdit, MdClose } from 'react-icons/md';
 import { ThemeContext } from 'styled-components';
 import { useTranslation } from 'next-i18next';
@@ -11,11 +11,14 @@ import { Button } from '../../../../common/Button';
 import { Table } from '../../../../common/Table';
 import { Modal } from '../../../../common/Modal';
 import { RegisterManagerForm } from '../../../../forms/RegisterManagerForm';
+import { DeleteManagerForm } from '../../../../forms/app/company/delete/DeleteManagerForm';
 
 export function ManagersScreen({ managers, user }) {
-  const { isModalOpen, toggleModal } =
+  const { isModalOpen, toggleModal, isDeleteModalOpen, toggleDeleteModal } =
     useContext(WebsitePageContext);
   const { borderRadius } = useContext(ThemeContext);
+
+  const [managerId, setManagerId] = useState();
 
   const { t } = useTranslation('company-managers');
 
@@ -27,6 +30,15 @@ export function ManagersScreen({ managers, user }) {
         onClose={toggleModal}
       >
         <RegisterManagerForm session={user} />
+      </Modal>
+
+      <Modal
+        title="Delete manager"
+        isOpen={isDeleteModalOpen}
+        onClose={toggleDeleteModal}
+        maxWidth="500px"
+      >
+        <DeleteManagerForm managerId={managerId} managers={managers} />
       </Modal>
 
       <Box display="flex" flex="1" justifyContent="center">
@@ -41,9 +53,7 @@ export function ManagersScreen({ managers, user }) {
             padding="40px 16px"
           >
             <TextField placeholder={t('search_input')} icon={<MdSearch />} />
-            <Button onClick={toggleModal}>
-              {t('btn_add_manager')}
-            </Button>
+            <Button onClick={toggleModal}>{t('btn_add_manager')}</Button>
           </Box>
           <Table title={t('table_title')}>
             <thead>
@@ -105,7 +115,13 @@ export function ManagersScreen({ managers, user }) {
                   <td>
                     <div id="icons">
                       <MdEdit className="icon edit-icon" />
-                      <MdClose className="icon close-icon" />
+                      <MdClose
+                        className="icon close-icon"
+                        onClick={() => {
+                          setManagerId(manager.id);
+                          toggleDeleteModal();
+                        }}
+                      />
                     </div>
                   </td>
                 </tr>

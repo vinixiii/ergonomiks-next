@@ -7,8 +7,10 @@ import { Box } from '../../foundation/Box';
 import { MdClose } from 'react-icons/md';
 import { Text } from '../../foundation/Text';
 
-export function Modal({ isOpen, onClose, title, children }) {
+export function Modal({ isOpen, onClose, title, maxWidth, children }) {
   const { colors, boxShadow, borderRadius } = useContext(ThemeContext);
+
+  const hasMaxWidth = Boolean(maxWidth);
 
   return (
     <ModalWrapper
@@ -30,7 +32,7 @@ export function Modal({ isOpen, onClose, title, children }) {
             display="flex"
             flex="1"
             flexDirection="column"
-            maxWidth="825px"
+            maxWidth={hasMaxWidth ? maxWidth : '825px'}
             maxHeight="100%"
             value={{ xs: 12, xl: 6 }}
           >
