@@ -316,7 +316,7 @@ export function UpdateEmployeeForm({ managers, currentEmployeeInfo }) {
         padding="24px 40px"
         borderTop={`1px solid ${colors.border}`}
       >
-        <Button>{t('update_btn_add')}</Button>
+        <Button>{t('update_btn')}</Button>
       </Box>
     </form>
   );

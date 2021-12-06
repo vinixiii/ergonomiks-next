@@ -30,9 +30,9 @@
 
   "update_modal_title": "Update employee",
   "update_modal_section_title3": "Email",
-  "update_btn_add": "Update",
+  "update_btn": "Update",
 
   "delete_modal_title": "Delete employee",
   "delete_modal_warn": "Are you sure you want to delete this employee? This action cannot be undone!",
-  "delete_btn_add": "Delete"
+  "delete_btn": "Delete"
 }

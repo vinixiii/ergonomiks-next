@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from 'styled-components';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import { Box } from '../../../../../foundation/Box';
 import { Text } from '../../../../../foundation/Text';
@@ -16,6 +17,8 @@ export function DeleteManagerForm({ managerId, managers }) {
 
   const auth = authService(null);
   const token = auth.getToken();
+
+  const { t } = useTranslation('company-managers');
 
   const { colors } = useContext(ThemeContext);
   const { toggleDeleteModal } = useContext(WebsitePageContext);
@@ -93,14 +96,12 @@ export function DeleteManagerForm({ managerId, managers }) {
 
   return (
     <form onSubmit={handleDelete}>
-      <Box padding="24px 40px">
+      <Box padding="24px">
         <Box display="flex" flexDirection="column" gap="32px">
           {hasEmployees ? (
             <>
               <Text variant="paragraph" color="primaryText">
-                Este gestor possui colaboradores relacionados a ele. Por favor
-                selecione outro gestor para ser o novo responsável por desses
-                colaboradores.
+                {t('delete_modal_message')}
               </Text>
               <TextField
                 tag="select"
@@ -109,7 +110,7 @@ export function DeleteManagerForm({ managerId, managers }) {
                 value={newManagerId}
                 onChange={(event) => setNewManagerId(event.target.value)}
               >
-                <option value="0">Selecionar gestor</option>
+                <option value="0">{t('modal_select')}</option>
                 {managers
                   .filter((manager) => manager.id !== managerId)
                   .map((manager) => (
@@ -122,7 +123,7 @@ export function DeleteManagerForm({ managerId, managers }) {
           ) : (
             <Box textAlign="center" padding="48px 0">
               <Text variant="paragraph" color="primaryText">
-                Are you sure you want to delete this manager?
+                {t('delete_modal_warn')}
               </Text>
             </Box>
           )}
@@ -142,7 +143,7 @@ export function DeleteManagerForm({ managerId, managers }) {
             (hasEmployees && newManagerId === '0')
           }
         >
-          Deletar
+          {t('delete_btn')}
         </Button>
       </Box>
     </form>
