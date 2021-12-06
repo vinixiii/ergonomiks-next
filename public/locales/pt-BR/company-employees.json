@@ -26,5 +26,13 @@
   "modal_section_title4": "Selecione um gestor",
   "placeholder6": "Nenhum gestor selecionado",
 
-  "btn_add": "Adicionar"
+  "btn_add": "Adicionar",
+
+  "update_modal_title": "Atualizar colaborador",
+  "update_modal_section_title3": "Email",
+  "update_btn_add": "Atualizar",
+
+  "delete_modal_title": "Excluir colaborador",
+  "delete_modal_warn": "Tem certeza que deseja excluir esse colaborador? Esta ação não poderá ser desfeita!",
+  "delete_btn_add": "Excluir"
 }

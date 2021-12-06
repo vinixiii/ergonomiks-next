@@ -12,14 +12,22 @@ import { Table } from '../../../../common/Table';
 import { Modal } from '../../../../common/Modal';
 import { RegisterEmployeeForm } from '../../../../forms/RegisterEmployeeForm';
 import { DeleteEmployeeForm } from '../../../../forms/app/company/delete/DeleteEmployeeForm';
+import { UpdateEmployeeForm } from '../../../../forms/app/company/update/UpdateEmployeeForm';
 
 export function EmployeesScreen({ employees, managers, user }) {
-  const { isModalOpen, toggleModal, isDeleteModalOpen, toggleDeleteModal } =
-    useContext(WebsitePageContext);
+  const {
+    isModalOpen,
+    toggleModal,
+    isDeleteModalOpen,
+    toggleDeleteModal,
+    isUpdateModalOpen,
+    toggleUpdateModal,
+  } = useContext(WebsitePageContext);
 
   const { borderRadius } = useContext(ThemeContext);
 
   const [employeeId, setEmployeeId] = useState();
+  const [employeeInfo, setEmployeeInfo] = useState();
 
   const { t } = useTranslation('company-employees');
 
@@ -34,7 +42,18 @@ export function EmployeesScreen({ employees, managers, user }) {
       </Modal>
 
       <Modal
-        title="Delete employee"
+        title={t('update_modal_title')}
+        isOpen={isUpdateModalOpen}
+        onClose={toggleUpdateModal}
+      >
+        <UpdateEmployeeForm
+          managers={managers}
+          currentEmployeeInfo={employeeInfo}
+        />
+      </Modal>
+
+      <Modal
+        title={t('delete_modal_title')}
         isOpen={isDeleteModalOpen}
         onClose={toggleDeleteModal}
         maxWidth="500px"
@@ -115,7 +134,13 @@ export function EmployeesScreen({ employees, managers, user }) {
                   </td>
                   <td>
                     <div id="icons">
-                      <MdEdit className="icon edit-icon" />
+                      <MdEdit
+                        className="icon edit-icon"
+                        onClick={() => {
+                          setEmployeeInfo(manager);
+                          toggleUpdateModal();
+                        }}
+                      />
                       <MdClose
                         className="icon close-icon"
                         onClick={() => {
