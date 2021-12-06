@@ -12,7 +12,7 @@ import { Table } from '../../../../common/Table';
 import { Modal } from '../../../../common/Modal';
 import { RegisterManagerForm } from '../../../../forms/RegisterManagerForm';
 import { DeleteManagerForm } from '../../../../forms/app/company/delete/DeleteManagerForm';
-import { UpdateManagerForm } from '../../../../forms/app/company/update/UpdateModalForm';
+import { UpdateManagerForm } from '../../../../forms/app/company/update/UpdateManagerForm';
 
 export function ManagersScreen({ managers, user }) {
   const {
@@ -41,7 +41,7 @@ export function ManagersScreen({ managers, user }) {
       </Modal>
 
       <Modal
-        title={t('modal_title')}
+        title={t('update_modal_title')}
         isOpen={isUpdateModalOpen}
         onClose={toggleUpdateModal}
       >
@@ -49,7 +49,7 @@ export function ManagersScreen({ managers, user }) {
       </Modal>
 
       <Modal
-        title="Delete manager"
+        title={t('delete_modal_title')}
         isOpen={isDeleteModalOpen}
         onClose={toggleDeleteModal}
         maxWidth="500px"

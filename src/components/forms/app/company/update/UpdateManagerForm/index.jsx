@@ -252,17 +252,6 @@ export function UpdateManagerForm({ session, currentManagerInfo }) {
               defaultValue={currentManagerInfo.phone}
               onChange={handleChangeFieldValue}
             />
-          </Box>
-          <Box
-            display="flex"
-            flex="1"
-            flexDirection="column"
-            gap="16px"
-            minWidth="180px"
-          >
-            <Text tag="h3" variant="paragraph1" color="primaryText">
-              {t('modal_section_title3')}
-            </Text>
             <TextField
               type="text"
               placeholder={t('placeholder4')}
@@ -280,7 +269,7 @@ export function UpdateManagerForm({ session, currentManagerInfo }) {
         padding="24px 40px"
         borderTop={`1px solid ${colors.border}`}
       >
-        <Button> {t('btn_add')}</Button>
+        <Button> {t('update_btn_add')}</Button>
       </Box>
     </form>
   );
