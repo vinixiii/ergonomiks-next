@@ -14,13 +14,11 @@ import { authService } from '../../../../../../services/auth/authService';
 import { api } from '../../../../../../infra/api';
 
 export function UpdateManagerForm({ session, currentManagerInfo }) {
-  console.log('managerInfo', currentManagerInfo);
-
   const auth = authService();
   const token = auth.getToken();
 
   const router = useRouter();
-  const { toggleModal } = useContext(WebsitePageContext);
+  const { toggleUpdateModal } = useContext(WebsitePageContext);
   const { colors, borderRadius } = useContext(ThemeContext);
 
   const fileInputRef = useRef();
@@ -34,7 +32,6 @@ export function UpdateManagerForm({ session, currentManagerInfo }) {
     lastName: '',
     phone: '',
     email: '',
-    password: '',
   });
 
   function handleChangeFieldValue(event) {
@@ -60,22 +57,53 @@ export function UpdateManagerForm({ session, currentManagerInfo }) {
     }
   }, [image]);
 
+  useEffect(() => {
+    setManagerInfo({
+      firstName: currentManagerInfo?.firstName,
+      lastName: currentManagerInfo.lastName,
+      phone: currentManagerInfo.phone,
+      email: currentManagerInfo.user?.email,
+    });
+  }, [currentManagerInfo, currentManagerInfo.user]);
+
   async function handleSubmit(event) {
     event.preventDefault();
 
     if (preview) {
-      //Image requests
       const fd = new FormData();
 
       if (image) {
+        fd.append('id', currentManagerInfo.id);
         fd.append('image', image, image.name);
       }
-    } else {
-      //Data request
+
+      const imageResponse = await api.patch('manager/image', fd, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (imageResponse.status === 200) {
+        toggleUpdateModal();
+        router.push(router.pathname);
+      }
+    }
+
+    const fd = new FormData();
+
+    fd.append('idManager', currentManagerInfo.id);
+    fd.append('firstName', managerInfo.firstName);
+    fd.append('lastName', managerInfo.lastName);
+    fd.append('phone', managerInfo.phone);
+    fd.append('email', managerInfo.email);
+
+    const dataResponse = await api.patch('manager', fd, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (dataResponse.status === 200) {
+      toggleUpdateModal();
+      router.push(router.pathname);
     }
   }
-
-  console.log(managerInfo.firstName);
 
   return (
     <form

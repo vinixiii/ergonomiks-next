@@ -104,7 +104,7 @@ export function ManagersScreen({ managers, user }) {
                       <Box width="36px" height="36px">
                         <img
                           src={`http://localhost:5000/resources/images/${manager.image}`}
-                          alt="eu"
+                          alt="Manager profile picture"
                           style={{
                             width: '100%',
                             height: '100%',
