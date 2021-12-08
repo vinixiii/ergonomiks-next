@@ -77,7 +77,7 @@ export function UpdateManagerForm({ session, currentManagerInfo }) {
         fd.append('image', image, image.name);
       }
 
-      const imageResponse = await api.patch('manager/image', fd, {
+      const imageResponse = await api.put('manager/image', fd, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -87,17 +87,19 @@ export function UpdateManagerForm({ session, currentManagerInfo }) {
       }
     }
 
-    const fd = new FormData();
-
-    fd.append('idManager', currentManagerInfo.id);
-    fd.append('firstName', managerInfo.firstName);
-    fd.append('lastName', managerInfo.lastName);
-    fd.append('phone', managerInfo.phone);
-    fd.append('email', managerInfo.email);
-
-    const dataResponse = await api.patch('manager', fd, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const dataResponse = await api.put(
+      'manager',
+      {
+        id: currentManagerInfo.id,
+        firstName: managerInfo.firstName,
+        lastName: managerInfo.lastName,
+        phone: managerInfo.phone,
+        email: managerInfo.email,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
 
     if (dataResponse.status === 200) {
       toggleUpdateModal();
