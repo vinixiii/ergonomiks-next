@@ -204,7 +204,7 @@ export function Header() {
                         />
                       ) : (
                         <img
-                          src={`http://localhost:5000/resources/images/${user?.jti}.png`}
+                          src={`http://api-ergonomiks.azurewebsites.net/resources/images/${user?.jti}.png`}
                           alt="Imagem do usuário"
                         />
                       )}

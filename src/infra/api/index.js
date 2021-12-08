@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:5000/v1/',
+  baseURL: 'http://api-ergonomiks.azurewebsites.net/v1/',
 });
