@@ -26,5 +26,13 @@
   "modal_section_title4": "Select a manager",
   "placeholder6": "No manager selected",
 
-  "btn_add": "Add"
+  "btn_add": "Add",
+
+  "update_modal_title": "Update employee",
+  "update_modal_section_title3": "Email",
+  "update_btn": "Update",
+
+  "delete_modal_title": "Delete employee",
+  "delete_modal_warn": "Are you sure you want to delete this employee? This action cannot be undone!",
+  "delete_btn": "Delete"
 }

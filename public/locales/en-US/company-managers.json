@@ -23,5 +23,16 @@
   "placeholder4": "Email",
   "placeholder5": "Password",
 
-  "btn_add": "Add"
+  "btn_add": "Add",
+
+  "update_modal_title": "Update manager",
+  "update_modal_section_title3": "Email",
+  "update_btn": "Update",
+
+  "modal_select": "Select a manager",
+
+  "delete_modal_title": "Delete manager",
+  "delete_modal_message": "This manager has employees related to him. Please select another manager to be the new responsible for these employees.",
+  "delete_modal_warn": "Are you sure you want to delete this manager? This action cannot be undone!",
+  "delete_btn": "Delete"
 }

@@ -23,5 +23,16 @@
   "placeholder4": "Email",
   "placeholder5": "Senha",
 
-  "btn_add": "Adicionar"
+  "btn_add": "Adicionar",
+
+  "update_modal_title": "Atualizar gestor",
+  "update_modal_section_title3": "Email",
+  "update_btn": "Atualizar",
+
+  "modal_select": "Selecione um gestor",
+
+  "delete_modal_title": "Excluir gestor",
+  "delete_modal_message": "Este gestor possui colaboradores relacionados a ele. Por favor selecione outro gestor para ser o novo responsável por esses colaboradores.",
+  "delete_modal_warn": "Tem certeza que deseja excluir esse gestor? Esta ação não poderá ser desfeita!",
+  "delete_btn": "Excluir"
 }

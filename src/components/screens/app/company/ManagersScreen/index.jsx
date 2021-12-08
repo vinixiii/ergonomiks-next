@@ -12,13 +12,21 @@ import { Table } from '../../../../common/Table';
 import { Modal } from '../../../../common/Modal';
 import { RegisterManagerForm } from '../../../../forms/RegisterManagerForm';
 import { DeleteManagerForm } from '../../../../forms/app/company/delete/DeleteManagerForm';
+import { UpdateManagerForm } from '../../../../forms/app/company/update/UpdateManagerForm';
 
 export function ManagersScreen({ managers, user }) {
-  const { isModalOpen, toggleModal, isDeleteModalOpen, toggleDeleteModal } =
-    useContext(WebsitePageContext);
+  const {
+    isModalOpen,
+    toggleModal,
+    isDeleteModalOpen,
+    toggleDeleteModal,
+    isUpdateModalOpen,
+    toggleUpdateModal,
+  } = useContext(WebsitePageContext);
   const { borderRadius } = useContext(ThemeContext);
 
   const [managerId, setManagerId] = useState();
+  const [managerInfo, setManagerInfo] = useState();
 
   const { t } = useTranslation('company-managers');
 
@@ -33,7 +41,15 @@ export function ManagersScreen({ managers, user }) {
       </Modal>
 
       <Modal
-        title="Delete manager"
+        title={t('update_modal_title')}
+        isOpen={isUpdateModalOpen}
+        onClose={toggleUpdateModal}
+      >
+        <UpdateManagerForm session={user} currentManagerInfo={managerInfo} />
+      </Modal>
+
+      <Modal
+        title={t('delete_modal_title')}
         isOpen={isDeleteModalOpen}
         onClose={toggleDeleteModal}
         maxWidth="500px"
@@ -88,7 +104,7 @@ export function ManagersScreen({ managers, user }) {
                       <Box width="36px" height="36px">
                         <img
                           src={`http://localhost:5000/resources/images/${manager.image}`}
-                          alt="eu"
+                          alt="Manager profile picture"
                           style={{
                             width: '100%',
                             height: '100%',
@@ -114,7 +130,13 @@ export function ManagersScreen({ managers, user }) {
                   </td>
                   <td>
                     <div id="icons">
-                      <MdEdit className="icon edit-icon" />
+                      <MdEdit
+                        className="icon edit-icon"
+                        onClick={() => {
+                          setManagerInfo(manager);
+                          toggleUpdateModal();
+                        }}
+                      />
                       <MdClose
                         className="icon close-icon"
                         onClick={() => {
