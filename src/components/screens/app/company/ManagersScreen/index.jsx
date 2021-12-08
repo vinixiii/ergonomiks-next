@@ -97,57 +97,58 @@ export function ManagersScreen({ managers, user }) {
               </tr>
             </thead>
             <tbody>
-              {managers.map((manager) => (
-                <tr key={manager.id}>
-                  <td>
-                    <Box display="flex" alignItems="center" gap="12px">
-                      <Box width="36px" height="36px">
-                        <img
-                          src={`http://localhost:5000/resources/images/${manager.image}`}
-                          alt="Manager profile picture"
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            borderRadius: borderRadius,
-                            objectFit: 'cover',
+              {managers &&
+                managers.map((manager) => (
+                  <tr key={manager.id}>
+                    <td>
+                      <Box display="flex" alignItems="center" gap="12px">
+                        <Box width="36px" height="36px">
+                          <img
+                            src={`http://api-ergonomiks.azurewebsites.net/resources/images/${manager.image}`}
+                            alt="Manager profile picture"
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              borderRadius: borderRadius,
+                              objectFit: 'cover',
+                            }}
+                          />
+                        </Box>
+                        <Text variant="paragraph3" color="primaryText">
+                          {`${manager.firstName} ${manager.lastName}`}
+                        </Text>
+                      </Box>
+                    </td>
+                    <td>
+                      <Text variant="paragraph3" color="primaryText">
+                        {manager.user.email}
+                      </Text>
+                    </td>
+                    <td>
+                      <Text variant="paragraph3" color="primaryText">
+                        {manager.phone}
+                      </Text>
+                    </td>
+                    <td>
+                      <div id="icons">
+                        <MdEdit
+                          className="icon edit-icon"
+                          onClick={() => {
+                            setManagerInfo(manager);
+                            toggleUpdateModal();
                           }}
                         />
-                      </Box>
-                      <Text variant="paragraph3" color="primaryText">
-                        {`${manager.firstName} ${manager.lastName}`}
-                      </Text>
-                    </Box>
-                  </td>
-                  <td>
-                    <Text variant="paragraph3" color="primaryText">
-                      {manager.user.email}
-                    </Text>
-                  </td>
-                  <td>
-                    <Text variant="paragraph3" color="primaryText">
-                      {manager.phone}
-                    </Text>
-                  </td>
-                  <td>
-                    <div id="icons">
-                      <MdEdit
-                        className="icon edit-icon"
-                        onClick={() => {
-                          setManagerInfo(manager);
-                          toggleUpdateModal();
-                        }}
-                      />
-                      <MdClose
-                        className="icon close-icon"
-                        onClick={() => {
-                          setManagerId(manager.id);
-                          toggleDeleteModal();
-                        }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                        <MdClose
+                          className="icon close-icon"
+                          onClick={() => {
+                            setManagerId(manager.id);
+                            toggleDeleteModal();
+                          }}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </Table>
         </Box>
