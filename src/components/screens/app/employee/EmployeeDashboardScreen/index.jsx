@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import OneSignal from 'react-onesignal';
 import { ThemeContext } from 'styled-components';
 
@@ -18,6 +19,11 @@ export function EmployeeDashboardScreen({ session, userInfo }) {
       appId: '9e730ae1-3d7d-4a9a-b803-ef9c3eb94fa9',
     });
   }, []);
+
+  const PowerBIComponentWithNoSSR = dynamic(
+    () => import('../../../../common/PowerBI'),
+    { ssr: false }
+  );
 
   return (
     <>
@@ -79,11 +85,7 @@ export function EmployeeDashboardScreen({ session, userInfo }) {
           </Grid.Row>
         </Grid.Container>
       </Box>
-      <Grid.Container>
-        <Grid.Row>
-          <Grid.Column padding="40px 0"></Grid.Column>
-        </Grid.Row>
-      </Grid.Container>
+      <PowerBIComponentWithNoSSR />
     </>
   );
 }
