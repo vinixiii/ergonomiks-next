@@ -63,6 +63,7 @@ export function UpdateEmployeeForm({ managers, currentEmployeeInfo }) {
       lastName: currentEmployeeInfo.lastName,
       phone: currentEmployeeInfo.phone,
       email: currentEmployeeInfo.user?.email,
+      idManager: currentEmployeeInfo.idManager,
     });
   }, [currentEmployeeInfo, currentEmployeeInfo.user]);
 
@@ -77,7 +78,7 @@ export function UpdateEmployeeForm({ managers, currentEmployeeInfo }) {
         fd.append('image', image, image.name);
       }
 
-      const imageResponse = await api.patch('employee/image', fd, {
+      const imageResponse = await api.put('employee/image', fd, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -87,14 +88,15 @@ export function UpdateEmployeeForm({ managers, currentEmployeeInfo }) {
       }
     }
 
-    const dataResponse = await api.patch(
-      'manager',
+    const dataResponse = await api.put(
+      'employee',
       {
-        idEmployee: currentEmployeeInfo.id,
+        id: currentEmployeeInfo.id,
         firstName: managerInfo.firstName,
         lastName: managerInfo.lastName,
         phone: managerInfo.phone,
         email: managerInfo.email,
+        idManager: managerInfo.idManager,
       },
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -106,7 +108,7 @@ export function UpdateEmployeeForm({ managers, currentEmployeeInfo }) {
       router.push(router.pathname);
     }
   }
-  console.log(currentEmployeeInfo);
+
   return (
     <form onSubmit={handleSubmit} key={currentEmployeeInfo.id}>
       <Box padding="24px 40px">
@@ -277,7 +279,7 @@ export function UpdateEmployeeForm({ managers, currentEmployeeInfo }) {
               >
                 <option
                   value={currentEmployeeInfo.idManager}
-                >{`${currentEmployeeInfo.firstName} ${currentEmployeeInfo.lastName}`}</option>
+                >{`${currentEmployeeInfo.manager?.firstName} ${currentEmployeeInfo.manager?.lastName}`}</option>
                 {managers
                   .filter(
                     (manager) => manager.id !== currentEmployeeInfo.idManager
