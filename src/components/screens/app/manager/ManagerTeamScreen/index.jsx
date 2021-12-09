@@ -61,7 +61,7 @@ export function ManagerTeamScreen({ employees }) {
                   <Box display="flex" alignItems="center" gap="12px">
                     <Box width="36px" height="36px">
                       <img
-                        src={`http://api-ergonomiks.azurewebsites.net/resources/images/${employee.image}`}
+                        src={`https://api-ergonomiks.azurewebsites.net/resources/images/${employee.image}`}
                         alt="eu"
                         style={{
                           width: '100%',

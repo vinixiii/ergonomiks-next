@@ -43,7 +43,7 @@ export function EmployeeDashboardScreen({ session, userInfo }) {
                   borderRadius={borderRadius}
                 >
                   <img
-                    src={`http://api-ergonomiks.azurewebsites.net/resources/images/${session.image}`}
+                    src={`https://api-ergonomiks.azurewebsites.net/resources/images/${session.image}`}
                     alt="User image"
                     style={{
                       width: '100%',

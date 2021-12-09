@@ -108,7 +108,7 @@ export function EmployeesScreen({ employees, managers, user }) {
                       <Box display="flex" alignItems="center" gap="12px">
                         <Box width="36px" height="36px">
                           <img
-                            src={`http://api-ergonomiks.azurewebsites.net/resources/images/${manager.image}`}
+                            src={`https://api-ergonomiks.azurewebsites.net/resources/images/${manager.image}`}
                             alt="eu"
                             style={{
                               width: '100%',

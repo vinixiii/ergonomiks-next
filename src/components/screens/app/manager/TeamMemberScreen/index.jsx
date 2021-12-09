@@ -64,7 +64,7 @@ export function TeamMemberScreen() {
                   borderRadius={borderRadius}
                 >
                   <img
-                    src={`http://api-ergonomiks.azurewebsites.net/resources/images/${teamMemberInfo?.image}`}
+                    src={`https://api-ergonomiks.azurewebsites.net/resources/images/${teamMemberInfo?.image}`}
                     alt="User image"
                     style={{
                       width: '100%',

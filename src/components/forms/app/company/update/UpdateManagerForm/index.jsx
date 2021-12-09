@@ -178,7 +178,7 @@ export function UpdateManagerForm({ session, currentManagerInfo }) {
               ) : (
                 <>
                   <img
-                    src={`http://api-ergonomiks.azurewebsites.net/resources/images/${currentManagerInfo.image}`}
+                    src={`https://api-ergonomiks.azurewebsites.net/resources/images/${currentManagerInfo.image}`}
                     alt="Uploaded user image"
                     style={{
                       width: '100%',

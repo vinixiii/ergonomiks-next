@@ -176,7 +176,7 @@ export function UpdateEmployeeForm({ managers, currentEmployeeInfo }) {
               ) : (
                 <>
                   <img
-                    src={`http://api-ergonomiks.azurewebsites.net/resources/images/${currentEmployeeInfo.image}`}
+                    src={`https://api-ergonomiks.azurewebsites.net/resources/images/${currentEmployeeInfo.image}`}
                     alt="Uploaded user image"
                     style={{
                       width: '100%',

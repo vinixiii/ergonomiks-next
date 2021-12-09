@@ -104,7 +104,7 @@ export function ManagersScreen({ managers, user }) {
                       <Box display="flex" alignItems="center" gap="12px">
                         <Box width="36px" height="36px">
                           <img
-                            src={`http://api-ergonomiks.azurewebsites.net/resources/images/${manager.image}`}
+                            src={`https://api-ergonomiks.azurewebsites.net/resources/images/${manager.image}`}
                             alt="Manager profile picture"
                             style={{
                               width: '100%',
