@@ -6,5 +6,9 @@ export const PowerBiWrapper = styled.div`
 
   .embed-container {
     flex: 1;
+
+    iframe {
+      border: none;
+    }
   }
 `;

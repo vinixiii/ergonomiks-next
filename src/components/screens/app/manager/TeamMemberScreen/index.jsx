@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { ThemeContext } from 'styled-components';
 import { useRouter } from 'next/router';
 
@@ -20,6 +21,11 @@ export function TeamMemberScreen() {
   const [teamMemberInfo, setTeamMemberInfo] = useState();
 
   const { colors, borderRadius } = useContext(ThemeContext);
+
+  const PowerBIComponentWithNoSSR = dynamic(
+    () => import('../../../../common/PowerBI/SensorsDashboard'),
+    { ssr: false }
+  );
 
   async function getTeamMemberInfo() {
     try {
@@ -108,11 +114,7 @@ export function TeamMemberScreen() {
           </Grid.Row>
         </Grid.Container>
       </Box>
-      <Grid.Container>
-        <Grid.Row>
-          <Grid.Column padding="40px 0"></Grid.Column>
-        </Grid.Row>
-      </Grid.Container>
+      <PowerBIComponentWithNoSSR />
     </>
   );
 }
