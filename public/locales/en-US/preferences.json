@@ -12,6 +12,13 @@
 
   "change_pwd": "change",
 
+  "change_pwd_title": "Change password",
+  "current_pwd": "Current password",
+  "new_pwd": "New password",
+  "confirm_new_pwd": "Confirm new password",
+
+  "change_pwd_btn": "Change",
+
   "language": "Language",
   "en_us": "English",
   "pt_br": "Portuguese (Brazil)",

@@ -56,7 +56,7 @@ export default function Footer() {
               padding="0 12px"
               borderRadius={borderRadius}
               cursor="pointer"
-              backgroundColor={colors.tertiaryBackground}
+              // backgroundColor={colors.tertiaryBackground}
               onClick={() => {
                 setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
               }}
@@ -123,19 +123,21 @@ export default function Footer() {
               </ul>
             </Dropup>
           </Box>
-          {title === 'darkMode' ? (
-            <MdOutlineLightMode
-              className="icon"
-              onClick={toggleTheme}
-              style={{ backgroundColor: colors.tertiaryBackground }}
-            />
-          ) : (
-            <MdOutlineDarkMode
-              className="icon"
-              onClick={toggleTheme}
-              style={{ backgroundColor: colors.tertiaryBackground }}
-            />
-          )}
+          <Box display={{ xs: 'none', md: 'initial' }}>
+            {title === 'darkMode' ? (
+              <MdOutlineLightMode
+                className="icon"
+                onClick={toggleTheme}
+                style={{ backgroundColor: colors.tertiaryBackground }}
+              />
+            ) : (
+              <MdOutlineDarkMode
+                className="icon"
+                onClick={toggleTheme}
+                style={{ backgroundColor: colors.tertiaryBackground }}
+              />
+            )}
+          </Box>
         </Box>
         <Text>&copy; Ergonomiks</Text>
       </FooterWrapper>
