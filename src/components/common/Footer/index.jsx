@@ -125,17 +125,9 @@ export default function Footer() {
           </Box>
           <Box display={{ xs: 'none', md: 'initial' }}>
             {title === 'darkMode' ? (
-              <MdOutlineLightMode
-                className="icon"
-                onClick={toggleTheme}
-                style={{ backgroundColor: colors.tertiaryBackground }}
-              />
+              <MdOutlineLightMode className="icon" onClick={toggleTheme} />
             ) : (
-              <MdOutlineDarkMode
-                className="icon"
-                onClick={toggleTheme}
-                style={{ backgroundColor: colors.tertiaryBackground }}
-              />
+              <MdOutlineDarkMode className="icon" onClick={toggleTheme} />
             )}
           </Box>
         </Box>
