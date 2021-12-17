@@ -21,7 +21,7 @@ export function EmployeeDashboardScreen({ session, userInfo }) {
   }, []);
 
   const PowerBIComponentWithNoSSR = dynamic(
-    () => import('../../../../common/PowerBI'),
+    () => import('../../../../common/PowerBI/SensorsDashboard'),
     { ssr: false }
   );
 

@@ -12,6 +12,13 @@
 
   "change_pwd": "alterar",
 
+  "change_pwd_title": "Alterar senha",
+  "current_pwd": "Senha atual",
+  "new_pwd": "Nova senha",
+  "confirm_new_pwd": "Confirmar nova senha",
+
+  "change_pwd_btn": "Alterar",
+
   "language": "Idioma",
   "en_us": "Inglês",
   "pt_br": "Português (Brasil)",

@@ -22,10 +22,17 @@ export function ContactScreen() {
           value={{ xs: 12, lg: 6 }}
         >
           <Box>
-            <Text tag="h1" marginBottom="24px" variant="title">
+            <Text
+              tag="h1"
+              marginBottom="24px"
+              variant="title"
+              color="primaryText"
+            >
               {t('title')}
             </Text>
-            <Text variant="paragraph1">{t('subtitle')}</Text>
+            <Text variant="paragraph1" color="primaryText">
+              {t('subtitle')}
+            </Text>
           </Box>
           <img
             src="/img/contact-illustration.svg"

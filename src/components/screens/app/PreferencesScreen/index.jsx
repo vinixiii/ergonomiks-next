@@ -40,7 +40,11 @@ export function PreferencesScreen({ account, user }) {
 
   return (
     <>
-      <Modal title="Change password" isOpen={isModalOpen} onClose={toggleModal}>
+      <Modal
+        title={t('change_pwd_title')}
+        isOpen={isModalOpen}
+        onClose={toggleModal}
+      >
         <ChangePasswordForm />
       </Modal>
 
